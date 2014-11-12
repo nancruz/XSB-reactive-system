@@ -1,0 +1,243 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $Rev: 1121 $:     Revision of last commit
+% $Author: hafsi.ahmed.khalil@gmail.com $:  Author of last commit
+% $Date: 2012-10-15 10:45:18 +0100 (Seg, 15 Out 2012) $:    Date of last commit
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports
+
+:- dynamic(trClause/3).
+:- index(trClause/3,trie).
+:- dynamic(trClauseECA/3).
+:- index(trClauseECA/3,trie).
+:- dynamic(t1/1).
+:- dynamic(t2/1).
+:- import current_datime/1,less_datime/2, equal_datime/2,epoch/7, datime_plus_sec/3 from date_utils.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% event_trigger(+Event)
+% executes an event and triggers all actions and complex events triggerd by
+%  this event
+
+event_trigger(noop).
+
+event_trigger(not_etr_dbf(Label,A)):-
+	log(not_etr_dbf(Label,A)),
+	\+( etr_dbf(Label,A) ).
+
+event_trigger(etr_dbf(Label,A)):- % event transaction logic db calls
+	log(etr_dbf(Label,A)),
+	etr_dbf(Label,A).
+
+event_trigger(etr_insf(Label,A)):-
+	log(etr_insf(Label,A)),
+	etr_insf(Label,A).
+
+event_trigger(etr_delf(Label,A)):-
+	log(etr_delf(Label,A)),
+	etr_delf(Label,A).
+
+event_trigger(check_event_rule_conditions(Label,Head,DT)):-
+	log(check_event_rule_conditions(Label,Head,DT)),
+	check_event_rule_conditions(Label,Head,DT).
+
+event_trigger(db(A)):- % db calls
+	log(db(A)),
+	call(A).
+
+event_trigger(db(db(A))):- % db calls
+	log(db(A)),
+	call(A).
+
+event_trigger(event(prolog(A))):-
+	log(prolog(A)),
+	call(A).
+%This is used to check some conditions related with the timestamp of some
+%event
+event_trigger(event(checkf(E2,[T1,T2]))):-
+	!,
+	event_trigger(checkf(E2,[T1,T2])).
+
+event_trigger(checkf(E1,[T1,T2])):-
+	% implemented only for recent
+	!,
+	log(checkf(E1,[T1,T2])),
+	retractall(t1(_)),
+	retractall(t2(_)),
+	assert(t1(T1)),
+	assert(t2(T2)),
+	call(E1),
+	retractall(t1(_)),
+	retractall(t2(_));
+	( retractall(t1(_)),
+	retractall(t2(_)) ).
+
+event_trigger(prolog(A)):-
+	log(prolog(A)),
+	call(A).
+
+event_trigger(less(T1,T2)):-
+	log(less(T1,T2)),
+	less_datime(T1,T2).
+
+event_trigger(less_eq(T1,T2)):-
+	log(less_eq(T1,T2)),
+	less_datime(T1,T2);
+	equal_datime(T1,T2).
+
+event_trigger(equal(T1,T2)):-
+	log(equalTimes(T1,T2)),
+	equal_datime(T1,T2).
+
+event_trigger(min(T1,T2,T3)):-
+    min(T1,T2,T3).
+event_trigger(max(T1,T2,T3)):-
+    max(T1,T2,T3).
+event_trigger(plus_sec(T1,Sec,T2)):-
+    datime_plus_sec(T1,Sec,T2).
+event_trigger(writeln(X)):-
+	write(X),
+	nl.
+event_trigger(reg_periodic(Event)):-
+    log(reg_periodic(Event)),
+    reg_periodic(Event). 
+event_trigger(rem_periodic(Event)):-
+    log(rem_periodic(Event)),
+    rem_periodic(Event).
+event_trigger(unreg_periodic(Event)):-
+    log(unreg_periodic(Event)),
+    unreg_periodic(Event).
+
+event_trigger(seqf(etr_dbf(Label,E11),E2)):-
+	event_consumption_policy(unrestricted),
+	E1 = etr_dbf(Label,E11),
+	findall(E1,call(E1),L),
+	trigger_all(L,seqf(E1,E2)).
+
+event_trigger(seqf(E1,E2)):-
+	\+((E1 = etr_dbf(_Label,_E11), event_consumption_policy(unrestricted))),
+	log(seqf(E1,E2)),
+	event_trigger(E1),
+	event_trigger(E2).
+
+event_trigger(wheref(db(E1),E2)):-
+	log(wheref(db(E1),E2)),
+	event_trigger(db(E1)),
+	event_trigger(E2).
+
+
+event_trigger(event_multiplyf(db(E1),E2)):-
+	findall(E1,call(E1),L),
+	trigger_all(L,event_multiplyf(db(E1),E2)).
+
+event_trigger(tor(E1,E2)) :-
+	log(tor(E1,E2)),
+	(
+		event_trigger(E1);
+		event_trigger(E2)
+	).
+
+event_trigger(action(Action)):-
+    log(action(Action)),
+    call(Action).
+
+event_trigger(event(Event,[T1,T2])):-
+   periodic_events(on),
+   thread_send_message(events, event(Event,[T1,T2])).
+
+%event_trigger(event(Event,[T1,T2])):-
+%	\+(trClause(_Label,event(Event,[T1,T2]),_Body)),
+%    \+(trClauseECA(_Label,event(Event,[T1,T2]),_BodyECA)),
+%	logging_event(event(Event,[T1,T2])).
+
+
+%event_trigger(event(Event,[T1,T2]))
+event_trigger(event(Event,[T1,T2])):-
+    findall(trClauseECA(Label,event(Event,[T1,T2]),Body),
+           trClauseECA(Label,event(Event,[T1,T2]),Body),
+           List1),
+    findall(trClause(Label,event(Event,[T1,T2]),Body),
+            trClause(Label,event(Event,[T1,T2]),Body),
+            List2),
+	logging_event(event(Event,[T1,T2])),
+    fireAllECARules(List1),
+    fireAllTRFormulas(List2).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% trigger_all([H|T],event_multiplyf(db(E1),E2))
+trigger_all([],_).
+trigger_all([H|T],event_multiplyf(db(E1),E2)):-
+	log(event_multiplyf(db(E1),E2)),
+	log(db(E1)),
+	copy_term(event_multiplyf(db(E1),E2),event_multiplyf(db(CE1),CE2)),
+	CE1 = H,
+	((event_trigger(CE2),!);true),
+	trigger_all(T,event_multiplyf(db(E1),E2)).
+trigger_all([H|T],seqf(E1,E2)):-
+	log(seqf(E1,E2)),
+	log(E1),
+	copy_term(seqf(E1,E2),seqf(CE1,CE2)),
+	CE1 = H,
+	((event_trigger(CE2),!);true),
+	trigger_all(T,seqf(E1,E2)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   fireAllECARules(List)
+%       List is a list of instatiated rules: trClauseECA(...)
+fireAllECARules([
+        trClauseECA(Label,event(Event,[T1,T2]),Body)|T]):-
+    fire_event(Body),
+    fireAllECARules(T).
+fireAllECARules([]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fireAllTRFormulas(+List)
+%	List is a list of instantiated rules: trClause(Label,event(Event,[T1,T2]),Body)
+fireAllTRFormulas([
+		trClause(Label,event(Event,[T1,T2]),Body)
+		|T]):-	
+	fire_event(Body),
+	fireAllTRFormulas(T).
+fireAllTRFormulas([]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fire_event(+H)
+fire_event(H):-
+	event_trigger(H),
+	!.
+fire_event(_H). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% check if Event is defined as an external trigger
+external_trigger_check(Event):-
+	% print all events
+	external_trigger(all_events),
+	!,
+	Event=..[_|_].
+external_trigger_check(Event):-
+	% print all defined events
+	external_trigger(all_defined_events),
+	!,
+	Event=..[EventSymbol|_],
+	\+( atom_codes(EventSymbol,[116,101,109,112,95,101,95|_]) ).
+external_trigger_check(Event):-
+	% print all defined events
+	print_trigger(all_defined_events),
+	!,
+	Event=..[EventSymbol|_],
+	\+( atom_codes(EventSymbol,[116,101,109,112,95,101,95|_]) ).
+external_trigger_check(Event):-
+	functor(Event,Functor,Arity1),
+	% users mistake sometimes the arity of events, but they might still want
+	% to see them - note: we can put here a hook to offer the alternative
+	external_trigger(Functor/Arity1),
+	!.
+external_trigger_check(Event):-
+	functor(Event,Functor,Arity1),
+	% users mistake sometimes the arity of events, but they might still want
+	% to see them - note: we can put here a hook to offer the alternative
+	print_trigger(Functor/Arity1),
+	!.
+external_trigger_check(Event):-
+	external_trigger(Event).
+external_trigger_check(Event):-
+	print_trigger(Event).
+

@@ -1,0 +1,55 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- dynamic(java_obj_id/1).
+
+set_java_obj_id(ID) :- assert(java_obj_id(ID)).
+set_java_engine(Engine) :- assert(java_engine(Engine)).
+
+% Interprolog
+notify_java_listener_event(Event, T1, T2) :- 
+	java_obj_id(ID), 
+    T1 = datime(E1,_C1),
+    T2 = datime(E2,_C2),
+    ipObjectSpec('java.lang.Integer',[value=E1],V1),
+    ipObjectSpec('java.lang.Integer',[value=E2],V2),
+    buildTermModel(Event,TermModel),
+    javaMessage(ID, notifyEvent(TermModel,V1,V2)).
+
+notify_java_listener_message(Message) :-
+    java_obj_id(ID),
+    javaMessage(ID, notifyMessage(Message)).
+
+notify_java_listener_insert(Term):-
+    java_obj_id(ID),
+    buildTermModel(Term,NTerm),
+    javaMessage(ID,notifyInsert(NTerm)).
+
+notify_java_listener_remove(Term):-
+    java_obj_id(ID),
+    buildTermModel(Term,NTerm),
+    javaMessage(ID,notifyRemove(NTerm)).
+
+notify_java_listener_ins_ax(Axiom):-
+    java_obj_id(ID),
+    buildTermModel(Axiom,Term),
+    javaMessage(ID, notifyInsertAx(Term)).
+
+notify_java_listener_del_ax(Axiom):-
+    java_obj_id(ID),
+    buildTermModel(Axiom,Term),
+    javaMessage(ID,notifyRemoveAx(Term)).
+
+notify_java_listener_ins_rule(Rule):-
+    java_obj_id(ID),
+    buildTermModel(Rule,Term),
+    javaMessage(ID,notifyInsertRule(Term)).
+notify_java_listener_del_rule(Rule):-
+    java_obj_id(ID),
+    buildTermModel(Rule,Term),
+    javaMessage(ID,notifyRemoveRule(Term)).
+
+notify_java_listener_query(Query,V):-
+    java_obj_id(ID),
+    buildTermModel(Query,QTerm),
+    javaMessage(ID,Result,notifyTranslateQuery(QTerm)),
+    ipObjectSpec('java.lang.Boolean',[value=V],Result).
+

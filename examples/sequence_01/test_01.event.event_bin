@@ -1,0 +1,16 @@
+eventClause(unlabeled,a(1),seqf(a,b)).
+
+eventClause(unlabeled,temp_e_1(a(_h713),b(_h687)),seqf(a(_h713),b(_h687))).
+
+eventClause(unlabeled,temp_e_2(temp_e_1(a(_h713),b(_h687)),_h713 < _h687),wheref(temp_e_1(a(_h713),b(_h687)),_h713 < _h687)).
+
+eventClause(unlabeled,a(_h687),temp_e_2(temp_e_1(a(_h713),b(_h687)),_h713 < _h687)).
+
+eventClause(unlabeled,temp_e_3(f(_h880),g(_h930)),seqf(f(_h880),g(_h930))).
+
+eventClause(unlabeled,temp_e_4(temp_e_3(f(_h880),g(_h930)),h(_h956)),seqf(temp_e_3(f(_h880),g(_h930)),h(_h956))).
+
+eventClause(unlabeled,temp_e_5(temp_e_4(temp_e_3(f(_h880),g(_h930)),h(_h956)),_h880 > _h930),wheref(temp_e_4(temp_e_3(f(_h880),g(_h930)),h(_h956)),_h880 > _h930)).
+
+eventClause(unlabeled,c(_h880),temp_e_5(temp_e_4(temp_e_3(f(_h880),g(_h930)),h(_h956)),_h880 > _h930)).
+

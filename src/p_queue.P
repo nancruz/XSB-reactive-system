@@ -1,0 +1,50 @@
+:- dynamic p_queue/1.
+:- index(p_queue/1,trie).
+
+create_pq:-
+    retractall(p_queue(_)),
+    assert(p_queue([])).
+
+push_pq(Event):-
+    p_queue(L),
+    insert(Event,L,List),
+    retractall(p_queue(_)),
+    assert(p_queue(List)).
+
+insert(Event,[],[Event]).
+insert(Event,[H|T],[Event,H|T]):-
+    precedes(Event,H),!.
+insert(Event,[H|T],[H|T_new]):-
+    insert(Event,T,T_new).
+
+pop_pq([]):-
+    p_queue([]).
+pop_pq(H):-
+    p_queue([H|T]),
+    retractall(p_queue(_)),
+    assert(p_queue(T)).
+
+get_head_pq([]):-
+    p_queue([]).
+get_head_pq(H):-
+    p_queue([H|T]).
+
+rem_elem_pq(Event):-
+    p_queue(L),
+    rem_elem(Event,L,New_L),
+    retractall(p_queue(_)),
+    assert(p_queue(New_L)).
+
+rem_elem(event(Event),[],[]).
+rem_elem(event(Event),[event(Event,_,_)|T],New_T):-
+    rem_elem(event(Event),T,New_T).
+rem_elem(Event,[Head|T],[Head|New_T]):-
+    rem_elem(Event,T,New_T).
+
+see_pq:-
+    write('Priority queue state:'),nl,
+    p_queue(L),
+    write(L),nl.
+    
+precedes(event(_,_,I1),event(_,_,I2)):-
+    I1 < I2.

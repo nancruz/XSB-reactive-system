@@ -1,0 +1,7 @@
+print_trigger(start/0).
+print_trigger(fini/0).
+print_trigger(a/0).
+print_trigger(b/0).
+
+a <- periodic(datime(2014,5,22,14,18,0),10,datime(2014,5,22,14,21,0)).
+b <- periodic(datime(2014,5,22,14,18,0),5,datime(2014,5,22,14,21,0)).

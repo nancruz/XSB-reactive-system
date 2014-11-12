@@ -1,0 +1,17 @@
+print_trigger(start/0).
+print_trigger(fini/0).
+print_trigger(a/0).
+print_trigger(b/0).
+print_trigger(c/1).
+print_trigger(d/1).
+print_trigger(e/1).
+print_trigger(f/1).
+
+a <- periodic(start,4,fini).
+b <- periodic(start,2,fini).
+
+f(X) <- a 'seq' d(X) 'where' (X>1).
+c(X) <- b 'seq' d(X).
+
+e(X) <- f(X) 'and' c(X).
+

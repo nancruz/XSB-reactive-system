@@ -1,0 +1,30 @@
+%print_trigger(_/_).
+
+insertEUCountry(X) <- a0 seq a1(X).
+removeEUCountry(X) <- b0 seq b1(X).
+insVeg(X) <- c0 and c1(X).
+remVeg(X) <- d0 or d1(X).
+e(X) <- e0 'seq' e1(X).
+f(X) <- f0 'seq' f1(X).
+addSusp(X) <- e(X) 'during' f(X).
+g(X) <- g0 'seq' g1(X).
+addBulk(X) <- g(X) 'meets' g1(X).
+h(X) <- h0 seq h1(X).
+i(Y) <- h0 seq i1(Y).
+addShpmtCommod(X,Y) <- h(X) starts i(Y).
+
+on insertCountry(X) --> if query(not 'Country'(X)) ; then insert(classAssertion('Country', X)).
+on removeCountry(X) --> if query('Country'(X)) ; then remove(classAssertion('Country',X)).
+on insertEUCountry(X) --> if query(not 'EUCountry'(X)) ; then insert(classAssertion('EUCountry',X)).
+on removeEUCountry(X) --> if query('EUCountry'(X)) ; then remove(classAssertion('EUCountry',X)).
+on insVeg(X) --> if true ; then insert(subClassOf(X,'EdibleVegetable')).
+on remVeg(X) --> if true ; then remove(subClassOf(X,'EdibleVegetable')).
+on addSusp(X) --> if query(not 'SuspectedBadGuy'(X)) ; then insert('SuspectedBadGuy'(X)).
+on remSusp(X) --> if query('SuspectedBadGuy'(X)) ; then remove('SuspectedBadGuy'(X)).
+on addBulk(X) --> if query(not 'Bulk'(X)) ; then insert(classAssertion('Bulk',X)).
+on remBulk(X) --> if query('Bulk'(X)) ; then remove(classAssertion('Bulk',X)).
+on addShpmtCommod(X,Y) --> if query(not 'ShpmtCommod'(X,Y)) ; then insert('ShpmtCommod'(X,Y)).
+
+
+on a --> if true ; then insert(subClassOf('BulkOne', 'Bulk')).
+on b --> if true ; then remove(subClassOf('BulkOne', 'Bulk')).

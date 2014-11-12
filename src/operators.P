@@ -1,0 +1,52 @@
+% This module specifies all the operators for the reactive system
+% tr_operators/0
+tr_operators:-
+	op(1200,xfy, 'rule:'),
+	op(1200,xfy, '<-'),
+    op(1200,xfy, '-->'),
+	% operators
+    op(1060,fy,'on'),
+    op(1060,fy,'if'),
+    op(1060,fy,'then'),
+	op(1060,yfx, 'where'),
+	
+    op(1025,yfx, ';'), % used for eca rules
+	op(1025,yfx, 'seq'), % sequential conjunction
+	op(1040,yfx, 'and'), % classical conjunction
+	op(1045,yfx, 'par'), % parallel conjunction
+	op(1053,yfx, 'or'), % disjunction
+	op(1025,yfx, 'equals'),
+	op(1025,yfx, 'meets'),
+	op(1025,yfx, 'during'),
+	op(1025,yfx, 'starts'),
+	op(1025,yfx, 'finishes'),
+
+	op(1050,yfx, 'check'),
+	op(1050,yfx, 'timestamp'),
+	op(1050,yfx, 'event_multiply'),
+	op(1031,yfx, 'cnot'), % negation: specific for each operator
+	op(1031,yfx, 'fnot'). % another type of negation
+
+:- tr_operators.
+
+% eca rules
+op_functor('on',on_eca).
+op_functor('if',if_eca).
+op_functor('then',then_eca).
+op_functor(';',seq_eca).
+% cep
+op_functor('rule:',rule_labelf).
+op_functor(':',rule_labelf).
+op_functor('seq',seqf).
+op_functor('and',andf).
+op_functor('par',parf).
+op_functor('or',orf).
+op_functor('equals',equalsf).
+op_functor('meets',meetsf).
+op_functor('during',duringf).
+op_functor('starts',startsf).
+op_functor('finishes',finishesf).
+op_functor('where',wheref).
+op_functor('check',checkf).
+op_functor('cnot',cnotf).
+op_functor('fnot',fnotf).

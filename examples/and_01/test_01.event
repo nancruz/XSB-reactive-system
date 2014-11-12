@@ -1,0 +1,4 @@
+print_trigger(_/_).
+
+d(X) <- a(X) 'and' b(X).
+d(X) <- d(X) 'and' c(X).

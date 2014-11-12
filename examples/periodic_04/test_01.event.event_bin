@@ -1,0 +1,4 @@
+eventClause(unlabeled,a,periodic(datime(2014,5,22,14,18,0),10,datime(2014,5,22,14,21,0))).
+
+eventClause(unlabeled,b,periodic(datime(2014,5,22,14,18,0),5,datime(2014,5,22,14,21,0))).
+

@@ -1,0 +1,636 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports
+:- import epoch/7, current_datime/1, next_valid_timestamp/4,less_datime/2 from date_utils.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Declarations
+% Revision flag - enables or disables revision in complex event detection
+:- dynamic(revision_flag/1).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% event2tr_transformation(+BinaryEventRules,-TRRules) 
+%   This predicate acts as a loop that iterates a list of binary rules 
+% as input and returns a list of rules in transaction logic.  
+
+% eca rules
+event2tr_transformation([eventClause(Label,Head,seq_eca(I1,I2))|T],TRRules):-
+    Head = on_eca(Event),
+    I1 = if_eca(Cond),
+    I2 = then_eca(Action),
+    FirstClause = trClauseECA(Label,event(Event,[T1_rule1,T2_rule1]),
+        seqf(prolog(Cond),action(Action))),
+    event2tr_transformation(T,RestTRRules),
+    TRRules = [FirstClause|RestTRRules],!.
+
+% sequence WITH where
+event2tr_transformation([eventClause(Label,Head,wheref(seqf(I1,I2),I3))|T],
+		TRRules):-
+	out_of_order(off),
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		etr_insf(Label,goal(event(I2),
+			event(I1,[T1_rule1,T2_rule1]),
+			event(Head)))),
+	SecondClause = trClause(Label,event(I2,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,goal(event(I2),
+			event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(less(T2_rule2,T3_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+		seqf(prolog(I3),
+		seqf(etr_delf(Label,goal(event(I2),
+			event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		event(Head,[T1_rule2,T4_rule2]) )))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+% aggregates implementation
+%   counter
+event2tr_transformation([eventClause(Label,Head,seqf(I1,aggregate(count,I2,
+		Counter)))|T],TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule1,T2_rule1]),
+			count,0)),
+		seqf(prolog(is(Counter,0)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule1,T2_rule1]),
+			event(Head,[T1_rule1,T2_rule1]) )))),
+	SecondClause = trClause(Label,event(I2,[_T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			count,Counter2)),
+		seqf(etr_delf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			count,Counter2)),
+		seqf(prolog(is(Counter1,Counter2+1)),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			count,Counter1)),
+		seqf(prolog(is(Counter,Counter1)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+%   sum
+event2tr_transformation([eventClause(Label,Head,
+		seqf(I1,aggregate(sum(X),I2,Sum)))|
+		T],TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule1,T2_rule1]),
+			sum,0)),
+		seqf(prolog(is(Sum,0)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule1,T2_rule1]),
+			event(Head,[T1_rule1,T2_rule1]) )))),
+	SecondClause = trClause(Label,event(I2,[_T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			sum,Sum2)),
+		seqf(etr_delf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			sum,Sum2)),
+		seqf(prolog(is(Sum1,Sum2+X)),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			sum,Sum1)),
+		seqf(prolog(is(Sum,Sum1)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+%   min
+event2tr_transformation([eventClause(Label,Head,seqf(I1,
+		aggregate(min(X),I2,Min)))|
+		T],TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule1,T2_rule1]),
+			min,100000)),
+		seqf(prolog(is(Min,100000)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule1,T2_rule1]),
+			event(Head,[T1_rule1,T2_rule1]) )))),
+	SecondClause = trClause(Label,event(I2,[_T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			min,Min2)),
+		seqf(etr_delf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			min,Min2)),
+		seqf(min(Min2,X,Min1),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			min,Min1)),
+		seqf(prolog(is(Min,Min1)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+%   max
+event2tr_transformation([eventClause(Label,Head,seqf(I1,
+		aggregate(max(X),I2,Max)))|
+		T],TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule1,T2_rule1]),
+			max,-100000)),
+		seqf(prolog(is(Max,-100000)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule1,T2_rule1]),
+			event(Head,[T1_rule1,T2_rule1]) )))),
+	SecondClause = trClause(Label,event(I2,[_T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			max,Max2)),
+		seqf(etr_delf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			max,Max2)),
+		seqf(max(Max2,X,Max1),
+		seqf(etr_insf(Label,
+			aggregate_goal(event(I1,[T1_rule2,T2_rule2]),
+			max,Max1)),
+		seqf(prolog(is(Max,Max1)),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+	
+% sequence with prolog calls
+event2tr_transformation([eventClause(Label,Head,seqf(I1,prolog(I2)))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1,T2]),
+		seqf(prolog(I2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1,T2]),
+			event(Head,[T1,T2]) ))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[FirstClause|RestTRRules],
+	!.
+event2tr_transformation([eventClause(Label,Head,seqf(prolog(I1),I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I2,[T1,T2]),
+		seqf(prolog(I1),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1,T2]),
+			event(Head,[T1,T2]) ))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[FirstClause|RestTRRules],
+	!.
+
+% sequence with query calls
+event2tr_transformation([eventClause(Label,Head,seqf(I1,query(I2)))|T],
+		TRRules):-
+	event2tr_transformation([eventClause(Label,Head,
+		seqf(I1,prolog(I2)))|T],TRRules),
+	!.
+event2tr_transformation([eventClause(Label,Head,seqf(query(I1),I2))|T],
+		TRRules):-
+	event2tr_transformation([eventClause(Label,Head,
+		seqf(prolog(I1),I2))|T],TRRules),
+	!.
+
+% sequence with db calls
+event2tr_transformation([eventClause(Label,Head,seqf(I1,db(I2)))|T],
+		TRRules):-
+	event2tr_transformation([eventClause(Label,Head,
+		seqf(I1,prolog(I2)))|T],TRRules),
+	!.
+event2tr_transformation([eventClause(Label,Head,seqf(db(I1),I2))|T],
+		TRRules):-
+	event2tr_transformation([eventClause(Label,Head,
+		seqf(prolog(I1),I2))|T],TRRules),
+	!.
+
+% sequence 
+event2tr_transformation([eventClause(Label,Head,seqf(I1,I2))|T],
+		TRRules):-
+	out_of_order(off),
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		etr_insf(Label,goal(event(I2),
+			event(I1,[T1_rule1,T2_rule1]),
+			event(Head)))),
+	SecondClause = trClause(Label,event(I2,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,goal(event(I2),
+			event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(etr_delf(Label,goal(event(I2),
+			event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(less(T2_rule2,T3_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+% event_multiply
+event2tr_transformation([eventClause(Label,Head,event_multiplyf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1,T2]),
+		event_multiplyf(db(I2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1,T2]),
+			event(Head,[T1,T2]) ))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[FirstClause|RestTRRules],
+	!.
+
+% where
+event2tr_transformation([eventClause(Label,Head,wheref(I1,I2))|T],
+		TRRules):-
+	event2tr_transformation(
+		[eventClause(Label,Head,seqf(I1,prolog(I2)))|T],
+		TRRules),
+	!.
+% check
+event2tr_transformation([eventClause(Label,Head,checkf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1,T2]),
+		seqf(checkf(I2,[T1,T2]),
+		seqf(check_event_rule_conditions(Label,Head,
+				[T1,T2]),
+			event(Head,[T1,T2]) ))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[FirstClause|RestTRRules],
+	!.
+% equals
+event2tr_transformation([eventClause(Label,Head,equalsf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(not_etr_dbf(Label,
+            goal(event(I1),event(I2,[_,_]),event(Head))),
+        etr_insf(Label,
+            goal(event(I2),event(I1,[T1_rule1,T2_rule1]), event(Head))))),
+	SecondClause = trClause(Label,event(I1,[T1_rule2,T2_rule2]),
+		seqf(etr_dbf(Label,
+            goal(event(I1),event(I2,[T1_rule2,T2_rule2]),event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I1),event(I2,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T2_rule2]),
+			event(Head,[T1_rule2,T2_rule2]) )))),
+	ThirdClause = trClause(Label,event(I2,[T1_rule3,T2_rule3]),
+		seqf(not_etr_dbf(Label,
+            goal(event(I2),event(I1,[_,_]),event(Head))),
+        etr_insf(Label,
+            goal(event(I1),event(I2,[T1_rule3,T2_rule3]), event(Head))))),
+	FourthClause = trClause(Label,event(I2,[T1_rule4,T2_rule4]),
+		seqf(etr_dbf(Label,
+            goal(event(I2),event(I1,[T1_rule4,T2_rule4]),event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I2),event(I1,[T1_rule4,T2_rule4]),
+			event(Head))),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule4,T2_rule4]),
+			event(Head,[T1_rule4,T2_rule4]) )))),
+    event2tr_transformation(T,RestTRRules),
+	TRRules =[FourthClause,ThirdClause,SecondClause,FirstClause|
+        RestTRRules],
+	!.
+% meets: T2=T3
+event2tr_transformation([eventClause(Label,Head,meetsf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(noop, %not_etr_dbf(Label,goal(event(I1),event(I2,[_,_]),event(Head))),
+		etr_insf(Label,goal(event(I2),event(I1,[T1_rule1,T2_rule1]),event(Head))))),
+	SecondClause = trClause(Label,event(I2,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,goal(event(I2),event(I1,[T1_rule2,T3_rule2]),event(Head))),
+		seqf(etr_delf(Label,goal(event(I2),event(I1,[T1_rule2,T3_rule2]),event(Head))),
+		event(Head,[T1_rule2,T4_rule2]) ))),
+	ThirdClause = trClause(Label,event(I2,[T3_rule3,T4_rule3]),
+		seqf(noop, %not_etr_dbf(Label,goal(event(I1),event(I2,[_,_]),event(Head))),
+		etr_insf(Label,goal(event(I1),event(I2,[T3_rule3,T4_rule3]),event(Head))))),
+	FourthClause = trClause(Label,event(I1,[T1_rule4,T2_rule4]),
+		seqf(etr_dbf(Label,goal(event(I1),event(I2,[T2_rule4,T4_rule4]),event(Head))),
+		seqf(etr_delf(Label,goal(event(I1),event(I2,[T2_rule4,T4_rule4]),event(Head))),
+		event(Head,[T1_rule4,T4_rule4]) ))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules=[FirstClause,FourthClause,SecondClause,ThirdClause|
+		RestTRRules],
+	!.
+% during: [T1, [T3,T4], T2]
+event2tr_transformation([eventClause(Label,Head,duringf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		etr_insf(Label,goal(event(I2),
+			event(I1,[T1_rule1,T2_rule1]),
+			event(Head)))),
+	SecondClause = trClause(Label,event(I2,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,goal(event(I2),
+			event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I2),event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(less_eq(T3_rule2,T1_rule2), %seqf(writeln(less_eq(T3_rule2,T1_rule2)),
+		seqf(less_eq(T2_rule2,T4_rule2), %seqf(writeln(less_eq(T2_rule2,T4_rule2)),
+		seqf(min(T1_rule2,T3_rule2,T5_rule2),
+		seqf(max(T4_rule2,T2_rule2,T6_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T5_rule2,T6_rule2]),
+			event(Head,[T5_rule2,T6_rule2]) )))))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+% starts: T1=T3
+event2tr_transformation([eventClause(Label,Head,startsf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		etr_insf(Label,goal(event(I2),
+			event(I1,[T1_rule1,T2_rule1]),
+			event(Head)))),
+	SecondClause = trClause(Label,event(I2,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,goal(event(I2),
+			event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I2),event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(equal(T1_rule2,T3_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause|RestTRRules],
+	!.
+% finishes: T2=T4
+event2tr_transformation([eventClause(Label,Head,finishesf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		etr_insf(Label,goal(event(I2),
+			event(I1,[T1_rule1,T2_rule1]),
+			event(Head)))),
+	SecondClause = trClause(Label,event(I2,[_T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,goal(event(I2),
+			event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I2),event(I1,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(equal(T2_rule2,T4_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))),
+	ThirdClause = trClause(Label,event(I2,[T1_rule3,T2_rule3]),
+		etr_insf(Label,goal(event(I1),
+			event(I2,[T1_rule3,T2_rule3]),
+			event(Head)))),
+	ForthClause = trClause(Label,event(I1,[_T3_rule4,T4_rule4]),
+		seqf(etr_dbf(Label,goal(event(I1),
+			event(I2,[T1_rule4,T2_rule4]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I1),event(I2,[T1_rule4,T2_rule4]),
+			event(Head))),
+		seqf(equal(T2_rule4,T4_rule4),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule4,T4_rule4]),
+			event(Head,[T1_rule4,T4_rule4]) ))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[SecondClause,FirstClause,ThirdClause,ForthClause|RestTRRules],
+	!.
+
+% concurrency
+event2tr_transformation([eventClause(Label,Head,parf(I1,I2))|T],
+		TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(not_etr_dbf(Label,
+			goal(event(I1),event(I2,[_,_]),event(Head))),
+		etr_insf(Label,
+			goal(event(I2),event(I1,[T1_rule1,T2_rule1]),
+			event(Head))))),
+	SecondClause = trClause(Label,event(I1,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,
+			goal(event(I1),event(I2,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I1),event(I2,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(less(T3_rule2,T2_rule2),
+		seqf(min(T1_rule2,T3_rule2,T0_rule2),
+		seqf(max(T2_rule2,T4_rule2,T5_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T0_rule2,T5_rule2]),
+			event(Head,[T0_rule2,T5_rule2]) ))))))),
+	ThirdClause = trClause(Label,event(I2,[T1_rule3,T2_rule3]),
+		seqf(not_etr_dbf(Label,
+			goal(event(I2),event(I1,[_,_]),event(Head))),
+		etr_insf(Label,
+			goal(event(I1),event(I2,[T1_rule3,T2_rule3]),
+			event(Head))))),
+	FourthClause = trClause(Label,event(I2,[T3_rule4,T4_rule4]),
+		seqf(etr_dbf(Label,
+			goal(event(I2),event(I1,[T1_rule4,T2_rule4]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I2),event(I1,[T1_rule4,T2_rule4]),
+			event(Head))),
+		seqf(less(T3_rule4,T2_rule4),
+		seqf(min(T1_rule4,T3_rule4,T0_rule4),
+		seqf(max(T2_rule4,T4_rule4,T5_rule4),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T0_rule4,T5_rule4]),
+			event(Head,[T0_rule4,T5_rule4])))))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules=[FirstClause,ThirdClause,SecondClause,FourthClause|
+		RestTRRules],
+	!.
+
+% classical conjunction 
+event2tr_transformation([eventClause(Label,Head,andf(I1,I2))|T],TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(not_etr_dbf(Label,
+			goal(event(I1),event(I2,[_,_]),event(Head))),
+		etr_insf(Label,
+			goal(event(I2),event(I1,[T1_rule1,T2_rule1]),
+			event(Head))))),
+	SecondClause = trClause(Label,event(I1,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,
+			goal(event(I1),event(I2,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I1),event(I2,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(min(T1_rule2,T3_rule2,T0_rule2),
+		seqf(max(T2_rule2,T4_rule2,T5_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T0_rule2,T5_rule2]),
+			event(Head,[T0_rule2,T5_rule2]))))))),
+	ThirdClause = trClause(Label,event(I2,[T1_rule3,T2_rule3]),
+		seqf(not_etr_dbf(Label,
+			goal(event(I2),event(I1,[_,_]),event(Head))),
+		etr_insf(Label,
+			goal(event(I1),event(I2,[T1_rule3,T2_rule3]),
+			event(Head))))),
+	FourthClause = trClause(Label,event(I2,[T3_rule4,T4_rule4]),
+		seqf(etr_dbf(Label,
+			goal(event(I2),event(I1,[T1_rule4,T2_rule4]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I2),event(I1,[T1_rule4,T2_rule4]),
+			event(Head))),
+		seqf(min(T1_rule4,T3_rule4,T0_rule4),
+		seqf(max(T2_rule4,T4_rule4,T5_rule4),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T0_rule4,T5_rule4]),
+			event(Head,[T0_rule4,T5_rule4]))))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[FirstClause,ThirdClause,SecondClause,FourthClause|
+		RestTRRules],
+	!.
+
+% disjunction without revision
+event2tr_transformation([eventClause(Label,Head,orf(I1,I2))|T],TRRules):-
+	FirstClause = trClause(Label,event(I1, [T1_rule1,T2_rule1]),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule1,T2_rule1]),
+			event(Head,[T1_rule1,T2_rule1]))),
+	SecondClause = trClause(Label,event(I2, [T3_rule2,T4_rule2]),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T3_rule2,T4_rule2]),
+			event(Head,[T3_rule2,T4_rule2]))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules = [FirstClause,SecondClause|RestTRRules],
+	!.
+
+% classical conjucted negation cnot without revision
+event2tr_transformation([eventClause(Label,Head,
+		cnotf(seqf(I11,I12),I2))|T],TRRules):-
+	event2tr_transformation(T,RestTRRules),
+	FirstClause = trClause(Label,event(I11,[T1_rule1,T2_rule1]),
+		etr_insf(Label,
+			goal(event(I12),event(I11,[T1_rule1,T2_rule1]),
+			event(Head)))),
+	SecondClause = trClause(Label,event(I12,[T3_rule2,T4_rule2]),
+		seqf(etr_dbf(Label,
+			goal(event(I12),event(I11,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(etr_delf(Label,
+			goal(event(I12),event(I11,[T1_rule2,T2_rule2]),
+			event(Head))),
+		seqf(less(T2_rule2,T3_rule2),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule2,T4_rule2]),
+			event(Head,[T1_rule2,T4_rule2]) ))))),
+	ThirdClause = trClause(Label,event(I2,[T3_rule3,_T4_rule3]),
+		seqf(etr_dbf(Label,
+			goal(event(I12),event(I11,[T1_rule3,T2_rule3]),
+			event(Head))),
+		seqf(less(T2_rule3,T3_rule3),
+		etr_delf(Label,
+			goal(event(I12),event(I11,[T1_rule3,T2_rule3]),
+			event(Head)))))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[ThirdClause,SecondClause,FirstClause|RestTRRules],
+	!.
+
+% a second version of classical conjucted negation cnot without revision
+event2tr_transformation([eventClause(Label,Head,cnotf(I1,I2))|T],TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(etr_dbf(Label,
+			goal(event(I1),event(I2,[_T3_rule1,T4_rule1]),
+			event(Head))),
+		less(T4_rule1,T1_rule1),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule1,T2_rule1]),
+			event(Head,[T1_rule1,T2_rule1]) ))),
+	SecondClause = trClause(Label,event(I2,[T3_rule2,T4_rule2]),
+		etr_insf(Label,
+			goal(event(I1),event(I2,[T3_rule2,T4_rule2]),
+			event(Head)))),
+	ThirdClause = trClause(Label,event(I1,[T1_rule3,T2_rule3]),
+		seqf(not_etr_dbf(Label,
+			goal(event(I1),event(I2,[_T3_rule3,_T4_rule3]),
+			event(Head))),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule3,T2_rule3]),
+			event(Head,[T1_rule3,T2_rule3])))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[FirstClause,SecondClause,ThirdClause|RestTRRules],
+	!.
+% general negation = never happen: fnot
+event2tr_transformation([eventClause(Label,Head,fnotf(I1,I2))|T],TRRules):-
+	FirstClause = trClause(Label,event(I1,[T1_rule1,T2_rule1]),
+		seqf(not_etr_dbf(Label,
+			goal(event(I1),event(I2,[_T3_rule1,_T4_rule1]),
+			event(Head))),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1_rule1,T2_rule1]),
+			event(Head,[T1_rule1,T2_rule1]) ))),
+	SecondClause = trClause(Label,event(I2,[T3_rule2,T4_rule2]),
+		etr_insf(Label,
+			goal(event(I1),event(I2,[T3_rule2,T4_rule2]),
+			event(Head)))),
+	event2tr_transformation(T,RestTRRules),
+	TRRules =[FirstClause,SecondClause|RestTRRules],
+	!.
+%periodic operator
+event2tr_transformation([eventClause(Label,Head,
+        periodic(datime(Y1,M1,D1,H1,Mn1,S1),I,datime(Y2,M2,D2,H2,Mn2,S2)))|T],TRRules):-
+    event2tr_transformation(T,RestTRRules),
+    epoch(Y1,M1,D1,H1,Mn1,S1,Ts1),
+    epoch(Y2,M2,D2,H2,Mn2,S2,Ts2),
+    current_datime(datime(Now)),
+    less_datime(datime(Now),datime(Ts2)),
+    next_valid_timestamp(Ts1,Now,I,NTs),
+    (periodic_events(off) -> start_periodics; true),
+    reg_periodic(event(Head,NTs)),
+    FirstClause = trClause(Label,event(Head,[_T1_rule1,T2_rule1]),
+        seqf(plus_sec(T2_rule1,I,T3_rule1),
+        seqf(less(T3_rule1,datime(Ts2,0)),
+            reg_periodic(event(Head,T2_rule1,I))))),
+    TRRules = [FirstClause|RestTRRules],!.
+
+event2tr_transformation([eventClause(Label,Head,
+        periodic(datime(_Y1,_M1,_D1,_H1,_Mn1,_S1),I,datime(_Y2,_M2,_D2,_H2,_Mn2,_S2)))|T],RestTRRules):-           
+    event2tr_transformation(T,RestTRRules).
+
+event2tr_transformation([eventClause(Label,Head,periodic(E1,I,E2))|T],
+                    TRRules):-
+    event2tr_transformation(T,RestTRRules),
+    (periodic_events(off) -> start_periodics ; true),
+
+    FourthClause = trClause(Label,event(E1,[T1_rule4,T2_rule4]),
+        seqf(etr_dbf(Label,periodicf(E1,Head,E2)),
+            reg_periodic(event(Head,T2_rule4,I)))),
+
+    FirstClause = trClause(Label,event(E1,[T1_rule1,T2_rule1]),
+        seqf(not_etr_dbf(Label,periodic(event(Head))),
+        seqf(etr_insf(Label,periodicf(E1,Head,E2)),
+            reg_periodic(event(Head,T2_rule1,I))))),
+
+    SecondClause = trClause(Label,event(Head,[T1_rule2,T2_rule2]),
+        seqf(etr_dbf(Label,periodicf(E1,Head,E2)),
+            reg_periodic(event(Head,T2_rule2,I)))),
+
+    ThirdClause = trClause(Label,event(E2,[T1_rule3,T2_rule3]),
+        seqf(etr_dbf(Label,periodicf(E1,Head,E2)),
+        seqf(unreg_periodic(event(Head)),
+            etr_delf(Label,periodicf(E1,Head,E2))))),
+    TRRules =[ThirdClause,SecondClause,FirstClause,FourthClause|RestTRRules],
+    !.
+%
+% no match has to be a one literal body rule WITHOUT justification
+event2tr_transformation([eventClause(Label,Head,Body)|T],TRRules):-
+	event2tr_transformation(T,RestTRRules),
+	TRRules = [trClause(Label,event(Body,[T1,T2]),
+		seqf( check_event_rule_conditions(Label,Head,
+				[T1,T2]),
+			event(Head,[T1,T2]) ))|
+		RestTRRules],
+	!.
+
+% no event rules to be translated
+event2tr_transformation([],[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

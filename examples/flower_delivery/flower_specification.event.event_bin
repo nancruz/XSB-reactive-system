@@ -1,0 +1,182 @@
+eventClause(unlabeled,temp_e_1(delivery_request(_h2200,_h2214,_h2228),(store_record(_h2200,_h2242,_h2344)  ','  incCounter(delivery_request_counter)  ','  counter(delivery_request_counter,_h2186))),wheref(delivery_request(_h2200,_h2214,_h2228),(store_record(_h2200,_h2242,_h2344)  ','  incCounter(delivery_request_counter)  ','  counter(delivery_request_counter,_h2186)))).
+
+eventClause(unlabeled,delivery_request_enriched(_h2186,_h2200,_h2214,_h2228,_h2242),temp_e_1(delivery_request(_h2200,_h2214,_h2228),(store_record(_h2200,_h2242,_h2344)  ','  incCounter(delivery_request_counter)  ','  counter(delivery_request_counter,_h2186)))).
+
+eventClause(unlabeled,temp_e_2(delivery_request_enriched(_h2585,_h2613,_h2627,_h2641,_h2655),driver_record(_h2599,_h2765)),event_multiplyf(delivery_request_enriched(_h2585,_h2613,_h2627,_h2641,_h2655),driver_record(_h2599,_h2765))).
+
+eventClause(unlabeled,delivery_request_enriched_multiplied(_h2585,_h2599,_h2613,_h2627,_h2641,_h2655),temp_e_2(delivery_request_enriched(_h2585,_h2613,_h2627,_h2641,_h2655),driver_record(_h2599,_h2765))).
+
+eventClause(unlabeled,temp_e_3(gps_location(_h2937,coordinates(_h3011,_h3025,_h3039,_h3053)),(driver_record(_h2937,_h2951)  ','  gps_to_region(coordinates(_h3011,_h3025,_h3039,_h3053),_h2965))),wheref(gps_location(_h2937,coordinates(_h3011,_h3025,_h3039,_h3053)),(driver_record(_h2937,_h2951)  ','  gps_to_region(coordinates(_h3011,_h3025,_h3039,_h3053),_h2965)))).
+
+eventClause(unlabeled,gps_location_translated(_h2937,_h2951,_h2965),temp_e_3(gps_location(_h2937,coordinates(_h3011,_h3025,_h3039,_h3053)),(driver_record(_h2937,_h2951)  ','  gps_to_region(coordinates(_h3011,_h3025,_h3039,_h3053),_h2965)))).
+
+eventClause(unlabeled,temp_e_4(delivery_request_enriched_multiplied(_h3377,_h3391,_h3405,_h3419,_h3433,_h3523),gps_location_translated(_h3391,_h3561,_h3575)),andf(delivery_request_enriched_multiplied(_h3377,_h3391,_h3405,_h3419,_h3433,_h3523),gps_location_translated(_h3391,_h3561,_h3575))).
+
+eventClause(unlabeled,temp_e_5(temp_e_4(delivery_request_enriched_multiplied(_h3377,_h3391,_h3405,_h3419,_h3433,_h3523),gps_location_translated(_h3391,_h3561,_h3575)),(_h3523 =< _h3561  ','  gps_to_region(_h3419,_h3575))),wheref(temp_e_4(delivery_request_enriched_multiplied(_h3377,_h3391,_h3405,_h3419,_h3433,_h3523),gps_location_translated(_h3391,_h3561,_h3575)),(_h3523 =< _h3561  ','  gps_to_region(_h3419,_h3575)))).
+
+eventClause(unlabeled,bid_request(_h3377,_h3391,_h3405,_h3419,_h3433),temp_e_5(temp_e_4(delivery_request_enriched_multiplied(_h3377,_h3391,_h3405,_h3419,_h3433,_h3523),gps_location_translated(_h3391,_h3561,_h3575)),(_h3523 =< _h3561  ','  gps_to_region(_h3419,_h3575)))).
+
+eventClause(unlabeled,temp_e_6(delivery_request_enriched(_h3938,_h3952,_h3966,_h3980,_h4072),start_assignment_time(_h3998)),wheref(delivery_request_enriched(_h3938,_h3952,_h3966,_h3980,_h4072),start_assignment_time(_h3998))).
+
+eventClause(unlabeled,exceptionAlarm(startAssignment(_h3938,_h3952,_h3966,_h3980),_h3998),temp_e_6(delivery_request_enriched(_h3938,_h3952,_h3966,_h3980,_h4072),start_assignment_time(_h3998))).
+
+eventClause(unlabeled,temp_e_7(startAssignment(_h4276,_h4290,_h4304,_h4318),store_record(_h4290,_h4416,automatic)),wheref(startAssignment(_h4276,_h4290,_h4304,_h4318),store_record(_h4290,_h4416,automatic))).
+
+eventClause(unlabeled,start_automaticAssignment(_h4276,_h4290,_h4304,_h4318),temp_e_7(startAssignment(_h4276,_h4290,_h4304,_h4318),store_record(_h4290,_h4416,automatic))).
+
+eventClause(unlabeled,temp_e_8(startAssignment(_h4590,_h4604,_h4618,_h4632),store_record(_h4604,_h4730,manual)),wheref(startAssignment(_h4590,_h4604,_h4618,_h4632),store_record(_h4604,_h4730,manual))).
+
+eventClause(unlabeled,start_manualAssignment(_h4590,_h4604,_h4618,_h4632),temp_e_8(startAssignment(_h4590,_h4604,_h4618,_h4632),store_record(_h4604,_h4730,manual))).
+
+eventClause(unlabeled,temp_e_9(delivery_request_enriched(_h4904,_h4918,_h4932,_h4946,_h4960),store_record(_h4918,_h5070,automatic)),wheref(delivery_request_enriched(_h4904,_h4918,_h4932,_h4946,_h4960),store_record(_h4918,_h5070,automatic))).
+
+eventClause(unlabeled,consumable_pick_first(_h4904,_h4918,_h4932,_h4946,_h4960),temp_e_9(delivery_request_enriched(_h4904,_h4918,_h4932,_h4946,_h4960),store_record(_h4918,_h5070,automatic))).
+
+eventClause(unlabeled,temp_e_10(consumable_pick_first(_h5250,_h5264,_h5278,_h5292,_h5402),delivery_bid(_h5250,_h5306,_h5452,_h5320)),seqf(consumable_pick_first(_h5250,_h5264,_h5278,_h5292,_h5402),delivery_bid(_h5250,_h5306,_h5452,_h5320))).
+
+eventClause(unlabeled,temp_e_11(temp_e_10(consumable_pick_first(_h5250,_h5264,_h5278,_h5292,_h5402),delivery_bid(_h5250,_h5306,_h5452,_h5320)),start_automaticAssignment(_h5250,_h5264,_h5278,_h5292)),andf(temp_e_10(consumable_pick_first(_h5250,_h5264,_h5278,_h5292,_h5402),delivery_bid(_h5250,_h5306,_h5452,_h5320)),start_automaticAssignment(_h5250,_h5264,_h5278,_h5292))).
+
+eventClause(unlabeled,assignment(_h5250,_h5264,_h5278,_h5292,_h5306,_h5320),temp_e_11(temp_e_10(consumable_pick_first(_h5250,_h5264,_h5278,_h5292,_h5402),delivery_bid(_h5250,_h5306,_h5452,_h5320)),start_automaticAssignment(_h5250,_h5264,_h5278,_h5292))).
+
+eventClause(unlabeled,temp_e_12(delivery_request_enriched(_h5741,_h5755,_h5769,_h5783,_h5869),store_record(_h5755,_h5869,manual)),wheref(delivery_request_enriched(_h5741,_h5755,_h5769,_h5783,_h5869),store_record(_h5755,_h5869,manual))).
+
+eventClause(unlabeled,collect_highest_five_delivery_bids(_h5741,_h5755,_h5769,_h5783,[]),temp_e_12(delivery_request_enriched(_h5741,_h5755,_h5769,_h5783,_h5869),store_record(_h5755,_h5869,manual))).
+
+eventClause(unlabeled,temp_e_13(collect_highest_five_delivery_bids(_h6024,_h6038,_h6052,_h6066,_h6158),delivery_bid(_h6024,_h6196,_h6210,_h6224)),seqf(collect_highest_five_delivery_bids(_h6024,_h6038,_h6052,_h6066,_h6158),delivery_bid(_h6024,_h6196,_h6210,_h6224))).
+
+eventClause(unlabeled,temp_e_14(temp_e_13(collect_highest_five_delivery_bids(_h6024,_h6038,_h6052,_h6066,_h6158),delivery_bid(_h6024,_h6196,_h6210,_h6224)),(driver_record(_h6196,_h6270)  ','  select_highest_five([driver(_h6196,_h6270,_h6224)|_h6158],_h6080))),wheref(temp_e_13(collect_highest_five_delivery_bids(_h6024,_h6038,_h6052,_h6066,_h6158),delivery_bid(_h6024,_h6196,_h6210,_h6224)),(driver_record(_h6196,_h6270)  ','  select_highest_five([driver(_h6196,_h6270,_h6224)|_h6158],_h6080)))).
+
+eventClause(unlabeled,collect_highest_five_delivery_bids(_h6024,_h6038,_h6052,_h6066,_h6080),temp_e_14(temp_e_13(collect_highest_five_delivery_bids(_h6024,_h6038,_h6052,_h6066,_h6158),delivery_bid(_h6024,_h6196,_h6210,_h6224)),(driver_record(_h6196,_h6270)  ','  select_highest_five([driver(_h6196,_h6270,_h6224)|_h6158],_h6080)))).
+
+eventClause(unlabeled,temp_e_15(collect_highest_five_delivery_bids(_h6590,_h6604,_h6618,_h6632,_h6646),start_manualAssignment(_h6590,_h6604,_h6618,_h6632)),andf(collect_highest_five_delivery_bids(_h6590,_h6604,_h6618,_h6632,_h6646),start_manualAssignment(_h6590,_h6604,_h6618,_h6632))).
+
+eventClause(unlabeled,temp_e_16(temp_e_15(collect_highest_five_delivery_bids(_h6590,_h6604,_h6618,_h6632,_h6646),start_manualAssignment(_h6590,_h6604,_h6618,_h6632)),_h6646 \= []),wheref(temp_e_15(collect_highest_five_delivery_bids(_h6590,_h6604,_h6618,_h6632,_h6646),start_manualAssignment(_h6590,_h6604,_h6618,_h6632)),_h6646 \= [])).
+
+eventClause(unlabeled,store_transmit_highest_five_delivery_bids(_h6590,_h6604,_h6618,_h6632,_h6646),temp_e_16(temp_e_15(collect_highest_five_delivery_bids(_h6590,_h6604,_h6618,_h6632,_h6646),start_manualAssignment(_h6590,_h6604,_h6618,_h6632)),_h6646 \= [])).
+
+eventClause(unlabeled,assignment(_h7025,_h7039,_h7053,_h7067,_h7081,_h7095),seqf(store_transmit_highest_five_delivery_bids(_h7025,_h7039,_h7053,_h7067,_h7169),store_select_delivery_bid(_h7025,_h7081,_h7095))).
+
+eventClause(unlabeled,temp_e_17(start_automaticAssignment(_h7331,_h7369,_h7383,_h7397),delivery_bid(_h7331,_h7435,_h7449,_h7463)),fnotf(start_automaticAssignment(_h7331,_h7369,_h7383,_h7397),delivery_bid(_h7331,_h7435,_h7449,_h7463))).
+
+eventClause(unlabeled,no_bid_alert(_h7331),temp_e_17(start_automaticAssignment(_h7331,_h7369,_h7383,_h7397),delivery_bid(_h7331,_h7435,_h7449,_h7463))).
+
+eventClause(unlabeled,temp_e_18(start_manualAssignment(_h7562,_h7600,_h7614,_h7628),delivery_bid(_h7562,_h7666,_h7680,_h7694)),fnotf(start_manualAssignment(_h7562,_h7600,_h7614,_h7628),delivery_bid(_h7562,_h7666,_h7680,_h7694))).
+
+eventClause(unlabeled,no_bid_alert(_h7562),temp_e_18(start_manualAssignment(_h7562,_h7600,_h7614,_h7628),delivery_bid(_h7562,_h7666,_h7680,_h7694))).
+
+eventClause(unlabeled,temp_e_19(store_transmit_highest_five_delivery_bids(_h7862,_h7876,_h7890,_h7904,_h7996),check_manual_assignment_time(_h7922)),wheref(store_transmit_highest_five_delivery_bids(_h7862,_h7876,_h7890,_h7904,_h7996),check_manual_assignment_time(_h7922))).
+
+eventClause(unlabeled,exceptionAlarm(check_manual_assignment(_h7862,_h7876,_h7890,_h7904),_h7922),temp_e_19(store_transmit_highest_five_delivery_bids(_h7862,_h7876,_h7890,_h7904,_h7996),check_manual_assignment_time(_h7922))).
+
+eventClause(unlabeled,temp_e_20(check_manual_assignment(_h8200,_h8238,_h8252,_h8266),store_select_delivery_bid(_h8200,_h8304,_h8318)),fnotf(check_manual_assignment(_h8200,_h8238,_h8252,_h8266),store_select_delivery_bid(_h8200,_h8304,_h8318))).
+
+eventClause(unlabeled,no_choice_alert(_h8200),temp_e_20(check_manual_assignment(_h8200,_h8238,_h8252,_h8266),store_select_delivery_bid(_h8200,_h8304,_h8318))).
+
+eventClause(unlabeled,temp_e_21(assignment(_h8605,_h8619,_h8715,_h8729,_h8633,_h8647),(check_pick_up_time(_h8783)  ','  addSec_Datime(_h8783,_h8647,_h8665))),wheref(assignment(_h8605,_h8619,_h8715,_h8729,_h8633,_h8647),(check_pick_up_time(_h8783)  ','  addSec_Datime(_h8783,_h8647,_h8665)))).
+
+eventClause(unlabeled,exceptionAlarmAbsoluteDatime(check_pick_up(_h8605,_h8619,_h8633,_h8647),_h8665),temp_e_21(assignment(_h8605,_h8619,_h8715,_h8729,_h8633,_h8647),(check_pick_up_time(_h8783)  ','  addSec_Datime(_h8783,_h8647,_h8665)))).
+
+eventClause(unlabeled,temp_e_22(check_pick_up(_h9023,_h9037,_h9051,_h9065),handover(_h9023,_h9051,_h9179)),fnotf(check_pick_up(_h9023,_h9037,_h9051,_h9065),handover(_h9023,_h9051,_h9179))).
+
+eventClause(unlabeled,temp_e_23(temp_e_22(check_pick_up(_h9023,_h9037,_h9051,_h9065),handover(_h9023,_h9051,_h9179)),pick_up_confirmation(_h9023,_h9051,_h9233)),fnotf(temp_e_22(check_pick_up(_h9023,_h9037,_h9051,_h9065),handover(_h9023,_h9051,_h9179)),pick_up_confirmation(_h9023,_h9051,_h9233))).
+
+eventClause(unlabeled,pick_up_alert(_h9023,_h9037,_h9051,_h9065),temp_e_23(temp_e_22(check_pick_up(_h9023,_h9037,_h9051,_h9065),handover(_h9023,_h9051,_h9179)),pick_up_confirmation(_h9023,_h9051,_h9233))).
+
+eventClause(unlabeled,temp_e_24(assignment(_h9433,_h9447,_h9543,_h9475,_h9461,_h9581),(check_delivery_time(_h9611)  ','  addSec_Datime(_h9611,_h9475,_h9493))),wheref(assignment(_h9433,_h9447,_h9543,_h9475,_h9461,_h9581),(check_delivery_time(_h9611)  ','  addSec_Datime(_h9611,_h9475,_h9493)))).
+
+eventClause(unlabeled,exceptionAlarmAbsoluteDatime(check_delivery(_h9433,_h9447,_h9461,_h9475),_h9493),temp_e_24(assignment(_h9433,_h9447,_h9543,_h9475,_h9461,_h9581),(check_delivery_time(_h9611)  ','  addSec_Datime(_h9611,_h9475,_h9493)))).
+
+eventClause(unlabeled,temp_e_25(check_delivery(_h9851,_h9865,_h9879,_h9893),handover(_h9851,_h9879,_h10011)),fnotf(check_delivery(_h9851,_h9865,_h9879,_h9893),handover(_h9851,_h9879,_h10011))).
+
+eventClause(unlabeled,temp_e_26(temp_e_25(check_delivery(_h9851,_h9865,_h9879,_h9893),handover(_h9851,_h9879,_h10011)),no_one_to_receive(_h9851)),fnotf(temp_e_25(check_delivery(_h9851,_h9865,_h9879,_h9893),handover(_h9851,_h9879,_h10011)),no_one_to_receive(_h9851))).
+
+eventClause(unlabeled,temp_e_27(temp_e_26(temp_e_25(check_delivery(_h9851,_h9865,_h9879,_h9893),handover(_h9851,_h9879,_h10011)),no_one_to_receive(_h9851)),delivery_confirmation(_h9851,_h9879,_h10093)),fnotf(temp_e_26(temp_e_25(check_delivery(_h9851,_h9865,_h9879,_h9893),handover(_h9851,_h9879,_h10011)),no_one_to_receive(_h9851)),delivery_confirmation(_h9851,_h9879,_h10093))).
+
+eventClause(unlabeled,delivery_alert(_h9851,_h9865,_h9879,_h9893),temp_e_27(temp_e_26(temp_e_25(check_delivery(_h9851,_h9865,_h9879,_h9893),handover(_h9851,_h9879,_h10011)),no_one_to_receive(_h9851)),delivery_confirmation(_h9851,_h9879,_h10093))).
+
+eventClause(unlabeled,temp_e_28(delivery_confirmation(_h10345,_h10305,_h10371),(ranking_threshold(_h10401)  ','  counter(driver(_h10305),_h10451)  ','  _h10451 < _h10401  ','  incCounter(driver(_h10305))  ','  counter(driver(_h10305),_h10319))),wheref(delivery_confirmation(_h10345,_h10305,_h10371),(ranking_threshold(_h10401)  ','  counter(driver(_h10305),_h10451)  ','  _h10451 < _h10401  ','  incCounter(driver(_h10305))  ','  counter(driver(_h10305),_h10319)))).
+
+eventClause(unlabeled,counting_driver_deliveries(_h10305,_h10319),temp_e_28(delivery_confirmation(_h10345,_h10305,_h10371),(ranking_threshold(_h10401)  ','  counter(driver(_h10305),_h10451)  ','  _h10451 < _h10401  ','  incCounter(driver(_h10305))  ','  counter(driver(_h10305),_h10319)))).
+
+eventClause(unlabeled,temp_e_29(delivery_alert(_h10798,_h10812,_h10772,_h10838),incCounter(faulted(_h10772))),wheref(delivery_alert(_h10798,_h10812,_h10772,_h10838),incCounter(faulted(_h10772)))).
+
+eventClause(unlabeled,faulted_ranking(_h10772),temp_e_29(delivery_alert(_h10798,_h10812,_h10772,_h10838),incCounter(faulted(_h10772)))).
+
+eventClause(unlabeled,temp_e_30(delivery_confirmation(_h11079,_h11039,_h11105),(ranking_threshold(_h11135)  ','  counter(driver(_h11039),_h11185)  ','  _h11185 = _h11135  ','  counter(faulted(_h11039),_h11259)  ','  _h11259 >= 5  ','  resetCounter(driver(_h11039))  ','  driver_record(_h11039,_h11353)  ','  _h11053  is  _h11353 - 1  ','  retract(driver_record(_h11039,_h11353))  ','  assert(driver_record(_h11039,_h11053))  ','  resetCounter(faulted(_h11039))  ','  set_flag(precedent_decrease(_h11039),yes))),wheref(delivery_confirmation(_h11079,_h11039,_h11105),(ranking_threshold(_h11135)  ','  counter(driver(_h11039),_h11185)  ','  _h11185 = _h11135  ','  counter(faulted(_h11039),_h11259)  ','  _h11259 >= 5  ','  resetCounter(driver(_h11039))  ','  driver_record(_h11039,_h11353)  ','  _h11053  is  _h11353 - 1  ','  retract(driver_record(_h11039,_h11353))  ','  assert(driver_record(_h11039,_h11053))  ','  resetCounter(faulted(_h11039))  ','  set_flag(precedent_decrease(_h11039),yes)))).
+
+eventClause(unlabeled,ranking_decrease(_h11039,_h11053),temp_e_30(delivery_confirmation(_h11079,_h11039,_h11105),(ranking_threshold(_h11135)  ','  counter(driver(_h11039),_h11185)  ','  _h11185 = _h11135  ','  counter(faulted(_h11039),_h11259)  ','  _h11259 >= 5  ','  resetCounter(driver(_h11039))  ','  driver_record(_h11039,_h11353)  ','  _h11053  is  _h11353 - 1  ','  retract(driver_record(_h11039,_h11353))  ','  assert(driver_record(_h11039,_h11053))  ','  resetCounter(faulted(_h11039))  ','  set_flag(precedent_decrease(_h11039),yes)))).
+
+eventClause(unlabeled,temp_e_31(delivery_confirmation(_h11925,_h11885,_h11951),(ranking_threshold(_h11981)  ','  counter(driver(_h11885),_h12031)  ','  _h12031 = _h11981  ','  counter(faulted(_h11885),_h12105)  ','  _h12105 = 0  ','  resetCounter(driver(_h11885))  ','  driver_record(_h11885,_h12199)  ','  _h11899  is  _h12199 + 1  ','  retract(driver_record(_h11885,_h12199))  ','  assert(driver_record(_h11885,_h11899)))),wheref(delivery_confirmation(_h11925,_h11885,_h11951),(ranking_threshold(_h11981)  ','  counter(driver(_h11885),_h12031)  ','  _h12031 = _h11981  ','  counter(faulted(_h11885),_h12105)  ','  _h12105 = 0  ','  resetCounter(driver(_h11885))  ','  driver_record(_h11885,_h12199)  ','  _h11899  is  _h12199 + 1  ','  retract(driver_record(_h11885,_h12199))  ','  assert(driver_record(_h11885,_h11899))))).
+
+eventClause(unlabeled,ranking_increase(_h11885,_h11899),temp_e_31(delivery_confirmation(_h11925,_h11885,_h11951),(ranking_threshold(_h11981)  ','  counter(driver(_h11885),_h12031)  ','  _h12031 = _h11981  ','  counter(faulted(_h11885),_h12105)  ','  _h12105 = 0  ','  resetCounter(driver(_h11885))  ','  driver_record(_h11885,_h12199)  ','  _h11899  is  _h12199 + 1  ','  retract(driver_record(_h11885,_h12199))  ','  assert(driver_record(_h11885,_h11899))))).
+
+eventClause(unlabeled,temp_e_32(ranking_increase(_h12626,_h12664),(get_flag(precedent_decrease(_h12626),yes)  ','  set_flag(precedent_decrease(_h12626),nil))),wheref(ranking_increase(_h12626,_h12664),(get_flag(precedent_decrease(_h12626),yes)  ','  set_flag(precedent_decrease(_h12626),nil)))).
+
+eventClause(unlabeled,improvement_note(_h12626),temp_e_32(ranking_increase(_h12626,_h12664),(get_flag(precedent_decrease(_h12626),yes)  ','  set_flag(precedent_decrease(_h12626),nil)))).
+
+eventClause(unlabeled,assignmentCounter(0,_h12936,_h12950,date(_h12972,_h12986,_h13000)),activeDriver(_h12936,_h12950,date(_h12972,_h12986,_h13000))).
+
+eventClause(unlabeled,temp_e_33(assignmentCounter(_h13298,_h13200,_h13214,date(_h13236,_h13250,_h13264)),assignment(_h13396,_h13214,_h13422,_h13436,_h13200,_h13462)),seqf(assignmentCounter(_h13298,_h13200,_h13214,date(_h13236,_h13250,_h13264)),assignment(_h13396,_h13214,_h13422,_h13436,_h13200,_h13462))).
+
+eventClause(unlabeled,temp_e_34(temp_e_33(assignmentCounter(_h13298,_h13200,_h13214,date(_h13236,_h13250,_h13264)),assignment(_h13396,_h13214,_h13422,_h13436,_h13200,_h13462)),_h13186  is  _h13298 + 1),wheref(temp_e_33(assignmentCounter(_h13298,_h13200,_h13214,date(_h13236,_h13250,_h13264)),assignment(_h13396,_h13214,_h13422,_h13436,_h13200,_h13462)),_h13186  is  _h13298 + 1)).
+
+eventClause(unlabeled,assignmentCounter(_h13186,_h13200,_h13214,date(_h13236,_h13250,_h13264)),temp_e_34(temp_e_33(assignmentCounter(_h13298,_h13200,_h13214,date(_h13236,_h13250,_h13264)),assignment(_h13396,_h13214,_h13422,_h13436,_h13200,_h13462)),_h13186  is  _h13298 + 1)).
+
+eventClause(unlabeled,temp_e_35(assignmentCounter(_h13827,_h13747,_h13853,date(_h13769,_h13783,_h13797)),day(date(_h13797))),seqf(assignmentCounter(_h13827,_h13747,_h13853,date(_h13769,_h13783,_h13797)),day(date(_h13797)))).
+
+eventClause(unlabeled,temp_e_36(temp_e_35(assignmentCounter(_h13827,_h13747,_h13853,date(_h13769,_h13783,_h13797)),day(date(_h13797))),_h13827 >= 5),wheref(temp_e_35(assignmentCounter(_h13827,_h13747,_h13853,date(_h13769,_h13783,_h13797)),day(date(_h13797))),_h13827 >= 5)).
+
+eventClause(unlabeled,highActivity(_h13747,date(_h13769,_h13783,_h13797)),temp_e_36(temp_e_35(assignmentCounter(_h13827,_h13747,_h13853,date(_h13769,_h13783,_h13797)),day(date(_h13797))),_h13827 >= 5)).
+
+eventClause(unlabeled,temp_e_37(month(date(_h14185,_h14199)),month(date(_h14185,_h14301)),highActivity(_h14163,date(_h14355,_h14364,_h14373))),cnotf(seqf(month(date(_h14185,_h14199)),month(date(_h14185,_h14301))),highActivity(_h14163,date(_h14355,_h14364,_h14373)))).
+
+eventClause(unlabeled,permanentWeakDriver(_h14163,date(_h14185,_h14199)),temp_e_37(month(date(_h14185,_h14199)),month(date(_h14185,_h14301)),highActivity(_h14163,date(_h14355,_h14364,_h14373)))).
+
+eventClause(unlabeled,temp_e_38(day(date(_h14593)),day(date(_h14671)),assignment(_h14705,_h14719,_h14733,_h14747,_h14571,_h14773)),cnotf(seqf(day(date(_h14593)),day(date(_h14671))),assignment(_h14705,_h14719,_h14733,_h14747,_h14571,_h14773))).
+
+eventClause(unlabeled,zeroActivity(_h14571,date(_h14593)),temp_e_38(day(date(_h14593)),day(date(_h14671)),assignment(_h14705,_h14719,_h14733,_h14747,_h14571,_h14773))).
+
+eventClause(unlabeled,temp_e_39(month(date(_h14987,_h15001)),zeroActivity(_h14965,date(_h15103))),seqf(month(date(_h14987,_h15001)),zeroActivity(_h14965,date(_h15103)))).
+
+eventClause(unlabeled,temp_e_40(temp_e_39(month(date(_h14987,_h15001)),zeroActivity(_h14965,date(_h15103))),month(date(_h14987,_h15148))),seqf(temp_e_39(month(date(_h14987,_h15001)),zeroActivity(_h14965,date(_h15103))),month(date(_h14987,_h15148)))).
+
+eventClause(unlabeled,idleDriver(_h14965,date(_h14987,_h15001)),temp_e_40(temp_e_39(month(date(_h14987,_h15001)),zeroActivity(_h14965,date(_h15103))),month(date(_h14987,_h15148)))).
+
+eventClause(unlabeled,temp_e_41(assignmentCounter(_h15429,_h15349,_h15455,date(_h15371,_h15385,_h15399)),day(date(_h15399))),seqf(assignmentCounter(_h15429,_h15349,_h15455,date(_h15371,_h15385,_h15399)),day(date(_h15399)))).
+
+eventClause(unlabeled,temp_e_42(temp_e_41(assignmentCounter(_h15429,_h15349,_h15455,date(_h15371,_h15385,_h15399)),day(date(_h15399))),(average_driver_assignment(_h15569)  ','  _h15429 > _h15569)),wheref(temp_e_41(assignmentCounter(_h15429,_h15349,_h15455,date(_h15371,_h15385,_h15399)),day(date(_h15399))),(average_driver_assignment(_h15569)  ','  _h15429 > _h15569))).
+
+eventClause(unlabeled,strongActivity(_h15349,date(_h15371,_h15385,_h15399)),temp_e_42(temp_e_41(assignmentCounter(_h15429,_h15349,_h15455,date(_h15371,_h15385,_h15399)),day(date(_h15399))),(average_driver_assignment(_h15569)  ','  _h15429 > _h15569))).
+
+eventClause(unlabeled,temp_e_43(month(date(_h15834,_h15848)),month(date(_h15834,_h15950)),strongActivity(_h15812,date(_h16004,_h16013,_h16022))),cnotf(seqf(month(date(_h15834,_h15848)),month(date(_h15834,_h15950))),strongActivity(_h15812,date(_h16004,_h16013,_h16022)))).
+
+eventClause(unlabeled,consistentWeakDriver(_h15812,date(_h15834,_h15848)),temp_e_43(month(date(_h15834,_h15848)),month(date(_h15834,_h15950)),strongActivity(_h15812,date(_h16004,_h16013,_h16022)))).
+
+eventClause(unlabeled,temp_e_44(assignmentCounter(_h16300,_h16220,_h16326,date(_h16242,_h16256,_h16270)),day(date(_h16270))),seqf(assignmentCounter(_h16300,_h16220,_h16326,date(_h16242,_h16256,_h16270)),day(date(_h16270)))).
+
+eventClause(unlabeled,temp_e_45(temp_e_44(assignmentCounter(_h16300,_h16220,_h16326,date(_h16242,_h16256,_h16270)),day(date(_h16270))),(average_driver_assignment(_h16440)  ','  _h16300 < _h16440)),wheref(temp_e_44(assignmentCounter(_h16300,_h16220,_h16326,date(_h16242,_h16256,_h16270)),day(date(_h16270))),(average_driver_assignment(_h16440)  ','  _h16300 < _h16440))).
+
+eventClause(unlabeled,weakActivity(_h16220,date(_h16242,_h16256,_h16270)),temp_e_45(temp_e_44(assignmentCounter(_h16300,_h16220,_h16326,date(_h16242,_h16256,_h16270)),day(date(_h16270))),(average_driver_assignment(_h16440)  ','  _h16300 < _h16440))).
+
+eventClause(unlabeled,temp_e_46(month(date(_h16705,_h16719)),month(date(_h16705,_h16821)),weakActivity(_h16683,date(_h16875,_h16884,_h16893))),cnotf(seqf(month(date(_h16705,_h16719)),month(date(_h16705,_h16821))),weakActivity(_h16683,date(_h16875,_h16884,_h16893)))).
+
+eventClause(unlabeled,consistentStrongDriver(_h16683,date(_h16705,_h16719)),temp_e_46(month(date(_h16705,_h16719)),month(date(_h16705,_h16821)),weakActivity(_h16683,date(_h16875,_h16884,_h16893)))).
+
+eventClause(unlabeled,activity(_h17091,date(_h17113,_h17127,_h17141),_h17159),seqf(assignmentCounter(_h17159,_h17091,_h17209,date(_h17113,_h17127,_h17141)),day(date(_h17141)))).
+
+eventClause(unlabeled,temp_e_47(activity(_h17474,date(_h17496,_h17510,_h17584),_h17602),activity(_h17474,date(_h17496,_h17510,_h17672),_h17690)),seqf(activity(_h17474,date(_h17496,_h17510,_h17584),_h17602),activity(_h17474,date(_h17496,_h17510,_h17672),_h17690))).
+
+eventClause(unlabeled,temp_e_48(temp_e_47(activity(_h17474,date(_h17496,_h17510,_h17584),_h17602),activity(_h17474,date(_h17496,_h17510,_h17672),_h17690)),_h17602 > _h17690),wheref(temp_e_47(activity(_h17474,date(_h17496,_h17510,_h17584),_h17602),activity(_h17474,date(_h17496,_h17510,_h17672),_h17690)),_h17602 > _h17690)).
+
+eventClause(unlabeled,decreasingActivity(_h17474,date(_h17496,_h17510)),temp_e_48(temp_e_47(activity(_h17474,date(_h17496,_h17510,_h17584),_h17602),activity(_h17474,date(_h17496,_h17510,_h17672),_h17690)),_h17602 > _h17690)).
+
+eventClause(unlabeled,temp_e_49(month(date(_h17948,_h17962)),month(date(_h17948,_h18064)),decreasingActivity(_h17926,date(_h18118,_h18127))),cnotf(seqf(month(date(_h17948,_h17962)),month(date(_h17948,_h18064))),decreasingActivity(_h17926,date(_h18118,_h18127)))).
+
+eventClause(unlabeled,improvingDriver(_h17926,date(_h17948,_h17962)),temp_e_49(month(date(_h17948,_h17962)),month(date(_h17948,_h18064)),decreasingActivity(_h17926,date(_h18118,_h18127)))).
+
+eventClause(unlabeled,temp_e_50(assignment(_h18322,_h18336,_h18350,_h18364,_h18466,_h18392),handover(_h18322,_h18466,_h18378)),seqf(assignment(_h18322,_h18336,_h18350,_h18364,_h18466,_h18392),handover(_h18322,_h18466,_h18378))).
+
+eventClause(unlabeled,temp_e_51(temp_e_50(assignment(_h18322,_h18336,_h18350,_h18364,_h18466,_h18392),handover(_h18322,_h18466,_h18378)),(store_record(_h18336,_h18568,automatic)  ','  driver_record(_h18466,_h18614)  ','  driver_record(_h18378,_h18652)  ','  _h18614 =< _h18652)),wheref(temp_e_50(assignment(_h18322,_h18336,_h18350,_h18364,_h18466,_h18392),handover(_h18322,_h18466,_h18378)),(store_record(_h18336,_h18568,automatic)  ','  driver_record(_h18466,_h18614)  ','  driver_record(_h18378,_h18652)  ','  _h18614 =< _h18652))).
+
+eventClause(unlabeled,assignment(_h18322,_h18336,_h18350,_h18364,_h18378,_h18392),temp_e_51(temp_e_50(assignment(_h18322,_h18336,_h18350,_h18364,_h18466,_h18392),handover(_h18322,_h18466,_h18378)),(store_record(_h18336,_h18568,automatic)  ','  driver_record(_h18466,_h18614)  ','  driver_record(_h18378,_h18652)  ','  _h18614 =< _h18652))).
+

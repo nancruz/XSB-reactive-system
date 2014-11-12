@@ -1,0 +1,14 @@
+eventClause(unlabeled,on_eca(a),seq_eca(if_eca(true),then_eca(assert(a(1))))).
+
+eventClause(unlabeled,on_eca(b),seq_eca(if_eca((a(_h664)  ','  _h664 > 0)),then_eca(assert(a(2))))).
+
+eventClause(unlabeled,on_eca(c),seq_eca(if_eca((a(_h845)  ','  _h845 > 1)),then_eca(assert(a(3))))).
+
+eventClause(unlabeled,a,seqf(d,e)).
+
+eventClause(unlabeled,b,seqf(a,f)).
+
+eventClause(unlabeled,temp_e_1(a,b),parf(a,b)).
+
+eventClause(unlabeled,c,temp_e_1(a,b)).
+

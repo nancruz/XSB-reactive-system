@@ -1,0 +1,690 @@
+17408 [Thread-5] INFO  event.Logger  - EVENT: ins_critical(c1) @ [09/12/2014 10:41:41 , 09/12/2014 10:41:41]
+17488 [Thread-6] INFO  translate.Logger  - QUERY: not Critical(c1)? true
+17489 [Thread-6] INFO  translate.Logger  - Query took:  1 milisec
+17568 [Thread-7] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c1)
+17703 [Thread-7] INFO  translate.Logger  - Running ELK Reasoner:  131 milisec
+20044 [Thread-7] INFO  translate.Logger  - Translating:  5 milisec
+21204 [Thread-7] INFO  translate.Logger  - XSB took:  1158 milisec
+21204 [Thread-7] INFO  translate.Logger  - Insertion took:  3635 milisec
+21284 [Thread-8] INFO  event.Logger  - EVENT: ins_critical(c2) @ [09/12/2014 10:41:45 , 09/12/2014 10:41:45]
+21444 [Thread-9] INFO  app.Logger  - QUERY: not Critical(c2)? true
+21444 [Thread-9] INFO  translate.Logger  - Query took:  80 milisec
+21524 [Thread-10] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c2)
+21560 [Thread-10] INFO  translate.Logger  - Running ELK Reasoner:  36 milisec
+23151 [Thread-10] INFO  translate.Logger  - Translating:  0 milisec
+24240 [Thread-10] INFO  translate.Logger  - XSB took:  1087 milisec
+24240 [Thread-10] INFO  translate.Logger  - Insertion took:  2716 milisec
+24320 [Thread-11] INFO  event.Logger  - EVENT: ins_critical(c3) @ [09/12/2014 10:41:48 , 09/12/2014 10:41:48]
+24480 [Thread-12] INFO  app.Logger  - QUERY: not Critical(c3)? true
+24480 [Thread-12] INFO  translate.Logger  - Query took:  80 milisec
+24560 [Thread-13] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c3)
+24635 [Thread-13] INFO  translate.Logger  - Running ELK Reasoner:  75 milisec
+25022 [Thread-13] INFO  translate.Logger  - Translating:  0 milisec
+26136 [Thread-13] INFO  translate.Logger  - XSB took:  1114 milisec
+26136 [Thread-13] INFO  translate.Logger  - Insertion took:  1576 milisec
+26216 [Thread-14] INFO  event.Logger  - EVENT: ins_critical(c4) @ [09/12/2014 10:41:50 , 09/12/2014 10:41:50]
+26376 [Thread-15] INFO  app.Logger  - QUERY: not Critical(c4)? true
+26376 [Thread-15] INFO  translate.Logger  - Query took:  80 milisec
+26456 [Thread-16] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c4)
+26532 [Thread-16] INFO  translate.Logger  - Running ELK Reasoner:  76 milisec
+27050 [Thread-16] INFO  translate.Logger  - Translating:  1 milisec
+28128 [Thread-16] INFO  translate.Logger  - XSB took:  1078 milisec
+28128 [Thread-16] INFO  translate.Logger  - Insertion took:  1672 milisec
+28211 [Thread-17] INFO  event.Logger  - EVENT: ins_critical(c5) @ [09/12/2014 10:41:52 , 09/12/2014 10:41:52]
+28373 [Thread-18] INFO  app.Logger  - QUERY: not Critical(c5)? true
+28374 [Thread-18] INFO  translate.Logger  - Query took:  82 milisec
+28454 [Thread-19] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c5)
+28476 [Thread-19] INFO  translate.Logger  - Running ELK Reasoner:  22 milisec
+28848 [Thread-19] INFO  translate.Logger  - Translating:  2 milisec
+29932 [Thread-19] INFO  translate.Logger  - XSB took:  1084 milisec
+29932 [Thread-19] INFO  translate.Logger  - Insertion took:  1478 milisec
+30012 [Thread-20] INFO  event.Logger  - EVENT: ins_critical(c6) @ [09/12/2014 10:41:54 , 09/12/2014 10:41:54]
+30216 [Thread-21] INFO  app.Logger  - QUERY: not Critical(c6)? true
+30216 [Thread-21] INFO  translate.Logger  - Query took:  124 milisec
+30257 [Thread-22] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c6)
+30304 [Thread-22] INFO  translate.Logger  - Running ELK Reasoner:  47 milisec
+30663 [Thread-22] INFO  translate.Logger  - Translating:  0 milisec
+31748 [Thread-22] INFO  translate.Logger  - XSB took:  1085 milisec
+31748 [Thread-22] INFO  translate.Logger  - Insertion took:  1491 milisec
+31831 [Thread-23] INFO  event.Logger  - EVENT: ins_critical(c7) @ [09/12/2014 10:41:55 , 09/12/2014 10:41:55]
+31997 [Thread-24] INFO  app.Logger  - QUERY: not Critical(c7)? true
+31998 [Thread-24] INFO  translate.Logger  - Query took:  80 milisec
+32078 [Thread-25] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c7)
+32089 [Thread-25] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+32441 [Thread-25] INFO  translate.Logger  - Translating:  0 milisec
+33524 [Thread-25] INFO  translate.Logger  - XSB took:  1083 milisec
+33524 [Thread-25] INFO  translate.Logger  - Insertion took:  1446 milisec
+33607 [Thread-26] INFO  event.Logger  - EVENT: ins_critical(c8) @ [09/12/2014 10:41:57 , 09/12/2014 10:41:57]
+33769 [Thread-27] INFO  app.Logger  - QUERY: not Critical(c8)? true
+33770 [Thread-27] INFO  translate.Logger  - Query took:  82 milisec
+33850 [Thread-28] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c8)
+33861 [Thread-28] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+34205 [Thread-28] INFO  translate.Logger  - Translating:  1 milisec
+35316 [Thread-28] INFO  translate.Logger  - XSB took:  1111 milisec
+35316 [Thread-28] INFO  translate.Logger  - Insertion took:  1466 milisec
+35400 [Thread-29] INFO  event.Logger  - EVENT: ins_critical(c9) @ [09/12/2014 10:41:59 , 09/12/2014 10:41:59]
+35564 [Thread-30] INFO  app.Logger  - QUERY: not Critical(c9)? true
+35564 [Thread-30] INFO  translate.Logger  - Query took:  81 milisec
+35646 [Thread-31] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c9)
+35661 [Thread-31] INFO  translate.Logger  - Running ELK Reasoner:  15 milisec
+35955 [Thread-31] INFO  translate.Logger  - Translating:  0 milisec
+37048 [Thread-31] INFO  translate.Logger  - XSB took:  1093 milisec
+37048 [Thread-31] INFO  translate.Logger  - Insertion took:  1402 milisec
+37131 [Thread-32] INFO  event.Logger  - EVENT: ins_critical(c10) @ [09/12/2014 10:42:01 , 09/12/2014 10:42:01]
+37297 [Thread-33] INFO  app.Logger  - QUERY: not Critical(c10)? true
+37297 [Thread-33] INFO  translate.Logger  - Query took:  79 milisec
+37377 [Thread-34] INFO  event.Logger  - ACTION: inserting classAssertion(Critical,c10)
+37390 [Thread-34] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+37731 [Thread-34] INFO  translate.Logger  - Translating:  0 milisec
+38820 [Thread-34] INFO  translate.Logger  - XSB took:  1089 milisec
+38820 [Thread-34] INFO  translate.Logger  - Insertion took:  1442 milisec
+38906 [Thread-35] INFO  event.Logger  - EVENT: ins_five(f1) @ [09/12/2014 10:42:02 , 09/12/2014 10:42:02]
+38988 [Thread-36] INFO  translate.Logger  - QUERY: not five(f1)? true
+38988 [Thread-36] INFO  translate.Logger  - Query took:  0 milisec
+39069 [Thread-37] INFO  event.Logger  - ACTION: inserting classAssertion(five,f1)
+39081 [Thread-37] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+39429 [Thread-37] INFO  translate.Logger  - Translating:  0 milisec
+39632 [Thread-37] INFO  translate.Logger  - XSB took:  203 milisec
+39632 [Thread-37] INFO  translate.Logger  - Insertion took:  562 milisec
+39744 [Thread-38] INFO  event.Logger  - EVENT: ins_five(f2) @ [09/12/2014 10:42:03 , 09/12/2014 10:42:03]
+39909 [Thread-39] INFO  app.Logger  - QUERY: not five(f2)? true
+39909 [Thread-39] INFO  translate.Logger  - Query took:  80 milisec
+39990 [Thread-40] INFO  event.Logger  - ACTION: inserting classAssertion(five,f2)
+40002 [Thread-40] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+40292 [Thread-40] INFO  translate.Logger  - Translating:  0 milisec
+40416 [Thread-40] INFO  translate.Logger  - XSB took:  124 milisec
+40416 [Thread-40] INFO  translate.Logger  - Insertion took:  426 milisec
+40497 [Thread-41] INFO  event.Logger  - EVENT: ins_five(f3) @ [09/12/2014 10:42:04 , 09/12/2014 10:42:04]
+40657 [Thread-42] INFO  app.Logger  - QUERY: not five(f3)? true
+40657 [Thread-42] INFO  translate.Logger  - Query took:  81 milisec
+40737 [Thread-43] INFO  event.Logger  - ACTION: inserting classAssertion(five,f3)
+40754 [Thread-43] INFO  translate.Logger  - Running ELK Reasoner:  16 milisec
+41099 [Thread-43] INFO  translate.Logger  - Translating:  0 milisec
+41224 [Thread-43] INFO  translate.Logger  - XSB took:  125 milisec
+41224 [Thread-43] INFO  translate.Logger  - Insertion took:  486 milisec
+41305 [Thread-44] INFO  event.Logger  - EVENT: ins_five(f4) @ [09/12/2014 10:42:05 , 09/12/2014 10:42:05]
+41469 [Thread-45] INFO  app.Logger  - QUERY: not five(f4)? true
+41469 [Thread-45] INFO  translate.Logger  - Query took:  82 milisec
+41548 [Thread-46] INFO  event.Logger  - ACTION: inserting classAssertion(five,f4)
+41557 [Thread-46] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+41854 [Thread-46] INFO  translate.Logger  - Translating:  0 milisec
+41976 [Thread-46] INFO  translate.Logger  - XSB took:  122 milisec
+41976 [Thread-46] INFO  translate.Logger  - Insertion took:  428 milisec
+42064 [Thread-47] INFO  event.Logger  - EVENT: ins_five(f5) @ [09/12/2014 10:42:06 , 09/12/2014 10:42:06]
+42225 [Thread-48] INFO  app.Logger  - QUERY: not five(f5)? true
+42225 [Thread-48] INFO  translate.Logger  - Query took:  79 milisec
+42305 [Thread-49] INFO  event.Logger  - ACTION: inserting classAssertion(five,f5)
+42319 [Thread-49] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+42675 [Thread-49] INFO  translate.Logger  - Translating:  0 milisec
+42796 [Thread-49] INFO  translate.Logger  - XSB took:  121 milisec
+42796 [Thread-49] INFO  translate.Logger  - Insertion took:  491 milisec
+42879 [Thread-50] INFO  event.Logger  - EVENT: ins_five(f6) @ [09/12/2014 10:42:06 , 09/12/2014 10:42:06]
+43041 [Thread-51] INFO  app.Logger  - QUERY: not five(f6)? true
+43041 [Thread-51] INFO  translate.Logger  - Query took:  80 milisec
+43122 [Thread-52] INFO  event.Logger  - ACTION: inserting classAssertion(five,f6)
+43134 [Thread-52] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+43488 [Thread-52] INFO  translate.Logger  - Translating:  0 milisec
+43609 [Thread-52] INFO  translate.Logger  - XSB took:  121 milisec
+43609 [Thread-52] INFO  translate.Logger  - Insertion took:  487 milisec
+43690 [Thread-53] INFO  event.Logger  - EVENT: ins_five(f7) @ [09/12/2014 10:42:07 , 09/12/2014 10:42:07]
+43849 [Thread-54] INFO  app.Logger  - QUERY: not five(f7)? true
+43849 [Thread-54] INFO  translate.Logger  - Query took:  79 milisec
+43929 [Thread-55] INFO  event.Logger  - ACTION: inserting classAssertion(five,f7)
+43943 [Thread-55] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+44241 [Thread-55] INFO  translate.Logger  - Translating:  0 milisec
+44360 [Thread-55] INFO  translate.Logger  - XSB took:  119 milisec
+44360 [Thread-55] INFO  translate.Logger  - Insertion took:  431 milisec
+44465 [Thread-56] INFO  event.Logger  - EVENT: ins_five(f8) @ [09/12/2014 10:42:08 , 09/12/2014 10:42:08]
+44629 [Thread-57] INFO  app.Logger  - QUERY: not five(f8)? true
+44629 [Thread-57] INFO  translate.Logger  - Query took:  81 milisec
+44709 [Thread-58] INFO  event.Logger  - ACTION: inserting classAssertion(five,f8)
+44720 [Thread-58] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+45074 [Thread-58] INFO  translate.Logger  - Translating:  0 milisec
+45196 [Thread-58] INFO  translate.Logger  - XSB took:  122 milisec
+45196 [Thread-58] INFO  translate.Logger  - Insertion took:  487 milisec
+45278 [Thread-59] INFO  event.Logger  - EVENT: ins_five(f9) @ [09/12/2014 10:42:09 , 09/12/2014 10:42:09]
+45441 [Thread-60] INFO  app.Logger  - QUERY: not five(f9)? true
+45441 [Thread-60] INFO  translate.Logger  - Query took:  81 milisec
+45521 [Thread-61] INFO  event.Logger  - ACTION: inserting classAssertion(five,f9)
+45534 [Thread-61] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+45832 [Thread-61] INFO  translate.Logger  - Translating:  0 milisec
+45956 [Thread-61] INFO  translate.Logger  - XSB took:  124 milisec
+45956 [Thread-61] INFO  translate.Logger  - Insertion took:  435 milisec
+46041 [Thread-62] INFO  event.Logger  - EVENT: ins_five(f10) @ [09/12/2014 10:42:10 , 09/12/2014 10:42:10]
+46205 [Thread-63] INFO  app.Logger  - QUERY: not five(f10)? true
+46205 [Thread-63] INFO  translate.Logger  - Query took:  85 milisec
+46285 [Thread-64] INFO  event.Logger  - ACTION: inserting classAssertion(five,f10)
+46294 [Thread-64] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+46653 [Thread-64] INFO  translate.Logger  - Translating:  0 milisec
+46772 [Thread-64] INFO  translate.Logger  - XSB took:  119 milisec
+46772 [Thread-64] INFO  translate.Logger  - Insertion took:  487 milisec
+46854 [Thread-65] INFO  event.Logger  - EVENT: ins_app(a1) @ [09/12/2014 10:42:10 , 09/12/2014 10:42:10]
+46934 [Thread-66] INFO  translate.Logger  - QUERY: not ApplicationInformation(a1)? true
+46934 [Thread-66] INFO  translate.Logger  - Query took:  1 milisec
+47018 [Thread-67] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a1)
+47026 [Thread-67] INFO  translate.Logger  - Running ELK Reasoner:  8 milisec
+47378 [Thread-67] INFO  translate.Logger  - Translating:  0 milisec
+47664 [Thread-67] INFO  translate.Logger  - XSB took:  286 milisec
+47664 [Thread-67] INFO  translate.Logger  - Insertion took:  646 milisec
+47745 [Thread-68] INFO  event.Logger  - EVENT: ins_app(a2) @ [09/12/2014 10:42:11 , 09/12/2014 10:42:11]
+47909 [Thread-69] INFO  app.Logger  - QUERY: not ApplicationInformation(a2)? true
+47909 [Thread-69] INFO  translate.Logger  - Query took:  81 milisec
+47989 [Thread-70] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a2)
+47997 [Thread-70] INFO  translate.Logger  - Running ELK Reasoner:  7 milisec
+48292 [Thread-70] INFO  translate.Logger  - Translating:  0 milisec
+48496 [Thread-70] INFO  translate.Logger  - XSB took:  204 milisec
+48496 [Thread-70] INFO  translate.Logger  - Insertion took:  506 milisec
+48578 [Thread-71] INFO  event.Logger  - EVENT: ins_app(a3) @ [09/12/2014 10:42:12 , 09/12/2014 10:42:12]
+48737 [Thread-72] INFO  app.Logger  - QUERY: not ApplicationInformation(a3)? true
+48737 [Thread-72] INFO  translate.Logger  - Query took:  80 milisec
+48817 [Thread-73] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a3)
+48825 [Thread-73] INFO  translate.Logger  - Running ELK Reasoner:  7 milisec
+49173 [Thread-73] INFO  translate.Logger  - Translating:  0 milisec
+49404 [Thread-73] INFO  translate.Logger  - XSB took:  231 milisec
+49404 [Thread-73] INFO  translate.Logger  - Insertion took:  587 milisec
+49490 [Thread-74] INFO  event.Logger  - EVENT: ins_app(a4) @ [09/12/2014 10:42:13 , 09/12/2014 10:42:13]
+49649 [Thread-75] INFO  app.Logger  - QUERY: not ApplicationInformation(a4)? true
+49649 [Thread-75] INFO  translate.Logger  - Query took:  81 milisec
+49729 [Thread-76] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a4)
+49736 [Thread-76] INFO  translate.Logger  - Running ELK Reasoner:  7 milisec
+50034 [Thread-76] INFO  translate.Logger  - Translating:  0 milisec
+50242 [Thread-76] INFO  translate.Logger  - XSB took:  208 milisec
+50242 [Thread-76] INFO  translate.Logger  - Insertion took:  513 milisec
+50322 [Thread-77] INFO  event.Logger  - EVENT: ins_app(a5) @ [09/12/2014 10:42:14 , 09/12/2014 10:42:14]
+50481 [Thread-78] INFO  app.Logger  - QUERY: not ApplicationInformation(a5)? true
+50481 [Thread-78] INFO  translate.Logger  - Query took:  80 milisec
+50561 [Thread-79] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a5)
+50573 [Thread-79] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+50926 [Thread-79] INFO  translate.Logger  - Translating:  0 milisec
+51128 [Thread-79] INFO  translate.Logger  - XSB took:  202 milisec
+51128 [Thread-79] INFO  translate.Logger  - Insertion took:  567 milisec
+51210 [Thread-80] INFO  event.Logger  - EVENT: ins_app(a6) @ [09/12/2014 10:42:15 , 09/12/2014 10:42:15]
+51369 [Thread-81] INFO  app.Logger  - QUERY: not ApplicationInformation(a6)? true
+51369 [Thread-81] INFO  translate.Logger  - Query took:  80 milisec
+51449 [Thread-82] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a6)
+51462 [Thread-82] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+51762 [Thread-82] INFO  translate.Logger  - Translating:  0 milisec
+51968 [Thread-82] INFO  translate.Logger  - XSB took:  206 milisec
+51968 [Thread-82] INFO  translate.Logger  - Insertion took:  519 milisec
+52050 [Thread-83] INFO  event.Logger  - EVENT: ins_app(a7) @ [09/12/2014 10:42:16 , 09/12/2014 10:42:16]
+52209 [Thread-84] INFO  app.Logger  - QUERY: not ApplicationInformation(a7)? true
+52209 [Thread-84] INFO  translate.Logger  - Query took:  80 milisec
+52289 [Thread-85] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a7)
+52301 [Thread-85] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+52653 [Thread-85] INFO  translate.Logger  - Translating:  0 milisec
+52864 [Thread-85] INFO  translate.Logger  - XSB took:  211 milisec
+52864 [Thread-85] INFO  translate.Logger  - Insertion took:  575 milisec
+52945 [Thread-86] INFO  event.Logger  - EVENT: ins_app(a8) @ [09/12/2014 10:42:16 , 09/12/2014 10:42:16]
+53113 [Thread-87] INFO  app.Logger  - QUERY: not ApplicationInformation(a8)? true
+53113 [Thread-87] INFO  translate.Logger  - Query took:  85 milisec
+53197 [Thread-88] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a8)
+53206 [Thread-88] INFO  translate.Logger  - Running ELK Reasoner:  8 milisec
+53554 [Thread-88] INFO  translate.Logger  - Translating:  1 milisec
+53752 [Thread-88] INFO  translate.Logger  - XSB took:  198 milisec
+53752 [Thread-88] INFO  translate.Logger  - Insertion took:  555 milisec
+53860 [Thread-89] INFO  event.Logger  - EVENT: ins_app(a9) @ [09/12/2014 10:42:17 , 09/12/2014 10:42:17]
+54021 [Thread-90] INFO  app.Logger  - QUERY: not ApplicationInformation(a9)? true
+54021 [Thread-90] INFO  translate.Logger  - Query took:  80 milisec
+54101 [Thread-91] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a9)
+54114 [Thread-91] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+54420 [Thread-91] INFO  translate.Logger  - Translating:  0 milisec
+54624 [Thread-91] INFO  translate.Logger  - XSB took:  204 milisec
+54624 [Thread-91] INFO  translate.Logger  - Insertion took:  523 milisec
+54706 [Thread-92] INFO  event.Logger  - EVENT: ins_app(a10) @ [09/12/2014 10:42:18 , 09/12/2014 10:42:18]
+54869 [Thread-93] INFO  app.Logger  - QUERY: not ApplicationInformation(a10)? true
+54869 [Thread-93] INFO  translate.Logger  - Query took:  81 milisec
+54949 [Thread-94] INFO  event.Logger  - ACTION: inserting classAssertion(ApplicationInformation,a10)
+54958 [Thread-94] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+55302 [Thread-94] INFO  translate.Logger  - Translating:  0 milisec
+55508 [Thread-94] INFO  translate.Logger  - XSB took:  206 milisec
+55508 [Thread-94] INFO  translate.Logger  - Insertion took:  559 milisec
+55590 [Thread-95] INFO  event.Logger  - EVENT: ins_s(1) @ [09/12/2014 10:42:19 , 09/12/2014 10:42:19]
+55670 [Thread-96] INFO  translate.Logger  - QUERY: not s(1)? true
+55670 [Thread-96] INFO  translate.Logger  - Query took:  0 milisec
+55755 [Thread-97] INFO  event.Logger  - ACTION: inserting s(1)
+Could not build the axiom: s(1)
+56000 [Thread-97] INFO  translate.Logger  - XSB took:  244 milisec
+56000 [Thread-97] INFO  translate.Logger  - Insertion took:  245 milisec
+56082 [Thread-98] INFO  event.Logger  - EVENT: ins_s(2) @ [09/12/2014 10:42:20 , 09/12/2014 10:42:20]
+56241 [Thread-99] INFO  app.Logger  - QUERY: not s(2)? true
+56241 [Thread-99] INFO  translate.Logger  - Query took:  81 milisec
+56321 [Thread-100] INFO  event.Logger  - ACTION: inserting s(2)
+Could not build the axiom: s(2)
+56560 [Thread-100] INFO  translate.Logger  - XSB took:  238 milisec
+56560 [Thread-100] INFO  translate.Logger  - Insertion took:  239 milisec
+56642 [Thread-101] INFO  event.Logger  - EVENT: ins_s(3) @ [09/12/2014 10:42:20 , 09/12/2014 10:42:20]
+56809 [Thread-102] INFO  app.Logger  - QUERY: not s(3)? true
+56809 [Thread-102] INFO  translate.Logger  - Query took:  83 milisec
+56889 [Thread-103] INFO  event.Logger  - ACTION: inserting s(3)
+Could not build the axiom: s(3)
+57136 [Thread-103] INFO  translate.Logger  - XSB took:  246 milisec
+57136 [Thread-103] INFO  translate.Logger  - Insertion took:  247 milisec
+57218 [Thread-104] INFO  event.Logger  - EVENT: ins_s(4) @ [09/12/2014 10:42:21 , 09/12/2014 10:42:21]
+57412 [Thread-105] INFO  app.Logger  - QUERY: not s(4)? true
+57412 [Thread-105] INFO  translate.Logger  - Query took:  106 milisec
+57493 [Thread-106] INFO  event.Logger  - ACTION: inserting s(4)
+Could not build the axiom: s(4)
+57736 [Thread-106] INFO  translate.Logger  - XSB took:  242 milisec
+57736 [Thread-106] INFO  translate.Logger  - Insertion took:  243 milisec
+57818 [Thread-107] INFO  event.Logger  - EVENT: ins_s(5) @ [09/12/2014 10:42:21 , 09/12/2014 10:42:21]
+57977 [Thread-108] INFO  app.Logger  - QUERY: not s(5)? true
+57977 [Thread-108] INFO  translate.Logger  - Query took:  80 milisec
+58057 [Thread-109] INFO  event.Logger  - ACTION: inserting s(5)
+Could not build the axiom: s(5)
+58304 [Thread-109] INFO  translate.Logger  - XSB took:  246 milisec
+58304 [Thread-109] INFO  translate.Logger  - Insertion took:  247 milisec
+58384 [Thread-110] INFO  event.Logger  - EVENT: ins_s(6) @ [09/12/2014 10:42:22 , 09/12/2014 10:42:22]
+58548 [Thread-111] INFO  app.Logger  - QUERY: not s(6)? true
+58548 [Thread-111] INFO  translate.Logger  - Query took:  82 milisec
+58631 [Thread-112] INFO  event.Logger  - ACTION: inserting s(6)
+Could not build the axiom: s(6)
+58876 [Thread-112] INFO  translate.Logger  - XSB took:  244 milisec
+58876 [Thread-112] INFO  translate.Logger  - Insertion took:  244 milisec
+58956 [Thread-113] INFO  event.Logger  - EVENT: ins_s(7) @ [09/12/2014 10:42:22 , 09/12/2014 10:42:22]
+59117 [Thread-114] INFO  app.Logger  - QUERY: not s(7)? true
+59117 [Thread-114] INFO  translate.Logger  - Query took:  79 milisec
+59197 [Thread-115] INFO  event.Logger  - ACTION: inserting s(7)
+Could not build the axiom: s(7)
+59440 [Thread-115] INFO  translate.Logger  - XSB took:  242 milisec
+59440 [Thread-115] INFO  translate.Logger  - Insertion took:  242 milisec
+59522 [Thread-116] INFO  event.Logger  - EVENT: ins_s(8) @ [09/12/2014 10:42:23 , 09/12/2014 10:42:23]
+59681 [Thread-117] INFO  app.Logger  - QUERY: not s(8)? true
+59681 [Thread-117] INFO  translate.Logger  - Query took:  79 milisec
+59761 [Thread-118] INFO  event.Logger  - ACTION: inserting s(8)
+Could not build the axiom: s(8)
+60004 [Thread-118] INFO  translate.Logger  - XSB took:  243 milisec
+60004 [Thread-118] INFO  translate.Logger  - Insertion took:  243 milisec
+60086 [Thread-119] INFO  event.Logger  - EVENT: ins_s(9) @ [09/12/2014 10:42:24 , 09/12/2014 10:42:24]
+60245 [Thread-120] INFO  app.Logger  - QUERY: not s(9)? true
+60245 [Thread-120] INFO  translate.Logger  - Query took:  80 milisec
+60355 [Thread-121] INFO  event.Logger  - ACTION: inserting s(9)
+Could not build the axiom: s(9)
+60596 [Thread-121] INFO  translate.Logger  - XSB took:  241 milisec
+60596 [Thread-121] INFO  translate.Logger  - Insertion took:  241 milisec
+60682 [Thread-122] INFO  event.Logger  - EVENT: ins_s(10) @ [09/12/2014 10:42:24 , 09/12/2014 10:42:24]
+60841 [Thread-123] INFO  app.Logger  - QUERY: not s(10)? true
+60841 [Thread-123] INFO  translate.Logger  - Query took:  81 milisec
+60921 [Thread-124] INFO  event.Logger  - ACTION: inserting s(10)
+Could not build the axiom: s(10)
+61164 [Thread-124] INFO  translate.Logger  - XSB took:  242 milisec
+61164 [Thread-124] INFO  translate.Logger  - Insertion took:  243 milisec
+61246 [Thread-125] INFO  event.Logger  - EVENT: ins_t(1) @ [09/12/2014 10:42:25 , 09/12/2014 10:42:25]
+61326 [Thread-126] INFO  translate.Logger  - QUERY: not t(1)? true
+61326 [Thread-126] INFO  translate.Logger  - Query took:  1 milisec
+61405 [Thread-127] INFO  event.Logger  - ACTION: inserting t(1)
+Could not build the axiom: t(1)
+61656 [Thread-127] INFO  translate.Logger  - XSB took:  250 milisec
+61656 [Thread-127] INFO  translate.Logger  - Insertion took:  250 milisec
+61738 [Thread-128] INFO  event.Logger  - EVENT: ins_t(2) @ [09/12/2014 10:42:25 , 09/12/2014 10:42:25]
+61901 [Thread-129] INFO  app.Logger  - QUERY: not t(2)? true
+61901 [Thread-129] INFO  translate.Logger  - Query took:  81 milisec
+61981 [Thread-130] INFO  event.Logger  - ACTION: inserting t(2)
+Could not build the axiom: t(2)
+62228 [Thread-130] INFO  translate.Logger  - XSB took:  246 milisec
+62228 [Thread-130] INFO  translate.Logger  - Insertion took:  246 milisec
+62310 [Thread-131] INFO  event.Logger  - EVENT: ins_t(3) @ [09/12/2014 10:42:26 , 09/12/2014 10:42:26]
+62476 [Thread-132] INFO  app.Logger  - QUERY: not t(3)? true
+62476 [Thread-132] INFO  translate.Logger  - Query took:  82 milisec
+62560 [Thread-133] INFO  event.Logger  - ACTION: inserting t(3)
+Could not build the axiom: t(3)
+62804 [Thread-133] INFO  translate.Logger  - XSB took:  244 milisec
+62804 [Thread-133] INFO  translate.Logger  - Insertion took:  244 milisec
+62886 [Thread-134] INFO  event.Logger  - EVENT: ins_t(4) @ [09/12/2014 10:42:26 , 09/12/2014 10:42:26]
+63053 [Thread-135] INFO  app.Logger  - QUERY: not t(4)? true
+63053 [Thread-135] INFO  translate.Logger  - Query took:  83 milisec
+63133 [Thread-136] INFO  event.Logger  - ACTION: inserting t(4)
+Could not build the axiom: t(4)
+63408 [Thread-136] INFO  translate.Logger  - XSB took:  274 milisec
+63408 [Thread-136] INFO  translate.Logger  - Insertion took:  274 milisec
+63490 [Thread-137] INFO  event.Logger  - EVENT: ins_t(5) @ [09/12/2014 10:42:27 , 09/12/2014 10:42:27]
+63653 [Thread-138] INFO  app.Logger  - QUERY: not t(5)? true
+63653 [Thread-138] INFO  translate.Logger  - Query took:  81 milisec
+63733 [Thread-139] INFO  event.Logger  - ACTION: inserting t(5)
+Could not build the axiom: t(5)
+63984 [Thread-139] INFO  translate.Logger  - XSB took:  250 milisec
+63984 [Thread-139] INFO  translate.Logger  - Insertion took:  251 milisec
+64066 [Thread-140] INFO  event.Logger  - EVENT: ins_t(6) @ [09/12/2014 10:42:28 , 09/12/2014 10:42:28]
+64225 [Thread-141] INFO  app.Logger  - QUERY: not t(6)? true
+64225 [Thread-141] INFO  translate.Logger  - Query took:  81 milisec
+64305 [Thread-142] INFO  event.Logger  - ACTION: inserting t(6)
+Could not build the axiom: t(6)
+64548 [Thread-142] INFO  translate.Logger  - XSB took:  242 milisec
+64548 [Thread-142] INFO  translate.Logger  - Insertion took:  243 milisec
+64630 [Thread-143] INFO  event.Logger  - EVENT: ins_t(7) @ [09/12/2014 10:42:28 , 09/12/2014 10:42:28]
+64789 [Thread-144] INFO  app.Logger  - QUERY: not t(7)? true
+64789 [Thread-144] INFO  translate.Logger  - Query took:  80 milisec
+64869 [Thread-145] INFO  event.Logger  - ACTION: inserting t(7)
+Could not build the axiom: t(7)
+65116 [Thread-145] INFO  translate.Logger  - XSB took:  246 milisec
+65116 [Thread-145] INFO  translate.Logger  - Insertion took:  247 milisec
+65198 [Thread-146] INFO  event.Logger  - EVENT: ins_t(8) @ [09/12/2014 10:42:29 , 09/12/2014 10:42:29]
+65357 [Thread-147] INFO  app.Logger  - QUERY: not t(8)? true
+65357 [Thread-147] INFO  translate.Logger  - Query took:  80 milisec
+65441 [Thread-148] INFO  event.Logger  - ACTION: inserting t(8)
+Could not build the axiom: t(8)
+65680 [Thread-148] INFO  translate.Logger  - XSB took:  238 milisec
+65680 [Thread-148] INFO  translate.Logger  - Insertion took:  239 milisec
+65761 [Thread-149] INFO  event.Logger  - EVENT: ins_t(9) @ [09/12/2014 10:42:29 , 09/12/2014 10:42:29]
+65925 [Thread-150] INFO  app.Logger  - QUERY: not t(9)? true
+65925 [Thread-150] INFO  translate.Logger  - Query took:  84 milisec
+66005 [Thread-151] INFO  event.Logger  - ACTION: inserting t(9)
+Could not build the axiom: t(9)
+66248 [Thread-151] INFO  translate.Logger  - XSB took:  242 milisec
+66248 [Thread-151] INFO  translate.Logger  - Insertion took:  243 milisec
+66357 [Thread-152] INFO  event.Logger  - EVENT: ins_t(10) @ [09/12/2014 10:42:30 , 09/12/2014 10:42:30]
+66516 [Thread-153] INFO  app.Logger  - QUERY: not t(10)? true
+66516 [Thread-153] INFO  translate.Logger  - Query took:  79 milisec
+66597 [Thread-154] INFO  event.Logger  - ACTION: inserting t(10)
+Could not build the axiom: t(10)
+66844 [Thread-154] INFO  translate.Logger  - XSB took:  246 milisec
+66844 [Thread-154] INFO  translate.Logger  - Insertion took:  246 milisec
+66930 [Thread-155] INFO  event.Logger  - EVENT: rem_critical(c1) @ [09/12/2014 10:42:30 , 09/12/2014 10:42:30]
+67089 [Thread-156] INFO  app.Logger  - QUERY: VolitionalState(c1)? true
+67089 [Thread-156] INFO  translate.Logger  - Query took:  80 milisec
+67168 [Thread-157] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c1)
+67185 [Thread-157] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+67565 [Thread-157] INFO  translate.Logger  - Translating:  1 milisec
+68656 [Thread-157] INFO  translate.Logger  - XSB took:  1091 milisec
+68656 [Thread-157] INFO  translate.Logger  - Removal took:  1488 milisec
+68738 [Thread-158] INFO  event.Logger  - EVENT: rem_critical(c2) @ [09/12/2014 10:42:32 , 09/12/2014 10:42:32]
+68901 [Thread-159] INFO  app.Logger  - QUERY: VolitionalState(c2)? true
+68901 [Thread-159] INFO  translate.Logger  - Query took:  84 milisec
+68984 [Thread-160] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c2)
+68997 [Thread-160] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+69286 [Thread-160] INFO  translate.Logger  - Translating:  1 milisec
+70368 [Thread-160] INFO  translate.Logger  - XSB took:  1082 milisec
+70368 [Thread-160] INFO  translate.Logger  - Removal took:  1384 milisec
+70481 [Thread-161] INFO  event.Logger  - EVENT: rem_critical(c3) @ [09/12/2014 10:42:34 , 09/12/2014 10:42:34]
+70644 [Thread-162] INFO  app.Logger  - QUERY: VolitionalState(c3)? true
+70644 [Thread-162] INFO  translate.Logger  - Query took:  83 milisec
+70726 [Thread-163] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c3)
+70745 [Thread-163] INFO  translate.Logger  - Running ELK Reasoner:  17 milisec
+71082 [Thread-163] INFO  translate.Logger  - Translating:  0 milisec
+72176 [Thread-163] INFO  translate.Logger  - XSB took:  1094 milisec
+72176 [Thread-163] INFO  translate.Logger  - Removal took:  1449 milisec
+72258 [Thread-164] INFO  event.Logger  - EVENT: rem_critical(c4) @ [09/12/2014 10:42:36 , 09/12/2014 10:42:36]
+72417 [Thread-165] INFO  app.Logger  - QUERY: VolitionalState(c4)? true
+72417 [Thread-165] INFO  translate.Logger  - Query took:  80 milisec
+72497 [Thread-166] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c4)
+72509 [Thread-166] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+72806 [Thread-166] INFO  translate.Logger  - Translating:  0 milisec
+73892 [Thread-166] INFO  translate.Logger  - XSB took:  1086 milisec
+73892 [Thread-166] INFO  translate.Logger  - Removal took:  1395 milisec
+73974 [Thread-167] INFO  event.Logger  - EVENT: rem_critical(c5) @ [09/12/2014 10:42:37 , 09/12/2014 10:42:37]
+74137 [Thread-168] INFO  app.Logger  - QUERY: VolitionalState(c5)? true
+74137 [Thread-168] INFO  translate.Logger  - Query took:  84 milisec
+74217 [Thread-169] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c5)
+74229 [Thread-169] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+74564 [Thread-169] INFO  translate.Logger  - Translating:  0 milisec
+75656 [Thread-169] INFO  translate.Logger  - XSB took:  1092 milisec
+75656 [Thread-169] INFO  translate.Logger  - Removal took:  1439 milisec
+75738 [Thread-170] INFO  event.Logger  - EVENT: rem_critical(c6) @ [09/12/2014 10:42:39 , 09/12/2014 10:42:39]
+75901 [Thread-171] INFO  app.Logger  - QUERY: VolitionalState(c6)? true
+75901 [Thread-171] INFO  translate.Logger  - Query took:  84 milisec
+75985 [Thread-172] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c6)
+75994 [Thread-172] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+76296 [Thread-172] INFO  translate.Logger  - Translating:  0 milisec
+77384 [Thread-172] INFO  translate.Logger  - XSB took:  1088 milisec
+77384 [Thread-172] INFO  translate.Logger  - Removal took:  1399 milisec
+77466 [Thread-173] INFO  event.Logger  - EVENT: rem_critical(c7) @ [09/12/2014 10:42:41 , 09/12/2014 10:42:41]
+77625 [Thread-174] INFO  app.Logger  - QUERY: VolitionalState(c7)? true
+77625 [Thread-174] INFO  translate.Logger  - Query took:  81 milisec
+77705 [Thread-175] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c7)
+77719 [Thread-175] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+78056 [Thread-175] INFO  translate.Logger  - Translating:  0 milisec
+79152 [Thread-175] INFO  translate.Logger  - XSB took:  1096 milisec
+79152 [Thread-175] INFO  translate.Logger  - Removal took:  1447 milisec
+79238 [Thread-176] INFO  event.Logger  - EVENT: rem_critical(c8) @ [09/12/2014 10:42:43 , 09/12/2014 10:42:43]
+79401 [Thread-177] INFO  app.Logger  - QUERY: VolitionalState(c8)? true
+79401 [Thread-177] INFO  translate.Logger  - Query took:  80 milisec
+79481 [Thread-178] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c8)
+79494 [Thread-178] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+79802 [Thread-178] INFO  translate.Logger  - Translating:  1 milisec
+80888 [Thread-178] INFO  translate.Logger  - XSB took:  1086 milisec
+80888 [Thread-178] INFO  translate.Logger  - Removal took:  1407 milisec
+80974 [Thread-179] INFO  event.Logger  - EVENT: rem_critical(c9) @ [09/12/2014 10:42:44 , 09/12/2014 10:42:44]
+81137 [Thread-180] INFO  app.Logger  - QUERY: VolitionalState(c9)? true
+81137 [Thread-180] INFO  translate.Logger  - Query took:  81 milisec
+81217 [Thread-181] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c9)
+81230 [Thread-181] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+81563 [Thread-181] INFO  translate.Logger  - Translating:  0 milisec
+82648 [Thread-181] INFO  translate.Logger  - XSB took:  1085 milisec
+82648 [Thread-181] INFO  translate.Logger  - Removal took:  1431 milisec
+82730 [Thread-182] INFO  event.Logger  - EVENT: rem_critical(c10) @ [09/12/2014 10:42:46 , 09/12/2014 10:42:46]
+82889 [Thread-183] INFO  app.Logger  - QUERY: VolitionalState(c10)? true
+82889 [Thread-183] INFO  translate.Logger  - Query took:  80 milisec
+82977 [Thread-184] INFO  event.Logger  - ACTION: removing classAssertion(Critical,c10)
+82986 [Thread-184] INFO  translate.Logger  - Running ELK Reasoner:  8 milisec
+83321 [Thread-184] INFO  translate.Logger  - Translating:  1 milisec
+84404 [Thread-184] INFO  translate.Logger  - XSB took:  1083 milisec
+84404 [Thread-184] INFO  translate.Logger  - Removal took:  1427 milisec
+84486 [Thread-185] INFO  event.Logger  - EVENT: rem_five(f1) @ [09/12/2014 10:42:48 , 09/12/2014 10:42:48]
+84645 [Thread-186] INFO  app.Logger  - QUERY: five(f1)? true
+84645 [Thread-186] INFO  translate.Logger  - Query took:  81 milisec
+84725 [Thread-187] INFO  event.Logger  - ACTION: removing classAssertion(five,f1)
+84737 [Thread-187] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+85025 [Thread-187] INFO  translate.Logger  - Translating:  0 milisec
+85144 [Thread-187] INFO  translate.Logger  - XSB took:  119 milisec
+85144 [Thread-187] INFO  translate.Logger  - Removal took:  419 milisec
+85226 [Thread-188] INFO  event.Logger  - EVENT: rem_five(f2) @ [09/12/2014 10:42:49 , 09/12/2014 10:42:49]
+85389 [Thread-189] INFO  app.Logger  - QUERY: five(f2)? true
+85389 [Thread-189] INFO  translate.Logger  - Query took:  80 milisec
+85469 [Thread-190] INFO  event.Logger  - ACTION: removing classAssertion(five,f2)
+85482 [Thread-190] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+85817 [Thread-190] INFO  translate.Logger  - Translating:  0 milisec
+85936 [Thread-190] INFO  translate.Logger  - XSB took:  119 milisec
+85936 [Thread-190] INFO  translate.Logger  - Removal took:  467 milisec
+86019 [Thread-191] INFO  event.Logger  - EVENT: rem_five(f3) @ [09/12/2014 10:42:50 , 09/12/2014 10:42:50]
+86184 [Thread-192] INFO  app.Logger  - QUERY: five(f3)? true
+86184 [Thread-192] INFO  translate.Logger  - Query took:  84 milisec
+86265 [Thread-193] INFO  event.Logger  - ACTION: removing classAssertion(five,f3)
+86275 [Thread-193] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+86569 [Thread-193] INFO  translate.Logger  - Translating:  0 milisec
+86692 [Thread-193] INFO  translate.Logger  - XSB took:  123 milisec
+86692 [Thread-193] INFO  translate.Logger  - Removal took:  427 milisec
+86776 [Thread-194] INFO  event.Logger  - EVENT: rem_five(f4) @ [09/12/2014 10:42:50 , 09/12/2014 10:42:50]
+86940 [Thread-195] INFO  app.Logger  - QUERY: five(f4)? true
+86941 [Thread-195] INFO  translate.Logger  - Query took:  80 milisec
+87021 [Thread-196] INFO  event.Logger  - ACTION: removing classAssertion(five,f4)
+87033 [Thread-196] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+87371 [Thread-196] INFO  translate.Logger  - Translating:  0 milisec
+87500 [Thread-196] INFO  translate.Logger  - XSB took:  129 milisec
+87500 [Thread-196] INFO  translate.Logger  - Removal took:  479 milisec
+87582 [Thread-197] INFO  event.Logger  - EVENT: rem_five(f5) @ [09/12/2014 10:42:51 , 09/12/2014 10:42:51]
+87744 [Thread-198] INFO  app.Logger  - QUERY: five(f5)? true
+87744 [Thread-198] INFO  translate.Logger  - Query took:  83 milisec
+87825 [Thread-199] INFO  event.Logger  - ACTION: removing classAssertion(five,f5)
+87836 [Thread-199] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+88133 [Thread-199] INFO  translate.Logger  - Translating:  0 milisec
+88252 [Thread-199] INFO  translate.Logger  - XSB took:  118 milisec
+88252 [Thread-199] INFO  translate.Logger  - Removal took:  427 milisec
+88338 [Thread-200] INFO  event.Logger  - EVENT: rem_five(f6) @ [09/12/2014 10:42:52 , 09/12/2014 10:42:52]
+88505 [Thread-201] INFO  app.Logger  - QUERY: five(f6)? true
+88505 [Thread-201] INFO  translate.Logger  - Query took:  81 milisec
+88584 [Thread-202] INFO  event.Logger  - ACTION: removing classAssertion(five,f6)
+88595 [Thread-202] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+88939 [Thread-202] INFO  translate.Logger  - Translating:  0 milisec
+89064 [Thread-202] INFO  translate.Logger  - XSB took:  125 milisec
+89064 [Thread-202] INFO  translate.Logger  - Removal took:  480 milisec
+89146 [Thread-203] INFO  event.Logger  - EVENT: rem_five(f7) @ [09/12/2014 10:42:53 , 09/12/2014 10:42:53]
+89313 [Thread-204] INFO  app.Logger  - QUERY: five(f7)? true
+89313 [Thread-204] INFO  translate.Logger  - Query took:  81 milisec
+89393 [Thread-205] INFO  event.Logger  - ACTION: removing classAssertion(five,f7)
+89406 [Thread-205] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+89706 [Thread-205] INFO  translate.Logger  - Translating:  0 milisec
+89828 [Thread-205] INFO  translate.Logger  - XSB took:  122 milisec
+89828 [Thread-205] INFO  translate.Logger  - Removal took:  435 milisec
+89910 [Thread-206] INFO  event.Logger  - EVENT: rem_five(f8) @ [09/12/2014 10:42:53 , 09/12/2014 10:42:53]
+90073 [Thread-207] INFO  app.Logger  - QUERY: five(f8)? true
+90073 [Thread-207] INFO  translate.Logger  - Query took:  81 milisec
+90153 [Thread-208] INFO  event.Logger  - ACTION: removing classAssertion(five,f8)
+90163 [Thread-208] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+90497 [Thread-208] INFO  translate.Logger  - Translating:  0 milisec
+90624 [Thread-208] INFO  translate.Logger  - XSB took:  127 milisec
+90624 [Thread-208] INFO  translate.Logger  - Removal took:  471 milisec
+90706 [Thread-209] INFO  event.Logger  - EVENT: rem_five(f9) @ [09/12/2014 10:42:54 , 09/12/2014 10:42:54]
+90873 [Thread-210] INFO  app.Logger  - QUERY: five(f9)? true
+90873 [Thread-210] INFO  translate.Logger  - Query took:  84 milisec
+90953 [Thread-211] INFO  event.Logger  - ACTION: removing classAssertion(five,f9)
+90966 [Thread-211] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+91299 [Thread-211] INFO  translate.Logger  - Translating:  0 milisec
+91424 [Thread-211] INFO  translate.Logger  - XSB took:  125 milisec
+91424 [Thread-211] INFO  translate.Logger  - Removal took:  471 milisec
+91506 [Thread-212] INFO  event.Logger  - EVENT: rem_five(f10) @ [09/12/2014 10:42:55 , 09/12/2014 10:42:55]
+91673 [Thread-213] INFO  app.Logger  - QUERY: five(f10)? true
+91673 [Thread-213] INFO  translate.Logger  - Query took:  89 milisec
+91753 [Thread-214] INFO  event.Logger  - ACTION: removing classAssertion(five,f10)
+91763 [Thread-214] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+92052 [Thread-214] INFO  translate.Logger  - Translating:  0 milisec
+92180 [Thread-214] INFO  translate.Logger  - XSB took:  128 milisec
+92180 [Thread-214] INFO  translate.Logger  - Removal took:  427 milisec
+92262 [Thread-215] INFO  event.Logger  - EVENT: rem_app(a1) @ [09/12/2014 10:42:56 , 09/12/2014 10:42:56]
+92429 [Thread-216] INFO  app.Logger  - QUERY: TopCategory(a1)? true
+92429 [Thread-216] INFO  translate.Logger  - Query took:  80 milisec
+92509 [Thread-217] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a1)
+92516 [Thread-217] INFO  translate.Logger  - Running ELK Reasoner:  7 milisec
+92855 [Thread-217] INFO  translate.Logger  - Translating:  0 milisec
+93064 [Thread-217] INFO  translate.Logger  - XSB took:  209 milisec
+93064 [Thread-217] INFO  translate.Logger  - Removal took:  555 milisec
+93148 [Thread-218] INFO  event.Logger  - EVENT: rem_app(a2) @ [09/12/2014 10:42:57 , 09/12/2014 10:42:57]
+93313 [Thread-219] INFO  app.Logger  - QUERY: TopCategory(a2)? true
+93313 [Thread-219] INFO  translate.Logger  - Query took:  84 milisec
+93393 [Thread-220] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a2)
+93404 [Thread-220] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+93696 [Thread-220] INFO  translate.Logger  - Translating:  0 milisec
+93896 [Thread-220] INFO  translate.Logger  - XSB took:  200 milisec
+93896 [Thread-220] INFO  translate.Logger  - Removal took:  503 milisec
+93978 [Thread-221] INFO  event.Logger  - EVENT: rem_app(a3) @ [09/12/2014 10:42:57 , 09/12/2014 10:42:57]
+94137 [Thread-222] INFO  app.Logger  - QUERY: TopCategory(a3)? true
+94137 [Thread-222] INFO  translate.Logger  - Query took:  80 milisec
+94221 [Thread-223] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a3)
+94232 [Thread-223] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+94562 [Thread-223] INFO  translate.Logger  - Translating:  0 milisec
+94768 [Thread-223] INFO  translate.Logger  - XSB took:  205 milisec
+94768 [Thread-223] INFO  translate.Logger  - Removal took:  547 milisec
+94850 [Thread-224] INFO  event.Logger  - EVENT: rem_app(a4) @ [09/12/2014 10:42:58 , 09/12/2014 10:42:58]
+95009 [Thread-225] INFO  app.Logger  - QUERY: TopCategory(a4)? true
+95009 [Thread-225] INFO  translate.Logger  - Query took:  80 milisec
+95089 [Thread-226] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a4)
+95098 [Thread-226] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+95396 [Thread-226] INFO  translate.Logger  - Translating:  0 milisec
+95596 [Thread-226] INFO  translate.Logger  - XSB took:  199 milisec
+95596 [Thread-226] INFO  translate.Logger  - Removal took:  507 milisec
+95678 [Thread-227] INFO  event.Logger  - EVENT: rem_app(a5) @ [09/12/2014 10:42:59 , 09/12/2014 10:42:59]
+95845 [Thread-228] INFO  app.Logger  - QUERY: TopCategory(a5)? true
+95845 [Thread-228] INFO  translate.Logger  - Query took:  89 milisec
+95925 [Thread-229] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a5)
+95934 [Thread-229] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+96267 [Thread-229] INFO  translate.Logger  - Translating:  0 milisec
+96468 [Thread-229] INFO  translate.Logger  - XSB took:  201 milisec
+96468 [Thread-229] INFO  translate.Logger  - Removal took:  543 milisec
+96557 [Thread-230] INFO  event.Logger  - EVENT: rem_app(a6) @ [09/12/2014 10:43:00 , 09/12/2014 10:43:00]
+96717 [Thread-231] INFO  app.Logger  - QUERY: TopCategory(a6)? true
+96717 [Thread-231] INFO  translate.Logger  - Query took:  80 milisec
+96797 [Thread-232] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a6)
+96810 [Thread-232] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+97108 [Thread-232] INFO  translate.Logger  - Translating:  0 milisec
+97308 [Thread-232] INFO  translate.Logger  - XSB took:  200 milisec
+97308 [Thread-232] INFO  translate.Logger  - Removal took:  511 milisec
+97388 [Thread-233] INFO  event.Logger  - EVENT: rem_app(a7) @ [09/12/2014 10:43:01 , 09/12/2014 10:43:01]
+97553 [Thread-234] INFO  app.Logger  - QUERY: TopCategory(a7)? true
+97553 [Thread-234] INFO  translate.Logger  - Query took:  85 milisec
+97633 [Thread-235] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a7)
+97642 [Thread-235] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+97981 [Thread-235] INFO  translate.Logger  - Translating:  0 milisec
+98184 [Thread-235] INFO  translate.Logger  - XSB took:  203 milisec
+98184 [Thread-235] INFO  translate.Logger  - Removal took:  551 milisec
+98266 [Thread-236] INFO  event.Logger  - EVENT: rem_app(a8) @ [09/12/2014 10:43:02 , 09/12/2014 10:43:02]
+98429 [Thread-237] INFO  app.Logger  - QUERY: TopCategory(a8)? true
+98429 [Thread-237] INFO  translate.Logger  - Query took:  81 milisec
+98509 [Thread-238] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a8)
+98518 [Thread-238] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+98819 [Thread-238] INFO  translate.Logger  - Translating:  0 milisec
+99028 [Thread-238] INFO  translate.Logger  - XSB took:  209 milisec
+99028 [Thread-238] INFO  translate.Logger  - Removal took:  519 milisec
+99110 [Thread-239] INFO  event.Logger  - EVENT: rem_app(a9) @ [09/12/2014 10:43:03 , 09/12/2014 10:43:03]
+99269 [Thread-240] INFO  app.Logger  - QUERY: TopCategory(a9)? true
+99269 [Thread-240] INFO  translate.Logger  - Query took:  80 milisec
+99349 [Thread-241] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a9)
+99360 [Thread-241] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+99696 [Thread-241] INFO  translate.Logger  - Translating:  0 milisec
+99904 [Thread-241] INFO  translate.Logger  - XSB took:  208 milisec
+99904 [Thread-241] INFO  translate.Logger  - Removal took:  555 milisec
+99986 [Thread-242] INFO  event.Logger  - EVENT: rem_app(a10) @ [09/12/2014 10:43:03 , 09/12/2014 10:43:03]
+100148 [Thread-243] INFO  app.Logger  - QUERY: TopCategory(a10)? true
+100148 [Thread-243] INFO  translate.Logger  - Query took:  83 milisec
+100229 [Thread-244] INFO  event.Logger  - ACTION: removing classAssertion(ApplicationInformation,a10)
+100241 [Thread-244] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+100542 [Thread-244] INFO  translate.Logger  - Translating:  0 milisec
+100740 [Thread-244] INFO  translate.Logger  - XSB took:  198 milisec
+100740 [Thread-244] INFO  translate.Logger  - Removal took:  511 milisec
+100822 [Thread-245] INFO  event.Logger  - EVENT: rem_s(1) @ [09/12/2014 10:43:04 , 09/12/2014 10:43:04]
+100985 [Thread-246] INFO  app.Logger  - QUERY: p(1,1)? true
+100985 [Thread-246] INFO  translate.Logger  - Query took:  85 milisec
+101065 [Thread-247] INFO  event.Logger  - ACTION: removing s(1)
+Could not build the axiom: s(1)
+101236 [Thread-247] INFO  translate.Logger  - XSB took:  170 milisec
+101236 [Thread-247] INFO  translate.Logger  - Removal took:  171 milisec
+101317 [Thread-248] INFO  event.Logger  - EVENT: rem_s(2) @ [09/12/2014 10:43:05 , 09/12/2014 10:43:05]
+101481 [Thread-249] INFO  app.Logger  - QUERY: p(2,2)? true
+101481 [Thread-249] INFO  translate.Logger  - Query took:  81 milisec
+101561 [Thread-250] INFO  event.Logger  - ACTION: removing s(2)
+Could not build the axiom: s(2)
+101720 [Thread-250] INFO  translate.Logger  - XSB took:  158 milisec
+101720 [Thread-250] INFO  translate.Logger  - Removal took:  159 milisec
+101800 [Thread-251] INFO  event.Logger  - EVENT: rem_s(3) @ [09/12/2014 10:43:05 , 09/12/2014 10:43:05]
+101961 [Thread-252] INFO  app.Logger  - QUERY: p(3,3)? true
+101961 [Thread-252] INFO  translate.Logger  - Query took:  80 milisec
+102049 [Thread-253] INFO  event.Logger  - ACTION: removing s(3)
+Could not build the axiom: s(3)
+102212 [Thread-253] INFO  translate.Logger  - XSB took:  162 milisec
+102212 [Thread-253] INFO  translate.Logger  - Removal took:  162 milisec
+102294 [Thread-254] INFO  event.Logger  - EVENT: rem_s(4) @ [09/12/2014 10:43:06 , 09/12/2014 10:43:06]
+102457 [Thread-255] INFO  app.Logger  - QUERY: p(4,4)? true
+102457 [Thread-255] INFO  translate.Logger  - Query took:  84 milisec
+102537 [Thread-256] INFO  event.Logger  - ACTION: removing s(4)
+Could not build the axiom: s(4)
+102700 [Thread-256] INFO  translate.Logger  - XSB took:  163 milisec
+102700 [Thread-256] INFO  translate.Logger  - Removal took:  163 milisec
+102788 [Thread-257] INFO  event.Logger  - EVENT: rem_s(5) @ [09/12/2014 10:43:06 , 09/12/2014 10:43:06]
+102949 [Thread-258] INFO  app.Logger  - QUERY: p(5,5)? true
+102949 [Thread-258] INFO  translate.Logger  - Query took:  81 milisec
+103037 [Thread-259] INFO  event.Logger  - ACTION: removing s(5)
+Could not build the axiom: s(5)
+103200 [Thread-259] INFO  translate.Logger  - XSB took:  162 milisec
+103200 [Thread-259] INFO  translate.Logger  - Removal took:  163 milisec
+103286 [Thread-260] INFO  event.Logger  - EVENT: rem_s(6) @ [09/12/2014 10:43:07 , 09/12/2014 10:43:07]
+103449 [Thread-261] INFO  app.Logger  - QUERY: p(6,6)? true
+103449 [Thread-261] INFO  translate.Logger  - Query took:  81 milisec
+103528 [Thread-262] INFO  event.Logger  - ACTION: removing s(6)
+Could not build the axiom: s(6)
+103692 [Thread-262] INFO  translate.Logger  - XSB took:  163 milisec
+103692 [Thread-262] INFO  translate.Logger  - Removal took:  164 milisec
+103778 [Thread-263] INFO  event.Logger  - EVENT: rem_s(7) @ [09/12/2014 10:43:07 , 09/12/2014 10:43:07]
+103936 [Thread-264] INFO  app.Logger  - QUERY: p(7,7)? true
+103936 [Thread-264] INFO  translate.Logger  - Query took:  79 milisec
+104016 [Thread-265] INFO  event.Logger  - ACTION: removing s(7)
+Could not build the axiom: s(7)
+104176 [Thread-265] INFO  translate.Logger  - XSB took:  160 milisec
+104176 [Thread-265] INFO  translate.Logger  - Removal took:  160 milisec
+104258 [Thread-266] INFO  event.Logger  - EVENT: rem_s(8) @ [09/12/2014 10:43:08 , 09/12/2014 10:43:08]
+104425 [Thread-267] INFO  app.Logger  - QUERY: p(8,8)? true
+104425 [Thread-267] INFO  translate.Logger  - Query took:  83 milisec
+104505 [Thread-268] INFO  event.Logger  - ACTION: removing s(8)
+Could not build the axiom: s(8)
+104664 [Thread-268] INFO  translate.Logger  - XSB took:  158 milisec
+104664 [Thread-268] INFO  translate.Logger  - Removal took:  159 milisec
+104747 [Thread-269] INFO  event.Logger  - EVENT: rem_s(9) @ [09/12/2014 10:43:08 , 09/12/2014 10:43:08]
+104909 [Thread-270] INFO  app.Logger  - QUERY: p(9,9)? true
+104909 [Thread-270] INFO  translate.Logger  - Query took:  80 milisec
+104989 [Thread-271] INFO  event.Logger  - ACTION: removing s(9)
+Could not build the axiom: s(9)
+105156 [Thread-271] INFO  translate.Logger  - XSB took:  166 milisec
+105156 [Thread-271] INFO  translate.Logger  - Removal took:  167 milisec
+105238 [Thread-272] INFO  event.Logger  - EVENT: rem_s(10) @ [09/12/2014 10:43:09 , 09/12/2014 10:43:09]
+105397 [Thread-273] INFO  app.Logger  - QUERY: p(10,10)? true
+105397 [Thread-273] INFO  translate.Logger  - Query took:  80 milisec
+105477 [Thread-274] INFO  event.Logger  - ACTION: removing s(10)
+Could not build the axiom: s(10)
+105636 [Thread-274] INFO  translate.Logger  - XSB took:  158 milisec
+105636 [Thread-274] INFO  translate.Logger  - Removal took:  159 milisec

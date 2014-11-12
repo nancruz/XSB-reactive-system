@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $Rev: 855 $:     Revision of last commit
+% $Author: fodor.paul $:  Author of last commit
+% $Date: 2011-07-28 02:13:24 +0100 (Qui, 28 Jul 2011) $:    Date of last commit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports
+:- import member/2 from basics.
+:- import less_datime/2 from date_utils.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modules
+:- dynamic(count/1).
+:- index(count/1,trie).
+:- dynamic(counter_internal/2).
+:-index(counter_internal/2,trie).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Unique Count
+:- assert(count(0)).
+incCount :- 
+    count(Y), 
+    X is Y+1, 
+    retractall(count(_)), 
+    assert(count(X)), !.
+resetCount :- 
+    retractall(count(_)), 
+    assert(count(0)), !.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Counter
+%   There are several counters on the program, such as:
+%       -binarizationCounter,
+%       -timeCounter,
+%       - ...
+
+% resetCounter/1
+% resetCounter(+Name)
+resetCounter(Name):-
+    retractall(counter_internal(Name,_)),
+	assert(counter_internal(Name,0)),
+	!.
+
+% incCounter/1
+% incCounter(+Name)
+incCounter(Name):-
+	counter_internal(Name,Value),
+	Value1 is Value+1,
+	retractall(counter_internal(Name,_)),
+	assert(counter_internal(Name,Value1)),
+	!.
+incCounter(Name):-
+	resetCounter(Name),
+	incCounter(Name),
+	!.
+
+% counter/2
+% counter(+CounterName,-Value)
+counter(CounterName,Value):-
+	counter_internal(CounterName,Value),
+	!.
+counter(Name,0):- % the counter doesn't exist yet
+	resetCounter(Name),
+	!.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% my_member/2
+% my_member(+Element,+List)
+my_member(H,[H|_T]).
+my_member(H,[_|T]):-
+	my_member(H,T).
+
+% my_append/3
+% my_append(+L1,+L2,-L3)
+my_append([],L,L).
+my_append(L,[],L).
+my_append([H|T],L,[H|R]):-
+	my_append(T,L,R).
+
+% my_reverse/2
+% my_reverse(+L,-RL)
+my_reverse(L,RL):-
+	my_reverse(L,[],RL).
+my_reverse([],Temp,Temp).
+my_reverse([H|T],Temp,TT):-
+	my_reverse(T,[H|Temp],TT).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% min/3
+% min(+T1,+T2,-T3)
+min(T1,T2,T3) :- ( number(T1), number(T2), T1<T2 ) -> T3 = T1 ; T3 = T2.
+min(T1,T2,T3) :- ( is_datime(T1), is_datime(T2), less_datime(T1,T2) )
+	-> T3 = T1 ; T3 = T2.
+
+% max/3
+% max(+T1,+T2,-T3)
+max(T1,T2,T3) :- ( number(T1), number(T2), T2<T1) -> T3 = T1 ; T3 = T2.
+max(T1,T2,T3) :- ( is_datime(T1), is_datime(T2), less_datime(T2,T1) )
+	-> T3 = T1 ; T3 = T2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This predicate is useful for testing. It checks is some event occurred the
+% times it was suppose to occur.
+check_fired_events([]).
+check_fired_events(Events):-
+    get_logged_events(fired_event(X),L),
+    count_events(Events,L).
+
+count_events([],_).
+count_events([event(E,N)|T],L):-
+    count_event(E,L,C),
+    C == N,!,
+    count_events(T,L).
+
+count_event(E,[],0).
+count_event(E,[fired_event(event(E,_))|T],NewC):-
+    count_event(E,T,C),!,
+    NewC is C +1.
+count_event(E,[_|T],C):-
+    count_event(E,T,C).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+write_file(Content):-
+    open('log',append,Stream),
+    write(Stream,Content),
+    write(Stream,'\n'),
+    close(Stream).
+

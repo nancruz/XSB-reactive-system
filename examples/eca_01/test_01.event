@@ -1,0 +1,8 @@
+print_trigger(_/_).
+
+on a --> if true ; then (insert(a(1))).
+on b --> 
+	if true ; then insert((a(X):-b(X))).
+
+on inserted(a(X)) --> if a(X) ; then remove(a(X)).
+on inserted((a(X):-b(X))) --> true ; then remove((a(X):-b(X))).

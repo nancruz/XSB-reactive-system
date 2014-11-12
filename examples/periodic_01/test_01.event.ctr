@@ -1,0 +1,8 @@
+trClause(unlabeled,event(fini,[_h1955,_h1953]),seqf(etr_dbf(unlabeled,periodicf(event(a(1)))),seqf(unreg_periodic(event(a(1))),etr_delf(unlabeled,periodicf(event(a(1))))))).
+
+trClause(unlabeled,event(a(1),[_h1920,_h1904]),seqf(etr_dbf(unlabeled,periodicf(event(a(1)))),reg_periodic(event(a(1),_h1904,5)))).
+
+trClause(unlabeled,event(start,[_h1859,_h1833]),seqf(not_etr_dbf(unlabeled,periodic(event(a(1)))),seqf(etr_insf(unlabeled,periodicf(event(a(1)))),reg_periodic(event(a(1),_h1833,5))))).
+
+trClause(unlabeled,event(start,[_h1893,_h1870]),seqf(etr_dbf(unlabeled,periodicf(event(a(1)))),seqf(unreg_periodic(event(a(1))),reg_periodic(event(a(1),_h1870,5))))).
+

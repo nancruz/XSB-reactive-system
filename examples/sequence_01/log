@@ -1,0 +1,364 @@
+See database:
+[]
+  Log:   
+event(a,[datime(1406288436,1),datime(1406288436,1)])
+See database:
+[]
+  Log:   
+etr_insf(unlabeled,goal(event(b),event(a,[datime(1406288436,1),datime(1406288436,1)]),event(a(1))))
+See database:
+[etr_db(_h329,_h330,_h331,_h332,_h333)]
+  Log:   
+event(b,[datime(1406288440,1),datime(1406288440,1)])
+See database:
+[etr_db(_h542,_h543,_h544,_h545,_h546)]
+  Log:   
+seqf(etr_dbf(unlabeled,goal(event(b),event(a,[_h203,_h205]),event(a(1)))),seqf(etr_delf(unlabeled,goal(event(b),event(a,[_h203,_h205]),event(a(1)))),seqf(less(_h205,datime(1406288440,1)),seqf(check_event_rule_conditions(unlabeled,a(1),[_h203,datime(1406288440,1)]),event(a(1),[_h203,datime(1406288440,1)])))))
+See database:
+[etr_db(_h746,_h747,_h748,_h749,_h750)]
+  Log:   
+etr_dbf(unlabeled,goal(event(b),event(a,[_h203,_h205]),event(a(1))))
+See database:
+[etr_db(_h964,_h965,_h966,_h967,_h968)]
+  Log:   
+seqf(etr_delf(unlabeled,goal(event(b),event(a,[datime(1406288436,1),datime(1406288436,1)]),event(a(1)))),seqf(less(datime(1406288436,1),datime(1406288440,1)),seqf(check_event_rule_conditions(unlabeled,a(1),[datime(1406288436,1),datime(1406288440,1)]),event(a(1),[datime(1406288436,1),datime(1406288440,1)]))))
+See database:
+[etr_db(_h1168,_h1169,_h1170,_h1171,_h1172)]
+  Log:   
+etr_delf(unlabeled,goal(event(b),event(a,[datime(1406288436,1),datime(1406288436,1)]),event(a(1))))
+See database:
+[]
+  Log:   
+seqf(less(datime(1406288436,1),datime(1406288440,1)),seqf(check_event_rule_conditions(unlabeled,a(1),[datime(1406288436,1),datime(1406288440,1)]),event(a(1),[datime(1406288436,1),datime(1406288440,1)])))
+See database:
+[]
+  Log:   
+less(datime(1406288436,1),datime(1406288440,1))
+See database:
+[]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,a(1),[datime(1406288436,1),datime(1406288440,1)]),event(a(1),[datime(1406288436,1),datime(1406288440,1)]))
+See database:
+[]
+  Log:   
+check_event_rule_conditions(unlabeled,a(1),[datime(1406288436,1),datime(1406288440,1)])
+See database:
+[]
+  Log:   
+event(a(1),[datime(1406288436,1),datime(1406288440,1)])
+See database:
+[]
+  Log:   
+etr_insf(unlabeled,goal(event(b(_h2271)),event(a(1),[datime(1406288436,1),datime(1406288440,1)]),event(temp_e_1(a(1),b(_h2271)))))
+See database:
+[]
+  Log:   
+event(d1,[datime(1406288674,1),datime(1406288674,1)])
+See database:
+[]
+  Log:   
+etr_insf(unlabeled,goal(event(d2),event(d1,[datime(1406288674,1),datime(1406288674,1)]),event(d0)))
+See database:
+[etr_db(_h454,_h455,_h456,_h457,_h458)]
+  Log:   
+event(d2,[datime(1406288678,1),datime(1406288678,1)])
+See database:
+[etr_db(_h667,_h668,_h669,_h670,_h671)]
+  Log:   
+seqf(etr_dbf(unlabeled,goal(event(d2),event(d1,[_h336,_h338]),event(d0))),seqf(etr_delf(unlabeled,goal(event(d2),event(d1,[_h336,_h338]),event(d0))),seqf(less(_h338,datime(1406288678,1)),seqf(check_event_rule_conditions(unlabeled,d0,[_h336,datime(1406288678,1)]),event(d0,[_h336,datime(1406288678,1)])))))
+See database:
+[etr_db(_h871,_h872,_h873,_h874,_h875)]
+  Log:   
+etr_dbf(unlabeled,goal(event(d2),event(d1,[_h336,_h338]),event(d0)))
+See database:
+[etr_db(_h1089,_h1090,_h1091,_h1092,_h1093)]
+  Log:   
+seqf(etr_delf(unlabeled,goal(event(d2),event(d1,[datime(1406288674,1),datime(1406288674,1)]),event(d0))),seqf(less(datime(1406288674,1),datime(1406288678,1)),seqf(check_event_rule_conditions(unlabeled,d0,[datime(1406288674,1),datime(1406288678,1)]),event(d0,[datime(1406288674,1),datime(1406288678,1)]))))
+See database:
+[etr_db(_h1293,_h1294,_h1295,_h1296,_h1297)]
+  Log:   
+etr_delf(unlabeled,goal(event(d2),event(d1,[datime(1406288674,1),datime(1406288674,1)]),event(d0)))
+See database:
+[]
+  Log:   
+seqf(less(datime(1406288674,1),datime(1406288678,1)),seqf(check_event_rule_conditions(unlabeled,d0,[datime(1406288674,1),datime(1406288678,1)]),event(d0,[datime(1406288674,1),datime(1406288678,1)])))
+See database:
+[]
+  Log:   
+less(datime(1406288674,1),datime(1406288678,1))
+See database:
+[]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,d0,[datime(1406288674,1),datime(1406288678,1)]),event(d0,[datime(1406288674,1),datime(1406288678,1)]))
+See database:
+[]
+  Log:   
+check_event_rule_conditions(unlabeled,d0,[datime(1406288674,1),datime(1406288678,1)])
+See database:
+[]
+  Log:   
+event(d0,[datime(1406288674,1),datime(1406288678,1)])
+See database:
+[]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,d,[datime(1406288674,1),datime(1406288678,1)]),event(d,[datime(1406288674,1),datime(1406288678,1)]))
+See database:
+[]
+  Log:   
+check_event_rule_conditions(unlabeled,d,[datime(1406288674,1),datime(1406288678,1)])
+See database:
+[]
+  Log:   
+event(d,[datime(1406288674,1),datime(1406288678,1)])
+See database:
+[]
+  Log:   
+event(a,[datime(1406289300,1),datime(1406289300,1)])
+See database:
+[]
+  Log:   
+etr_insf(unlabeled,goal(event(b),event(a,[datime(1406289300,1),datime(1406289300,1)]),event(a(1))))
+See database:
+[etr_db(_h329,_h330,_h331,_h332,_h333)]
+  Log:   
+event(b,[datime(1406289304,1),datime(1406289304,1)])
+See database:
+[etr_db(_h542,_h543,_h544,_h545,_h546)]
+  Log:   
+seqf(etr_dbf(unlabeled,goal(event(b),event(a,[_h203,_h205]),event(a(1)))),seqf(etr_delf(unlabeled,goal(event(b),event(a,[_h203,_h205]),event(a(1)))),seqf(less(_h205,datime(1406289304,1)),seqf(check_event_rule_conditions(unlabeled,a(1),[_h203,datime(1406289304,1)]),event(a(1),[_h203,datime(1406289304,1)])))))
+See database:
+[etr_db(_h746,_h747,_h748,_h749,_h750)]
+  Log:   
+etr_dbf(unlabeled,goal(event(b),event(a,[_h203,_h205]),event(a(1))))
+See database:
+[etr_db(_h964,_h965,_h966,_h967,_h968)]
+  Log:   
+seqf(etr_delf(unlabeled,goal(event(b),event(a,[datime(1406289300,1),datime(1406289300,1)]),event(a(1)))),seqf(less(datime(1406289300,1),datime(1406289304,1)),seqf(check_event_rule_conditions(unlabeled,a(1),[datime(1406289300,1),datime(1406289304,1)]),event(a(1),[datime(1406289300,1),datime(1406289304,1)]))))
+See database:
+[etr_db(_h1168,_h1169,_h1170,_h1171,_h1172)]
+  Log:   
+etr_delf(unlabeled,goal(event(b),event(a,[datime(1406289300,1),datime(1406289300,1)]),event(a(1))))
+See database:
+[]
+  Log:   
+seqf(less(datime(1406289300,1),datime(1406289304,1)),seqf(check_event_rule_conditions(unlabeled,a(1),[datime(1406289300,1),datime(1406289304,1)]),event(a(1),[datime(1406289300,1),datime(1406289304,1)])))
+See database:
+[]
+  Log:   
+less(datime(1406289300,1),datime(1406289304,1))
+See database:
+[]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,a(1),[datime(1406289300,1),datime(1406289304,1)]),event(a(1),[datime(1406289300,1),datime(1406289304,1)]))
+See database:
+[]
+  Log:   
+check_event_rule_conditions(unlabeled,a(1),[datime(1406289300,1),datime(1406289304,1)])
+See database:
+[]
+  Log:   
+event(a(1),[datime(1406289300,1),datime(1406289304,1)])
+See database:
+[]
+  Log:   
+etr_insf(unlabeled,goal(event(b(_h2271)),event(a(1),[datime(1406289300,1),datime(1406289304,1)]),event(temp_e_1(a(1),b(_h2271)))))
+See database:
+[etr_db(_h375,_h376,_h377,_h378,_h379)]
+  Log:   
+event(b(2),[datime(1406289325,1),datime(1406289325,1)])
+See database:
+[etr_db(_h588,_h589,_h590,_h591,_h592)]
+  Log:   
+seqf(etr_dbf(unlabeled,goal(event(b(2)),event(a(_h224),[_h225,_h227]),event(temp_e_1(a(_h224),b(2))))),seqf(etr_delf(unlabeled,goal(event(b(2)),event(a(_h224),[_h225,_h227]),event(temp_e_1(a(_h224),b(2))))),seqf(less(_h227,datime(1406289325,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_1(a(_h224),b(2)),[_h225,datime(1406289325,1)]),event(temp_e_1(a(_h224),b(2)),[_h225,datime(1406289325,1)])))))
+See database:
+[etr_db(_h792,_h793,_h794,_h795,_h796)]
+  Log:   
+etr_dbf(unlabeled,goal(event(b(2)),event(a(_h224),[_h225,_h227]),event(temp_e_1(a(_h224),b(2)))))
+See database:
+[etr_db(_h1010,_h1011,_h1012,_h1013,_h1014)]
+  Log:   
+seqf(etr_delf(unlabeled,goal(event(b(2)),event(a(1),[datime(1406289300,1),datime(1406289304,1)]),event(temp_e_1(a(1),b(2))))),seqf(less(datime(1406289304,1),datime(1406289325,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)]),event(temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)]))))
+See database:
+[etr_db(_h1214,_h1215,_h1216,_h1217,_h1218)]
+  Log:   
+etr_delf(unlabeled,goal(event(b(2)),event(a(1),[datime(1406289300,1),datime(1406289304,1)]),event(temp_e_1(a(1),b(2)))))
+See database:
+[]
+  Log:   
+seqf(less(datime(1406289304,1),datime(1406289325,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)]),event(temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)])))
+See database:
+[]
+  Log:   
+less(datime(1406289304,1),datime(1406289325,1))
+See database:
+[]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)]),event(temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)]))
+See database:
+[]
+  Log:   
+check_event_rule_conditions(unlabeled,temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)])
+See database:
+[]
+  Log:   
+event(temp_e_1(a(1),b(2)),[datime(1406289300,1),datime(1406289325,1)])
+See database:
+[]
+  Log:   
+seqf(prolog(1 < 2),seqf(check_event_rule_conditions(unlabeled,temp_e_2(temp_e_1(a(1),b(2)),1 < 2),[datime(1406289300,1),datime(1406289325,1)]),event(temp_e_2(temp_e_1(a(1),b(2)),1 < 2),[datime(1406289300,1),datime(1406289325,1)])))
+See database:
+[]
+  Log:   
+prolog(1 < 2)
+See database:
+[]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,temp_e_2(temp_e_1(a(1),b(2)),1 < 2),[datime(1406289300,1),datime(1406289325,1)]),event(temp_e_2(temp_e_1(a(1),b(2)),1 < 2),[datime(1406289300,1),datime(1406289325,1)]))
+See database:
+[]
+  Log:   
+check_event_rule_conditions(unlabeled,temp_e_2(temp_e_1(a(1),b(2)),1 < 2),[datime(1406289300,1),datime(1406289325,1)])
+See database:
+[]
+  Log:   
+event(temp_e_2(temp_e_1(a(1),b(2)),1 < 2),[datime(1406289300,1),datime(1406289325,1)])
+See database:
+[]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,a(2),[datime(1406289300,1),datime(1406289325,1)]),event(a(2),[datime(1406289300,1),datime(1406289325,1)]))
+See database:
+[]
+  Log:   
+check_event_rule_conditions(unlabeled,a(2),[datime(1406289300,1),datime(1406289325,1)])
+See database:
+[]
+  Log:   
+event(a(2),[datime(1406289300,1),datime(1406289325,1)])
+See database:
+[]
+  Log:   
+etr_insf(unlabeled,goal(event(b(_h4181)),event(a(2),[datime(1406289300,1),datime(1406289325,1)]),event(temp_e_1(a(2),b(_h4181)))))
+See database:
+[etr_db(_h302,_h303,_h304,_h305,_h306)]
+  Log:   
+event(f(2),[datime(1406289341,1),datime(1406289341,1)])
+See database:
+[etr_db(_h515,_h516,_h517,_h518,_h519)]
+  Log:   
+etr_insf(unlabeled,goal(event(g(_h216)),event(f(2),[datime(1406289341,1),datime(1406289341,1)]),event(temp_e_3(f(2),g(_h216)))))
+See database:
+[etr_db(_h375,_h376,_h377,_h378,_h379),etr_db(_h383,_h384,_h385,_h386,_h387)]
+  Log:   
+event(g(1),[datime(1406289350,1),datime(1406289350,1)])
+See database:
+[etr_db(_h596,_h597,_h598,_h599,_h600),etr_db(_h604,_h605,_h606,_h607,_h608)]
+  Log:   
+seqf(etr_dbf(unlabeled,goal(event(g(1)),event(f(_h224),[_h225,_h227]),event(temp_e_3(f(_h224),g(1))))),seqf(etr_delf(unlabeled,goal(event(g(1)),event(f(_h224),[_h225,_h227]),event(temp_e_3(f(_h224),g(1))))),seqf(less(_h227,datime(1406289350,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_3(f(_h224),g(1)),[_h225,datime(1406289350,1)]),event(temp_e_3(f(_h224),g(1)),[_h225,datime(1406289350,1)])))))
+See database:
+[etr_db(_h808,_h809,_h810,_h811,_h812),etr_db(_h816,_h817,_h818,_h819,_h820)]
+  Log:   
+etr_dbf(unlabeled,goal(event(g(1)),event(f(_h224),[_h225,_h227]),event(temp_e_3(f(_h224),g(1)))))
+See database:
+[etr_db(_h1034,_h1035,_h1036,_h1037,_h1038),etr_db(_h1042,_h1043,_h1044,_h1045,_h1046)]
+  Log:   
+seqf(etr_delf(unlabeled,goal(event(g(1)),event(f(2),[datime(1406289341,1),datime(1406289341,1)]),event(temp_e_3(f(2),g(1))))),seqf(less(datime(1406289341,1),datime(1406289350,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]),event(temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]))))
+See database:
+[etr_db(_h1246,_h1247,_h1248,_h1249,_h1250),etr_db(_h1254,_h1255,_h1256,_h1257,_h1258)]
+  Log:   
+etr_delf(unlabeled,goal(event(g(1)),event(f(2),[datime(1406289341,1),datime(1406289341,1)]),event(temp_e_3(f(2),g(1)))))
+See database:
+[etr_db(_h1502,_h1503,_h1504,_h1505,_h1506)]
+  Log:   
+seqf(less(datime(1406289341,1),datime(1406289350,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]),event(temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)])))
+See database:
+[etr_db(_h1706,_h1707,_h1708,_h1709,_h1710)]
+  Log:   
+less(datime(1406289341,1),datime(1406289350,1))
+See database:
+[etr_db(_h1910,_h1911,_h1912,_h1913,_h1914)]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]),event(temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]))
+See database:
+[etr_db(_h2115,_h2116,_h2117,_h2118,_h2119)]
+  Log:   
+check_event_rule_conditions(unlabeled,temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)])
+See database:
+[etr_db(_h2457,_h2458,_h2459,_h2460,_h2461)]
+  Log:   
+event(temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)])
+See database:
+[etr_db(_h2661,_h2662,_h2663,_h2664,_h2665)]
+  Log:   
+etr_insf(unlabeled,goal(event(h(_h2399)),event(temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]),event(temp_e_4(temp_e_3(f(2),g(1)),h(_h2399)))))
+See database:
+[etr_db(_h405,_h406,_h407,_h408,_h409),etr_db(_h413,_h414,_h415,_h416,_h417)]
+  Log:   
+event(h(1),[datime(1406289357,1),datime(1406289357,1)])
+See database:
+[etr_db(_h626,_h627,_h628,_h629,_h630),etr_db(_h634,_h635,_h636,_h637,_h638)]
+  Log:   
+seqf(etr_dbf(unlabeled,goal(event(h(1)),event(temp_e_3(f(_h227),g(_h229)),[_h230,_h232]),event(temp_e_4(temp_e_3(f(_h227),g(_h229)),h(1))))),seqf(etr_delf(unlabeled,goal(event(h(1)),event(temp_e_3(f(_h227),g(_h229)),[_h230,_h232]),event(temp_e_4(temp_e_3(f(_h227),g(_h229)),h(1))))),seqf(less(_h232,datime(1406289357,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_4(temp_e_3(f(_h227),g(_h229)),h(1)),[_h230,datime(1406289357,1)]),event(temp_e_4(temp_e_3(f(_h227),g(_h229)),h(1)),[_h230,datime(1406289357,1)])))))
+See database:
+[etr_db(_h838,_h839,_h840,_h841,_h842),etr_db(_h846,_h847,_h848,_h849,_h850)]
+  Log:   
+etr_dbf(unlabeled,goal(event(h(1)),event(temp_e_3(f(_h227),g(_h229)),[_h230,_h232]),event(temp_e_4(temp_e_3(f(_h227),g(_h229)),h(1)))))
+See database:
+[etr_db(_h1064,_h1065,_h1066,_h1067,_h1068),etr_db(_h1072,_h1073,_h1074,_h1075,_h1076)]
+  Log:   
+seqf(etr_delf(unlabeled,goal(event(h(1)),event(temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]),event(temp_e_4(temp_e_3(f(2),g(1)),h(1))))),seqf(less(datime(1406289350,1),datime(1406289357,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)]),event(temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)]))))
+See database:
+[etr_db(_h1276,_h1277,_h1278,_h1279,_h1280),etr_db(_h1284,_h1285,_h1286,_h1287,_h1288)]
+  Log:   
+etr_delf(unlabeled,goal(event(h(1)),event(temp_e_3(f(2),g(1)),[datime(1406289341,1),datime(1406289350,1)]),event(temp_e_4(temp_e_3(f(2),g(1)),h(1)))))
+See database:
+[etr_db(_h1542,_h1543,_h1544,_h1545,_h1546)]
+  Log:   
+seqf(less(datime(1406289350,1),datime(1406289357,1)),seqf(check_event_rule_conditions(unlabeled,temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)]),event(temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)])))
+See database:
+[etr_db(_h1746,_h1747,_h1748,_h1749,_h1750)]
+  Log:   
+less(datime(1406289350,1),datime(1406289357,1))
+See database:
+[etr_db(_h1950,_h1951,_h1952,_h1953,_h1954)]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)]),event(temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)]))
+See database:
+[etr_db(_h2155,_h2156,_h2157,_h2158,_h2159)]
+  Log:   
+check_event_rule_conditions(unlabeled,temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)])
+See database:
+[etr_db(_h2525,_h2526,_h2527,_h2528,_h2529)]
+  Log:   
+event(temp_e_4(temp_e_3(f(2),g(1)),h(1)),[datime(1406289341,1),datime(1406289357,1)])
+See database:
+[etr_db(_h2729,_h2730,_h2731,_h2732,_h2733)]
+  Log:   
+seqf(prolog(2 > 1),seqf(check_event_rule_conditions(unlabeled,temp_e_5(temp_e_4(temp_e_3(f(2),g(1)),h(1)),2 > 1),[datime(1406289341,1),datime(1406289357,1)]),event(temp_e_5(temp_e_4(temp_e_3(f(2),g(1)),h(1)),2 > 1),[datime(1406289341,1),datime(1406289357,1)])))
+See database:
+[etr_db(_h2932,_h2933,_h2934,_h2935,_h2936)]
+  Log:   
+prolog(2 > 1)
+See database:
+[etr_db(_h3136,_h3137,_h3138,_h3139,_h3140)]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,temp_e_5(temp_e_4(temp_e_3(f(2),g(1)),h(1)),2 > 1),[datime(1406289341,1),datime(1406289357,1)]),event(temp_e_5(temp_e_4(temp_e_3(f(2),g(1)),h(1)),2 > 1),[datime(1406289341,1),datime(1406289357,1)]))
+See database:
+[etr_db(_h3341,_h3342,_h3343,_h3344,_h3345)]
+  Log:   
+check_event_rule_conditions(unlabeled,temp_e_5(temp_e_4(temp_e_3(f(2),g(1)),h(1)),2 > 1),[datime(1406289341,1),datime(1406289357,1)])
+See database:
+[etr_db(_h3677,_h3678,_h3679,_h3680,_h3681)]
+  Log:   
+event(temp_e_5(temp_e_4(temp_e_3(f(2),g(1)),h(1)),2 > 1),[datime(1406289341,1),datime(1406289357,1)])
+See database:
+[etr_db(_h3881,_h3882,_h3883,_h3884,_h3885)]
+  Log:   
+seqf(check_event_rule_conditions(unlabeled,c(2),[datime(1406289341,1),datime(1406289357,1)]),event(c(2),[datime(1406289341,1),datime(1406289357,1)]))
+See database:
+[etr_db(_h4086,_h4087,_h4088,_h4089,_h4090)]
+  Log:   
+check_event_rule_conditions(unlabeled,c(2),[datime(1406289341,1),datime(1406289357,1)])
+See database:
+[etr_db(_h4394,_h4395,_h4396,_h4397,_h4398)]
+  Log:   
+event(c(2),[datime(1406289341,1),datime(1406289357,1)])

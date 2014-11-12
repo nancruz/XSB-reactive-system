@@ -1,0 +1,12 @@
+:- import profile_call/1 from xsb_profiling.
+test(EventFile):-
+	profile_call(test1(EventFile)).
+
+test1(EventFile):-
+	load_event_stream_file(EventFile,EventList),
+	repeat_fireEvent(EventList).
+
+repeat_fireEvent([H|T]):-
+	call(event(H)),
+	repeat_fireEvent(T).
+repeat_fireEvent([]).

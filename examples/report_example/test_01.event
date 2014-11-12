@@ -1,0 +1,7 @@
+print_trigger(_/_).
+
+a <- a0 seq a1.
+
+b(X,Y) <- b0(X) and b1(Y).
+
+c(X) <- c0(X) or c1(X) or c2(X).

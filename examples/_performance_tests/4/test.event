@@ -1,0 +1,16 @@
+patternMatch1(Id,X,Y) <-
+        a(Id,X) 'seq' 
+        b(Id,Y) 'where'
+        (Y<11).
+conj1(Id,X,Y) <-
+        a(Id,X) 'and' 
+        b(Id,Y) 'and'
+        c(Id,Z).		
+patternMatch3(Id) <- patternMatch1(ID,_,_) 'or' conj1(ID,_,_). 		
+print_trigger(patternMatch3/_).
+%print_trigger(_/_).
+
+on a(Id,X) --> if query(not a(Id,X)) ; then insert(a(Id,X)).
+on patternMatch1(Id,X,Y) --> if query(a(Id,X)) ; then remove(a(Id,X)).
+
+a(-1,-1).

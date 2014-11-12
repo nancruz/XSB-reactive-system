@@ -1,0 +1,370 @@
+0     [main] INFO  app.Logger  - Initializing the system...
+563   [main] INFO  translate.Logger  - Initialization done, it took:  557 milisec
+4067  [main] INFO  org.semanticweb.elk.reasoner.Reasoner  - ELK reasoner was created
+8771  [main] INFO  translate.Logger  - Running ELK Reasoner:  3182 milisec
+13559 [main] INFO  translate.Logger  - Translating:  3695 milisec
+13565 [main] INFO  translate.Logger  - Translate rules:  3 milisec
+14013 [main] INFO  translate.Logger  - Writing XSB file:  448 milisec
+17311 [main] INFO  translate.Logger  - Init translator done, it took:  11722 milisec
+++++++++++++++++++++++++++++++++++++++++++++++
+17365 [Thread-5] INFO  event.Logger  - EVENT: ins_critical(c1) @ [08/08/2014 15:50:03 , 08/08/2014 15:50:03]
+17450 [Thread-6] INFO  translate.Logger  - Query took:  1 milisec
+17660 [Thread-7] INFO  translate.Logger  - Running ELK Reasoner:  121 milisec
+19261 [Thread-7] INFO  translate.Logger  - Translating:  6 milisec
+21379 [Thread-7] INFO  translate.Logger  - Insertion took:  3846 milisec
+21460 [Thread-8] INFO  event.Logger  - EVENT: ins_critical(c2) @ [08/08/2014 15:50:07 , 08/08/2014 15:50:07]
+21623 [Thread-9] INFO  translate.Logger  - Query took:  84 milisec
+21741 [Thread-10] INFO  translate.Logger  - Running ELK Reasoner:  27 milisec
+22067 [Thread-10] INFO  translate.Logger  - Translating:  1 milisec
+24223 [Thread-10] INFO  translate.Logger  - Insertion took:  2510 milisec
+24306 [Thread-11] INFO  event.Logger  - EVENT: ins_critical(c3) @ [08/08/2014 15:50:10 , 08/08/2014 15:50:10]
+24472 [Thread-12] INFO  translate.Logger  - Query took:  79 milisec
+24576 [Thread-13] INFO  translate.Logger  - Running ELK Reasoner:  23 milisec
+25577 [Thread-13] INFO  translate.Logger  - Translating:  0 milisec
+27703 [Thread-13] INFO  translate.Logger  - Insertion took:  3150 milisec
+27785 [Thread-14] INFO  event.Logger  - EVENT: ins_critical(c4) @ [08/08/2014 15:50:14 , 08/08/2014 15:50:14]
+27948 [Thread-15] INFO  translate.Logger  - Query took:  79 milisec
+28055 [Thread-16] INFO  translate.Logger  - Running ELK Reasoner:  26 milisec
+28431 [Thread-16] INFO  translate.Logger  - Translating:  0 milisec
+30579 [Thread-16] INFO  translate.Logger  - Insertion took:  2550 milisec
+30661 [Thread-17] INFO  event.Logger  - EVENT: ins_critical(c5) @ [08/08/2014 15:50:17 , 08/08/2014 15:50:17]
+30831 [Thread-18] INFO  translate.Logger  - Query took:  82 milisec
+30927 [Thread-19] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+31239 [Thread-19] INFO  translate.Logger  - Translating:  0 milisec
+33364 [Thread-19] INFO  translate.Logger  - Insertion took:  2450 milisec
+33445 [Thread-20] INFO  event.Logger  - EVENT: ins_critical(c6) @ [08/08/2014 15:50:19 , 08/08/2014 15:50:19]
+33637 [Thread-21] INFO  translate.Logger  - Query took:  86 milisec
+33761 [Thread-22] INFO  translate.Logger  - Running ELK Reasoner:  44 milisec
+34132 [Thread-22] INFO  translate.Logger  - Translating:  0 milisec
+36259 [Thread-22] INFO  translate.Logger  - Insertion took:  2542 milisec
+36345 [Thread-23] INFO  event.Logger  - EVENT: ins_critical(c7) @ [08/08/2014 15:50:22 , 08/08/2014 15:50:22]
+36513 [Thread-24] INFO  translate.Logger  - Query took:  83 milisec
+36604 [Thread-25] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+36962 [Thread-25] INFO  translate.Logger  - Translating:  0 milisec
+39115 [Thread-25] INFO  translate.Logger  - Insertion took:  2522 milisec
+39197 [Thread-26] INFO  event.Logger  - EVENT: ins_critical(c8) @ [08/08/2014 15:50:25 , 08/08/2014 15:50:25]
+39359 [Thread-27] INFO  translate.Logger  - Query took:  79 milisec
+39450 [Thread-28] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+39751 [Thread-28] INFO  translate.Logger  - Translating:  1 milisec
+41871 [Thread-28] INFO  translate.Logger  - Insertion took:  2431 milisec
+41953 [Thread-29] INFO  event.Logger  - EVENT: ins_critical(c9) @ [08/08/2014 15:50:28 , 08/08/2014 15:50:28]
+42119 [Thread-30] INFO  translate.Logger  - Query took:  82 milisec
+42211 [Thread-31] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+42573 [Thread-31] INFO  translate.Logger  - Translating:  0 milisec
+44727 [Thread-31] INFO  translate.Logger  - Insertion took:  2527 milisec
+44809 [Thread-32] INFO  event.Logger  - EVENT: ins_critical(c10) @ [08/08/2014 15:50:31 , 08/08/2014 15:50:31]
+44976 [Thread-33] INFO  translate.Logger  - Query took:  84 milisec
+45068 [Thread-34] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+45424 [Thread-34] INFO  translate.Logger  - Translating:  1 milisec
+47559 [Thread-34] INFO  translate.Logger  - Insertion took:  2502 milisec
+47641 [Thread-35] INFO  event.Logger  - EVENT: ins_five(f1) @ [08/08/2014 15:50:34 , 08/08/2014 15:50:34]
+47748 [Thread-36] INFO  translate.Logger  - Query took:  1 milisec
+47836 [Thread-37] INFO  translate.Logger  - Running ELK Reasoner:  8 milisec
+48137 [Thread-37] INFO  translate.Logger  - Translating:  0 milisec
+48339 [Thread-37] INFO  translate.Logger  - Insertion took:  512 milisec
+48421 [Thread-38] INFO  event.Logger  - EVENT: ins_five(f2) @ [08/08/2014 15:50:34 , 08/08/2014 15:50:34]
+48588 [Thread-39] INFO  translate.Logger  - Query took:  84 milisec
+48677 [Thread-40] INFO  translate.Logger  - Running ELK Reasoner:  8 milisec
+49045 [Thread-40] INFO  translate.Logger  - Translating:  0 milisec
+49247 [Thread-40] INFO  translate.Logger  - Insertion took:  578 milisec
+49329 [Thread-41] INFO  event.Logger  - EVENT: ins_five(f3) @ [08/08/2014 15:50:35 , 08/08/2014 15:50:35]
+49500 [Thread-42] INFO  translate.Logger  - Query took:  87 milisec
+49597 [Thread-43] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+49956 [Thread-43] INFO  translate.Logger  - Translating:  0 milisec
+50163 [Thread-43] INFO  translate.Logger  - Insertion took:  578 milisec
+50245 [Thread-44] INFO  event.Logger  - EVENT: ins_five(f4) @ [08/08/2014 15:50:36 , 08/08/2014 15:50:36]
+50411 [Thread-45] INFO  translate.Logger  - Query took:  83 milisec
+50503 [Thread-46] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+50799 [Thread-46] INFO  translate.Logger  - Translating:  0 milisec
+51003 [Thread-46] INFO  translate.Logger  - Insertion took:  511 milisec
+51084 [Thread-47] INFO  event.Logger  - EVENT: ins_five(f5) @ [08/08/2014 15:50:37 , 08/08/2014 15:50:37]
+51248 [Thread-48] INFO  translate.Logger  - Query took:  84 milisec
+51339 [Thread-49] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+51711 [Thread-49] INFO  translate.Logger  - Translating:  0 milisec
+51914 [Thread-49] INFO  translate.Logger  - Insertion took:  586 milisec
+51999 [Thread-50] INFO  event.Logger  - EVENT: ins_five(f6) @ [08/08/2014 15:50:38 , 08/08/2014 15:50:38]
+52169 [Thread-51] INFO  translate.Logger  - Query took:  88 milisec
+52266 [Thread-52] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+52573 [Thread-52] INFO  translate.Logger  - Translating:  0 milisec
+52807 [Thread-52] INFO  translate.Logger  - Insertion took:  554 milisec
+52889 [Thread-53] INFO  event.Logger  - EVENT: ins_five(f7) @ [08/08/2014 15:50:39 , 08/08/2014 15:50:39]
+53048 [Thread-54] INFO  translate.Logger  - Query took:  81 milisec
+53138 [Thread-55] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+53499 [Thread-55] INFO  translate.Logger  - Translating:  0 milisec
+53703 [Thread-55] INFO  translate.Logger  - Insertion took:  576 milisec
+53785 [Thread-56] INFO  event.Logger  - EVENT: ins_five(f8) @ [08/08/2014 15:50:40 , 08/08/2014 15:50:40]
+53948 [Thread-57] INFO  translate.Logger  - Query took:  84 milisec
+54040 [Thread-58] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+54402 [Thread-58] INFO  translate.Logger  - Translating:  0 milisec
+54607 [Thread-58] INFO  translate.Logger  - Insertion took:  579 milisec
+54689 [Thread-59] INFO  event.Logger  - EVENT: ins_five(f9) @ [08/08/2014 15:50:41 , 08/08/2014 15:50:41]
+54852 [Thread-60] INFO  translate.Logger  - Query took:  84 milisec
+54950 [Thread-61] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+55254 [Thread-61] INFO  translate.Logger  - Translating:  0 milisec
+55459 [Thread-61] INFO  translate.Logger  - Insertion took:  522 milisec
+55545 [Thread-62] INFO  event.Logger  - EVENT: ins_five(f10) @ [08/08/2014 15:50:41 , 08/08/2014 15:50:41]
+55708 [Thread-63] INFO  translate.Logger  - Query took:  80 milisec
+55802 [Thread-64] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+56167 [Thread-64] INFO  translate.Logger  - Translating:  0 milisec
+56375 [Thread-64] INFO  translate.Logger  - Insertion took:  586 milisec
+56457 [Thread-65] INFO  event.Logger  - EVENT: ins_app(a1) @ [08/08/2014 15:50:42 , 08/08/2014 15:50:42]
+56535 [Thread-66] INFO  translate.Logger  - Query took:  0 milisec
+56631 [Thread-67] INFO  translate.Logger  - Running ELK Reasoner:  15 milisec
+56933 [Thread-67] INFO  translate.Logger  - Translating:  0 milisec
+57299 [Thread-67] INFO  translate.Logger  - Insertion took:  683 milisec
+57381 [Thread-68] INFO  event.Logger  - EVENT: ins_app(a2) @ [08/08/2014 15:50:43 , 08/08/2014 15:50:43]
+57568 [Thread-69] INFO  translate.Logger  - Query took:  83 milisec
+57661 [Thread-70] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+58024 [Thread-70] INFO  translate.Logger  - Translating:  0 milisec
+58395 [Thread-70] INFO  translate.Logger  - Insertion took:  747 milisec
+58477 [Thread-71] INFO  event.Logger  - EVENT: ins_app(a3) @ [08/08/2014 15:50:44 , 08/08/2014 15:50:44]
+58636 [Thread-72] INFO  translate.Logger  - Query took:  80 milisec
+58729 [Thread-73] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+59098 [Thread-73] INFO  translate.Logger  - Translating:  0 milisec
+59463 [Thread-73] INFO  translate.Logger  - Insertion took:  747 milisec
+59545 [Thread-74] INFO  event.Logger  - EVENT: ins_app(a4) @ [08/08/2014 15:50:45 , 08/08/2014 15:50:45]
+59708 [Thread-75] INFO  translate.Logger  - Query took:  80 milisec
+59796 [Thread-76] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+60094 [Thread-76] INFO  translate.Logger  - Translating:  0 milisec
+60463 [Thread-76] INFO  translate.Logger  - Insertion took:  676 milisec
+60545 [Thread-77] INFO  event.Logger  - EVENT: ins_app(a5) @ [08/08/2014 15:50:46 , 08/08/2014 15:50:46]
+60712 [Thread-78] INFO  translate.Logger  - Query took:  80 milisec
+60806 [Thread-79] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+61165 [Thread-79] INFO  translate.Logger  - Translating:  0 milisec
+61535 [Thread-79] INFO  translate.Logger  - Insertion took:  743 milisec
+61617 [Thread-80] INFO  event.Logger  - EVENT: ins_app(a6) @ [08/08/2014 15:50:48 , 08/08/2014 15:50:48]
+61780 [Thread-81] INFO  translate.Logger  - Query took:  84 milisec
+61873 [Thread-82] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+62167 [Thread-82] INFO  translate.Logger  - Translating:  0 milisec
+62559 [Thread-82] INFO  translate.Logger  - Insertion took:  699 milisec
+62642 [Thread-83] INFO  event.Logger  - EVENT: ins_app(a7) @ [08/08/2014 15:50:49 , 08/08/2014 15:50:49]
+62803 [Thread-84] INFO  translate.Logger  - Query took:  79 milisec
+62890 [Thread-85] INFO  translate.Logger  - Running ELK Reasoner:  7 milisec
+63252 [Thread-85] INFO  translate.Logger  - Translating:  0 milisec
+63619 [Thread-85] INFO  translate.Logger  - Insertion took:  736 milisec
+63701 [Thread-86] INFO  event.Logger  - EVENT: ins_app(a8) @ [08/08/2014 15:50:50 , 08/08/2014 15:50:50]
+63860 [Thread-87] INFO  translate.Logger  - Query took:  80 milisec
+63951 [Thread-88] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+64331 [Thread-88] INFO  translate.Logger  - Translating:  0 milisec
+64703 [Thread-88] INFO  translate.Logger  - Insertion took:  763 milisec
+64785 [Thread-89] INFO  event.Logger  - EVENT: ins_app(a9) @ [08/08/2014 15:50:51 , 08/08/2014 15:50:51]
+64943 [Thread-90] INFO  translate.Logger  - Query took:  79 milisec
+65033 [Thread-91] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+65334 [Thread-91] INFO  translate.Logger  - Translating:  0 milisec
+65711 [Thread-91] INFO  translate.Logger  - Insertion took:  687 milisec
+65793 [Thread-92] INFO  event.Logger  - EVENT: ins_app(a10) @ [08/08/2014 15:50:52 , 08/08/2014 15:50:52]
+65956 [Thread-93] INFO  translate.Logger  - Query took:  84 milisec
+66049 [Thread-94] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+66390 [Thread-94] INFO  translate.Logger  - Translating:  0 milisec
+66755 [Thread-94] INFO  translate.Logger  - Insertion took:  716 milisec
+66837 [Thread-95] INFO  event.Logger  - EVENT: ins_r(r1) @ [08/08/2014 15:50:53 , 08/08/2014 15:50:53]
+66948 [Thread-96] INFO  translate.Logger  - Query took:  0 milisec
+67267 [Thread-97] INFO  translate.Logger  - Insertion took:  239 milisec
+67353 [Thread-98] INFO  event.Logger  - EVENT: ins_r(r2) @ [08/08/2014 15:50:53 , 08/08/2014 15:50:53]
+67511 [Thread-99] INFO  translate.Logger  - Query took:  79 milisec
+67839 [Thread-100] INFO  translate.Logger  - Insertion took:  247 milisec
+67919 [Thread-101] INFO  event.Logger  - EVENT: ins_r(r3) @ [08/08/2014 15:50:54 , 08/08/2014 15:50:54]
+68079 [Thread-102] INFO  translate.Logger  - Query took:  80 milisec
+
+68407 [Thread-103] INFO  translate.Logger  - Insertion took:  248 milisec
+68490 [Thread-104] INFO  event.Logger  - EVENT: ins_r(r4) @ [08/08/2014 15:50:54 , 08/08/2014 15:50:54]
+68656 [Thread-105] INFO  translate.Logger  - Query took:  81 milisec
+68983 [Thread-106] INFO  translate.Logger  - Insertion took:  243 milisec
+69065 [Thread-107] INFO  event.Logger  - EVENT: ins_r(r5) @ [08/08/2014 15:50:55 , 08/08/2014 15:50:55]
+69224 [Thread-108] INFO  translate.Logger  - Query took:  80 milisec
+69547 [Thread-109] INFO  translate.Logger  - Insertion took:  243 milisec
+69629 [Thread-110] INFO  event.Logger  - EVENT: ins_r(r6) @ [08/08/2014 15:50:56 , 08/08/2014 15:50:56]
+69792 [Thread-111] INFO  translate.Logger  - Query took:  84 milisec
+70147 [Thread-112] INFO  translate.Logger  - Insertion took:  275 milisec
+70229 [Thread-113] INFO  event.Logger  - EVENT: ins_r(r7) @ [08/08/2014 15:50:56 , 08/08/2014 15:50:56]
+70388 [Thread-114] INFO  translate.Logger  - Query took:  81 milisec
+70711 [Thread-115] INFO  translate.Logger  - Insertion took:  242 milisec
+70797 [Thread-116] INFO  event.Logger  - EVENT: ins_r(r8) @ [08/08/2014 15:50:57 , 08/08/2014 15:50:57]
+70960 [Thread-117] INFO  translate.Logger  - Query took:  80 milisec
+71283 [Thread-118] INFO  translate.Logger  - Insertion took:  243 milisec
+71365 [Thread-119] INFO  event.Logger  - EVENT: ins_r(r9) @ [08/08/2014 15:50:57 , 08/08/2014 15:50:57]
+71536 [Thread-120] INFO  translate.Logger  - Query took:  88 milisec
+71859 [Thread-121] INFO  translate.Logger  - Insertion took:  243 milisec
+71941 [Thread-122] INFO  event.Logger  - EVENT: ins_r(r10) @ [08/08/2014 15:50:58 , 08/08/2014 15:50:58]
+72107 [Thread-123] INFO  translate.Logger  - Query took:  82 milisec
+72435 [Thread-124] INFO  translate.Logger  - Insertion took:  246 milisec
+72517 [Thread-125] INFO  event.Logger  - EVENT: rem_critical(c1) @ [08/08/2014 15:50:58 , 08/08/2014 15:50:58]
+72676 [Thread-126] INFO  translate.Logger  - Query took:  80 milisec
+72789 [Thread-127] INFO  translate.Logger  - Running ELK Reasoner:  25 milisec
+73109 [Thread-127] INFO  translate.Logger  - Translating:  0 milisec
+74223 [Thread-127] INFO  translate.Logger  - Removal took:  1463 milisec
+74305 [Thread-128] INFO  event.Logger  - EVENT: rem_critical(c2) @ [08/08/2014 15:51:00 , 08/08/2014 15:51:00]
+74472 [Thread-129] INFO  translate.Logger  - Query took:  84 milisec
+74570 [Thread-130] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+74905 [Thread-130] INFO  translate.Logger  - Translating:  0 milisec
+75991 [Thread-130] INFO  translate.Logger  - Removal took:  1435 milisec
+76072 [Thread-131] INFO  event.Logger  - EVENT: rem_critical(c3) @ [08/08/2014 15:51:02 , 08/08/2014 15:51:02]
+76235 [Thread-132] INFO  translate.Logger  - Query took:  84 milisec
+76326 [Thread-133] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+76695 [Thread-133] INFO  translate.Logger  - Translating:  0 milisec
+77779 [Thread-133] INFO  translate.Logger  - Removal took:  1463 milisec
+77868 [Thread-134] INFO  event.Logger  - EVENT: rem_critical(c4) @ [08/08/2014 15:51:04 , 08/08/2014 15:51:04]
+78028 [Thread-135] INFO  translate.Logger  - Query took:  80 milisec
+78122 [Thread-136] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+78415 [Thread-136] INFO  translate.Logger  - Translating:  0 milisec
+79507 [Thread-136] INFO  translate.Logger  - Removal took:  1399 milisec
+79589 [Thread-137] INFO  event.Logger  - EVENT: rem_critical(c5) @ [08/08/2014 15:51:06 , 08/08/2014 15:51:06]
+79752 [Thread-138] INFO  translate.Logger  - Query took:  83 milisec
+79841 [Thread-139] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+80178 [Thread-139] INFO  translate.Logger  - Translating:  0 milisec
+81267 [Thread-139] INFO  translate.Logger  - Removal took:  1435 milisec
+81349 [Thread-140] INFO  event.Logger  - EVENT: rem_critical(c6) @ [08/08/2014 15:51:07 , 08/08/2014 15:51:07]
+81512 [Thread-141] INFO  translate.Logger  - Query took:  84 milisec
+81602 [Thread-142] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+81905 [Thread-142] INFO  translate.Logger  - Translating:  1 milisec
+83003 [Thread-142] INFO  translate.Logger  - Removal took:  1411 milisec
+83085 [Thread-143] INFO  event.Logger  - EVENT: rem_critical(c7) @ [08/08/2014 15:51:09 , 08/08/2014 15:51:09]
+83251 [Thread-144] INFO  translate.Logger  - Query took:  83 milisec
+83342 [Thread-145] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+83680 [Thread-145] INFO  translate.Logger  - Translating:  1 milisec
+84767 [Thread-145] INFO  translate.Logger  - Removal took:  1435 milisec
+84849 [Thread-146] INFO  event.Logger  - EVENT: rem_critical(c8) @ [08/08/2014 15:51:11 , 08/08/2014 15:51:11]
+85012 [Thread-147] INFO  translate.Logger  - Query took:  84 milisec
+85106 [Thread-148] INFO  translate.Logger  - Running ELK Reasoner:  14 milisec
+85410 [Thread-148] INFO  translate.Logger  - Translating:  0 milisec
+86495 [Thread-148] INFO  translate.Logger  - Removal took:  1403 milisec
+86585 [Thread-149] INFO  event.Logger  - EVENT: rem_critical(c9) @ [08/08/2014 15:51:13 , 08/08/2014 15:51:13]
+86748 [Thread-150] INFO  translate.Logger  - Query took:  83 milisec
+86837 [Thread-151] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+87172 [Thread-151] INFO  translate.Logger  - Translating:  0 milisec
+88259 [Thread-151] INFO  translate.Logger  - Removal took:  1431 milisec
+88341 [Thread-152] INFO  event.Logger  - EVENT: rem_critical(c10) @ [08/08/2014 15:51:14 , 08/08/2014 15:51:14]
+88500 [Thread-153] INFO  translate.Logger  - Query took:  79 milisec
+88590 [Thread-154] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+88935 [Thread-154] INFO  translate.Logger  - Translating:  0 milisec
+90015 [Thread-154] INFO  translate.Logger  - Removal took:  1434 milisec
+90097 [Thread-155] INFO  event.Logger  - EVENT: rem_five(f1) @ [08/08/2014 15:51:16 , 08/08/2014 15:51:16]
+90263 [Thread-156] INFO  translate.Logger  - Query took:  83 milisec
+90353 [Thread-157] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+90648 [Thread-157] INFO  translate.Logger  - Translating:  0 milisec
+90775 [Thread-157] INFO  translate.Logger  - Removal took:  431 milisec
+90858 [Thread-158] INFO  event.Logger  - EVENT: rem_five(f2) @ [08/08/2014 15:51:17 , 08/08/2014 15:51:17]
+91028 [Thread-159] INFO  translate.Logger  - Query took:  81 milisec
+91119 [Thread-160] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+91450 [Thread-160] INFO  translate.Logger  - Translating:  0 milisec
+91579 [Thread-160] INFO  translate.Logger  - Removal took:  470 milisec
+91661 [Thread-161] INFO  event.Logger  - EVENT: rem_five(f3) @ [08/08/2014 15:51:18 , 08/08/2014 15:51:18]
+91824 [Thread-162] INFO  translate.Logger  - Query took:  81 milisec
+91916 [Thread-163] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+92212 [Thread-163] INFO  translate.Logger  - Translating:  0 milisec
+92339 [Thread-163] INFO  translate.Logger  - Removal took:  435 milisec
+92421 [Thread-164] INFO  event.Logger  - EVENT: rem_five(f4) @ [08/08/2014 15:51:18 , 08/08/2014 15:51:18]
+92584 [Thread-165] INFO  translate.Logger  - Query took:  81 milisec
+92675 [Thread-166] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+93019 [Thread-166] INFO  translate.Logger  - Translating:  0 milisec
+93143 [Thread-166] INFO  translate.Logger  - Removal took:  480 milisec
+93229 [Thread-167] INFO  event.Logger  - EVENT: rem_five(f5) @ [08/08/2014 15:51:19 , 08/08/2014 15:51:19]
+93396 [Thread-168] INFO  translate.Logger  - Query took:  85 milisec
+93488 [Thread-169] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+93794 [Thread-169] INFO  translate.Logger  - Translating:  0 milisec
+93919 [Thread-169] INFO  translate.Logger  - Removal took:  442 milisec
+94001 [Thread-170] INFO  event.Logger  - EVENT: rem_five(f6) @ [08/08/2014 15:51:20 , 08/08/2014 15:51:20]
+94160 [Thread-171] INFO  translate.Logger  - Query took:  81 milisec
+94251 [Thread-172] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+94589 [Thread-172] INFO  translate.Logger  - Translating:  0 milisec
+94711 [Thread-172] INFO  translate.Logger  - Removal took:  470 milisec
+94793 [Thread-173] INFO  event.Logger  - EVENT: rem_five(f7) @ [08/08/2014 15:51:21 , 08/08/2014 15:51:21]
+94952 [Thread-174] INFO  translate.Logger  - Query took:  81 milisec
+95042 [Thread-175] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+95403 [Thread-175] INFO  translate.Logger  - Translating:  0 milisec
+95526 [Thread-175] INFO  translate.Logger  - Removal took:  494 milisec
+95622 [Thread-176] INFO  event.Logger  - EVENT: rem_five(f8) @ [08/08/2014 15:51:22 , 08/08/2014 15:51:22]
+95792 [Thread-177] INFO  translate.Logger  - Query took:  84 milisec
+95883 [Thread-178] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+96169 [Thread-178] INFO  translate.Logger  - Translating:  0 milisec
+96294 [Thread-178] INFO  translate.Logger  - Removal took:  422 milisec
+96377 [Thread-179] INFO  event.Logger  - EVENT: rem_five(f9) @ [08/08/2014 15:51:22 , 08/08/2014 15:51:22]
+96540 [Thread-180] INFO  translate.Logger  - Query took:  81 milisec
+96631 [Thread-181] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+96965 [Thread-181] INFO  translate.Logger  - Translating:  1 milisec
+97091 [Thread-181] INFO  translate.Logger  - Removal took:  471 milisec
+97175 [Thread-182] INFO  event.Logger  - EVENT: rem_five(f10) @ [08/08/2014 15:51:23 , 08/08/2014 15:51:23]
+97340 [Thread-183] INFO  translate.Logger  - Query took:  81 milisec
+97430 [Thread-184] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+97720 [Thread-184] INFO  translate.Logger  - Translating:  1 milisec
+97846 [Thread-184] INFO  translate.Logger  - Removal took:  426 milisec
+97932 [Thread-185] INFO  event.Logger  - EVENT: rem_app(a1) @ [08/08/2014 15:51:24 , 08/08/2014 15:51:24]
+98096 [Thread-186] INFO  translate.Logger  - Query took:  83 milisec
+98189 [Thread-187] INFO  translate.Logger  - Running ELK Reasoner:  13 milisec
+98518 [Thread-187] INFO  translate.Logger  - Translating:  0 milisec
+98727 [Thread-187] INFO  translate.Logger  - Removal took:  551 milisec
+98809 [Thread-188] INFO  event.Logger  - EVENT: rem_app(a2) @ [08/08/2014 15:51:25 , 08/08/2014 15:51:25]
+98972 [Thread-189] INFO  translate.Logger  - Query took:  80 milisec
+99062 [Thread-190] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+99356 [Thread-190] INFO  translate.Logger  - Translating:  0 milisec
+99565 [Thread-190] INFO  translate.Logger  - Removal took:  513 milisec
+99649 [Thread-191] INFO  event.Logger  - EVENT: rem_app(a3) @ [08/08/2014 15:51:26 , 08/08/2014 15:51:26]
+99820 [Thread-192] INFO  translate.Logger  - Query took:  89 milisec
+99911 [Thread-193] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+100253 [Thread-193] INFO  translate.Logger  - Translating:  0 milisec
+100451 [Thread-193] INFO  translate.Logger  - Removal took:  552 milisec
+100533 [Thread-194] INFO  event.Logger  - EVENT: rem_app(a4) @ [08/08/2014 15:51:26 , 08/08/2014 15:51:26]
+100696 [Thread-195] INFO  translate.Logger  - Query took:  80 milisec
+100786 [Thread-196] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+101085 [Thread-196] INFO  translate.Logger  - Translating:  0 milisec
+101296 [Thread-196] INFO  translate.Logger  - Removal took:  520 milisec
+101377 [Thread-197] INFO  event.Logger  - EVENT: rem_app(a5) @ [08/08/2014 15:51:27 , 08/08/2014 15:51:27]
+101540 [Thread-198] INFO  translate.Logger  - Query took:  84 milisec
+101629 [Thread-199] INFO  translate.Logger  - Running ELK Reasoner:  9 milisec
+101965 [Thread-199] INFO  translate.Logger  - Translating:  0 milisec
+102167 [Thread-199] INFO  translate.Logger  - Removal took:  547 milisec
+102249 [Thread-200] INFO  event.Logger  - EVENT: rem_app(a6) @ [08/08/2014 15:51:28 , 08/08/2014 15:51:28]
+102416 [Thread-201] INFO  translate.Logger  - Query took:  85 milisec
+102506 [Thread-202] INFO  translate.Logger  - Running ELK Reasoner:  10 milisec
+102838 [Thread-202] INFO  translate.Logger  - Translating:  0 milisec
+103039 [Thread-202] INFO  translate.Logger  - Removal took:  543 milisec
+103121 [Thread-203] INFO  event.Logger  - EVENT: rem_app(a7) @ [08/08/2014 15:51:29 , 08/08/2014 15:51:29]
+103280 [Thread-204] INFO  translate.Logger  - Query took:  81 milisec
+103372 [Thread-205] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+103666 [Thread-205] INFO  translate.Logger  - Translating:  0 milisec
+103871 [Thread-205] INFO  translate.Logger  - Removal took:  511 milisec
+103953 [Thread-206] INFO  event.Logger  - EVENT: rem_app(a8) @ [08/08/2014 15:51:30 , 08/08/2014 15:51:30]
+104120 [Thread-207] INFO  translate.Logger  - Query took:  84 milisec
+104232 [Thread-208] INFO  translate.Logger  - Running ELK Reasoner:  20 milisec
+104559 [Thread-208] INFO  translate.Logger  - Translating:  0 milisec
+104763 [Thread-208] INFO  translate.Logger  - Removal took:  551 milisec
+104845 [Thread-209] INFO  event.Logger  - EVENT: rem_app(a9) @ [08/08/2014 15:51:31 , 08/08/2014 15:51:31]
+105008 [Thread-210] INFO  translate.Logger  - Query took:  84 milisec
+105100 [Thread-211] INFO  translate.Logger  - Running ELK Reasoner:  12 milisec
+105394 [Thread-211] INFO  translate.Logger  - Translating:  0 milisec
+105600 [Thread-211] INFO  translate.Logger  - Removal took:  512 milisec
+105680 [Thread-212] INFO  event.Logger  - EVENT: rem_app(a10) @ [08/08/2014 15:51:32 , 08/08/2014 15:51:32]
+105840 [Thread-213] INFO  translate.Logger  - Query took:  80 milisec
+105931 [Thread-214] INFO  translate.Logger  - Running ELK Reasoner:  11 milisec
+106269 [Thread-214] INFO  translate.Logger  - Translating:  0 milisec
+106471 [Thread-214] INFO  translate.Logger  - Removal took:  551 milisec
+106554 [Thread-215] INFO  event.Logger  - EVENT: rem_r(r1) @ [08/08/2014 15:51:32 , 08/08/2014 15:51:32]
+106716 [Thread-216] INFO  translate.Logger  - Query took:  81 milisec
+106956 [Thread-217] INFO  translate.Logger  - Removal took:  160 milisec
+107037 [Thread-218] INFO  event.Logger  - EVENT: rem_r(r2) @ [08/08/2014 15:51:33 , 08/08/2014 15:51:33]
+107199 [Thread-219] INFO  translate.Logger  - Query took:  81 milisec
+107443 [Thread-220] INFO  translate.Logger  - Removal took:  163 milisec
+107529 [Thread-221] INFO  event.Logger  - EVENT: rem_r(r3) @ [08/08/2014 15:51:33 , 08/08/2014 15:51:33]
+107688 [Thread-222] INFO  translate.Logger  - Query took:  81 milisec
+107939 [Thread-223] INFO  translate.Logger  - Removal took:  167 milisec
+108021 [Thread-224] INFO  event.Logger  - EVENT: rem_r(r4) @ [08/08/2014 15:51:34 , 08/08/2014 15:51:34]
+108188 [Thread-225] INFO  translate.Logger  - Query took:  84 milisec
+108435 [Thread-226] INFO  translate.Logger  - Removal took:  166 milisec
+108517 [Thread-227] INFO  event.Logger  - EVENT: rem_r(r5) @ [08/08/2014 15:51:34 , 08/08/2014 15:51:34]
+108684 [Thread-228] INFO  translate.Logger  - Query took:  84 milisec
+108927 [Thread-229] INFO  translate.Logger  - Removal took:  163 milisec
+109009 [Thread-230] INFO  event.Logger  - EVENT: rem_r(r6) @ [08/08/2014 15:51:35 , 08/08/2014 15:51:35]
+109172 [Thread-231] INFO  translate.Logger  - Query took:  84 milisec
+109411 [Thread-232] INFO  translate.Logger  - Removal took:  159 milisec
+109493 [Thread-233] INFO  event.Logger  - EVENT: rem_r(r7) @ [08/08/2014 15:51:35 , 08/08/2014 15:51:35]
+109656 [Thread-234] INFO  translate.Logger  - Query took:  84 milisec
+109895 [Thread-235] INFO  translate.Logger  - Removal took:  159 milisec
+109977 [Thread-236] INFO  event.Logger  - EVENT: rem_r(r8) @ [08/08/2014 15:51:36 , 08/08/2014 15:51:36]
+110136 [Thread-237] INFO  translate.Logger  - Query took:  80 milisec
+110383 [Thread-238] INFO  translate.Logger  - Removal took:  167 milisec
+110465 [Thread-239] INFO  event.Logger  - EVENT: rem_r(r9) @ [08/08/2014 15:51:36 , 08/08/2014 15:51:36]
+110624 [Thread-240] INFO  translate.Logger  - Query took:  80 milisec
+110879 [Thread-241] INFO  translate.Logger  - Removal took:  163 milisec
+110961 [Thread-242] INFO  event.Logger  - EVENT: rem_r(r10) @ [08/08/2014 15:51:37 , 08/08/2014 15:51:37]
+111124 [Thread-243] INFO  translate.Logger  - Query took:  84 milisec
+111363 [Thread-244] INFO  translate.Logger  - Removal took:  159 milisec

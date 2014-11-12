@@ -1,0 +1,11 @@
+| ?- | ?- *Event: start @ [datime(1400594485,1),datime(1400594485,1)]
+	Current time: 1400594485
+*Event: start @ [datime(1400594488,1),datime(1400594488,1)]
+	Current time: 1400594488
+		Event cancelled: a(1)
+*Event: a(1) @ [datime(1400594491,1),datime(1400594491,1)]
+	Current time: 1400594491
+*Event: fini @ [datime(1400594494,1),datime(1400594494,1)]
+	Current time: 1400594494
+		Event cancelled: a(1)
+periodic_01			passed

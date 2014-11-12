@@ -1,0 +1,33 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Module with predicates to interact with the Knowledge Base
+%
+insert(Term):-
+    java_notification(on),!,
+    notify_java_listener_insert(Term),
+    event(inserted(Term)).
+insert(Term):-!,
+    assert(Term),
+    event(inserted(Term)).
+
+remove(Term):-
+    java_notification(on),!,
+    notify_java_listener_remove(Term),
+    event(removed(Term)).
+remove(Term):-!,
+    retract(Term),
+    event(removed(Term)).
+
+update(Axiom):-
+    java_notification(on),!,
+    notify_java_listener_upd_ax(Axiom).
+update(Axiom):-!,
+    write('Update action to perform: '), write(Axiom),nl.
+
+query(Query):-
+    java_notification(on),!,
+    notify_java_listener_query(Query,R),
+    R == 1.
+query(Query):-!,
+    call_tv(Query,TV),
+    TV == true.

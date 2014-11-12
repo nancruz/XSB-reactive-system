@@ -1,0 +1,1 @@
+on a --> if true ; then remove(classAssertion('A',a)).

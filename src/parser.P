@@ -1,0 +1,154 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% repeat_read(+InputHandle,-RawEventRules)
+%   Loop that reads the rules from the file and put it in a List
+%   Called by etalis.P
+repeat_read(InputHandle,RawEventRules):-
+	ground(InputHandle),
+	repeat_read_internal(InputHandle,RawEventRules),
+	!.
+
+% repeat_read_internal(+InputHandle,-RawEventRules)
+repeat_read_internal(InputHandle,[Term|RestEventRules]):-
+	read_term(InputHandle,Term,[]),
+	Term \= end_of_file,
+	repeat_read_internal(InputHandle,RestEventRules),
+	!.
+repeat_read_internal(_InputHandle,[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parse_event_rules1/2
+%   Parses event rules and returns a list of parsed rules
+%   Called by etalis.P	
+parse_event_rules1(Rules,Parsed) :-
+	parse_event_rules(Rules,Parsed).
+		
+% parse_event_rules/2
+%   Loop that parses each rule and put it in a list
+parse_event_rules([],[]):-
+	!.
+parse_event_rules([H|T],L):-
+	parse_event_rule(H,EventRule),
+	parse_event_rules(T,T2),
+	conc1(EventRule,T2,L),	
+	!.
+%Error handling: when some rule hasn't the correct format
+parse_event_rules([H|T],L):-
+	nl,nl,write('Warning: we could not parse the input '), 
+	write(H), 
+	nl,nl,
+	parse_event_rules(T,L),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parse_event_rule(+Term,-EventRule)
+%   Parses the definition of rules
+%   ex: '<-'(Head,Body) into eventClause(Label,
+		
+parse_event_rule('rule:'(RuleLabelRaw,Rule),EventRule):-
+	parse_event_rule(Rule,EventRuleUnlabeled),
+	EventRuleUnlabeled = eventClause(unlabeled,Lhs,F),
+	parse_event_rule_label(RuleLabelRaw,RuleLabel),
+	EventRule = eventClause(RuleLabel,Lhs,F),
+	!.
+parse_event_rule(':'(RuleLabelRaw,Rule),EventRule):-
+	parse_event_rule(Rule,EventRuleUnlabeled),
+	EventRuleUnlabeled = eventClause(unlabeled,Lhs,F),
+	parse_event_rule_label(RuleLabelRaw,RuleLabel),
+	EventRule = eventClause(RuleLabel,Lhs,F),
+	!.
+parse_event_rule('<-'(Lhs,Rhs),EventRule):-
+	Rhs =.. L,
+	parse_event_formula(L,F_temp),
+	F = F_temp,
+	EventRule = eventClause(unlabeled,Lhs,F),
+	!.
+parse_event_rule('-->'(Lhs,Rhs),EventRule):-
+    Lhs =.. [Op,I1],
+    op_functor(Op,OpString),
+    NewLhs =.. [OpString,I1],
+    Rhs =.. L,
+    parse_event_formula(L,F_temp),
+    F = F_temp,
+    EventRule = eventClause(unlabeled,NewLhs,F),
+    !.
+parse_event_rule((Lhs :- Rhs),nil):-
+	assert((Lhs :- Rhs)),
+	!.
+parse_event_rule(event_rule_property(RuleId,PropertyName,PropertyValue),
+		nil):-
+	assert(event_rule_property(RuleId,PropertyName,PropertyValue)),
+	!.
+parse_event_rule(db(Fact),nil):-
+	assert(Fact),
+	!.
+parse_event_rule(prolog(Rule),nil):-
+	assert(Rule),
+	!.
+parse_event_rule(print_trigger(Fact),nil):-
+	assert(external_trigger(Fact)),
+	!.
+parse_event_rule(Fact,nil):-
+	assert(Fact),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parse_event_rule_label(+RuleLabelRaw,-RuleLabel)
+%   parse event rule label and detect label properties
+%   Note: Rules can have labels that are either atoms or are predicates 
+%   that represent rules properties.
+parse_event_rule_label(RuleLabelRaw,RuleLabel):-
+	atom(RuleLabelRaw),
+	!,
+	RuleLabel = RuleLabelRaw.
+parse_event_rule_label(RuleLabelRaw,RuleLabel):-
+	RuleLabelRaw =.. [RuleLabel,ListProperties],
+	!,
+	assert_rule_properties(RuleLabel,ListProperties).
+parse_event_rule_label(RuleLabel,RuleLabel).
+
+% assert_rule_properties(+RuleLabel,+ListProperties)
+assert_rule_properties(_RuleLabel,[]).
+assert_rule_properties(RuleLabel,[property(P,V)|R]):-
+	assert(event_rule_property(RuleLabel,P,V)),
+	assert_rule_properties(RuleLabel,R).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parse_event_formula/2
+%   parse event formulas, i.e., the rules' Bodies
+parse_event_formula([Op,I1,I2],EventFormula):-	
+	op_functor(Op,OpString),	
+	I1 =.. LI1, parse_event_formula(LI1,I1EventFormula),
+	I2 =.. LI2, parse_event_formula(LI2,I2EventFormula),
+	EventFormula =.. [OpString,I1EventFormula,I2EventFormula],	
+    !.
+parse_event_formula([Op,I],EventFormula):- 
+	op_functor(Op,OpString),
+	I =.. LI,parse_event_formula(LI,IEventFormula),
+	EventFormula =.. [OpString,IEventFormula],
+	!.
+parse_event_formula([A],EventFormula):-
+	atomic(A),
+	EventFormula = A,
+	!.
+parse_event_formula(List,EventFormula):-
+	Literal =.. List,
+	EventFormula = Literal,
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   AUXILIARY FUNCTIONS
+%
+% concatenate event rules ignoring nil rules
+conc1(EventRule,RestEventRules,EventRules):-
+	EventRule = nil,
+	!,
+	EventRules = RestEventRules.
+conc1(EventRule,RestEventRules,EventRules):-
+	!,
+	EventRules = [EventRule|RestEventRules].
+
+    
+% print_all_triggers/0
+print_all_triggers:-
+	assert(external_trigger(all_events)),
+	!.

@@ -1,0 +1,22 @@
+on a --> if true ; then (insertAxiom(subClassOf(test:Baby,test:Child)),
+						insertAxiom(subClassOf(test:Child,test:Person)),
+						insertAxiom(classAssertion(test:Baby,test:Stewie))).
+
+on b --> if true ; then (insertAxiom(subClassOf(test:Boy,test:Child)),
+						insertAxiom(subClassOf(test:Girl,test:Child)),
+						insertAxiom(
+							equivalentClasses(test:Boy, objectIntersectionOf(test:Child,test:Man)))).
+
+on c --> if true ; then (insertAxiom(classAssertion(test:Child, test:Chris)),
+						insertAxiom(classAssertion(test:Man,test:Chris)),
+						insertAxiom(classAssertion(test:Boy, test:Stewie))).
+
+on d --> if true ; then (insertAxiom(dataPropertyAssertion(test:hasLastName,test:Peter,'Griffin'))).
+
+on e --> if true ; then (insertAxiom(subClassOf(test:A, objectUnionOf(test:B,test:C))),
+						insertAxiom(subClassOf(test:A, objectUnionOf(test:C,test:B)))).
+
+on f --> if true ; then (insertAxiom(functionalObjectProperty(test:hasFather)),
+						insertAxiom(objectPropertyAssertion(test:hasFather,test:Stewie, test:Peter)),
+						insertAxiom(objectPropertyAssertion(test:hasFather,test:Stewie,test:Peter_Griffin)),
+						insertAxiom(sameIndividual(test:Peter,test:Peter_Griffin))).

@@ -1,0 +1,8 @@
+eventClause(unlabeled,temp_e_1(a(_h824),b(_h824)),andf(a(_h824),b(_h824))).
+
+eventClause(unlabeled,d(_h824),temp_e_1(a(_h824),b(_h824))).
+
+eventClause(unlabeled,temp_e_2(d(_h953),c(_h953)),andf(d(_h953),c(_h953))).
+
+eventClause(unlabeled,d(_h953),temp_e_2(d(_h953),c(_h953))).
+

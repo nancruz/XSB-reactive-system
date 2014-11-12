@@ -1,0 +1,16 @@
+eventClause(unlabeled,a,periodic(start,4,fini)).
+
+eventClause(unlabeled,b,periodic(start,2,fini)).
+
+eventClause(unlabeled,temp_e_1(a,d(_h2058)),seqf(a,d(_h2058))).
+
+eventClause(unlabeled,temp_e_2(temp_e_1(a,d(_h2058)),_h2058 > 1),wheref(temp_e_1(a,d(_h2058)),_h2058 > 1)).
+
+eventClause(unlabeled,f(_h2058),temp_e_2(temp_e_1(a,d(_h2058)),_h2058 > 1)).
+
+eventClause(unlabeled,c(_h2225),seqf(b,d(_h2225))).
+
+eventClause(unlabeled,temp_e_3(f(_h2334),c(_h2334)),andf(f(_h2334),c(_h2334))).
+
+eventClause(unlabeled,e(_h2334),temp_e_3(f(_h2334),c(_h2334))).
+

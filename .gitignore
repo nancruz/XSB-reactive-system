@@ -1,0 +1,8 @@
+
+# ignore the commit message file
+commit
+
+*.so
+*.xwam
+
+!.gitignore

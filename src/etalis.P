@@ -1,0 +1,325 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Modules:
+:- ensure_loaded('logging.P').
+:- ensure_loaded('binarizer.P').
+:- ensure_loaded('compiler.P').
+:- ensure_loaded('executor.P').
+:- ensure_loaded('flags.P').
+:- ensure_loaded('labeled_event_rules.P').
+:- ensure_loaded('operators.P').
+:- ensure_loaded('parser.P').
+:- ensure_loaded('storage.P').
+:- ensure_loaded('utils.P').
+:- ensure_loaded('periodic.P').
+:- ensure_loaded('p_queue.P').
+:- ensure_loaded('kb_interface.P').
+:- ensure_loaded('java_communication.P').
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports
+:- import current_datime/1, epoch/7 from date_utils.
+:- import add_xsb_hook/1, xsb_exit_hook/1 from xsb_hook.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hooks
+:- add_xsb_hook(xsb_exit_hook(finish_periodics)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% compile_event_file/1
+%  compiles an event file, parsing, binarization and transformation to
+%  transaction logic
+compile_event_file(InputFile):-
+	open(InputFile,read,InputHandle),
+	repeat_read(InputHandle,RawEventRules),
+    compile_event_rules(InputFile,RawEventRules),
+	close(InputHandle),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% compile_event_rules/2
+compile_event_rules(ModuleFileName,RawEventRules):-
+    % parsing phase (parser.P)
+	parse_event_rules1(RawEventRules,ParsedEventRules),
+	% binarization phase (binarizer.P)
+    binarization(ParsedEventRules,BinaryEventRules),
+	logging_binary_file(ModuleFileName,BinaryEventRules),
+	% compiling phase (compiler.P)
+	event2tr_transformation(BinaryEventRules,TRRules),
+	logging_TR_file(ModuleFileName,TRRules),
+	assert_trRules(TRRules),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% event/1
+%   This is the execution control. It is triggered every time an event 
+%   occurs.
+%   An event can arrive with a timestamp or not
+event(event(E,D)):-
+	!,
+	event(E,D).
+event(E):-
+	label_time_stamp(Datime),
+	event(E,[Datime,Datime]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% event/2
+%   It covers all the possible cases related to the events arrival times
+event(E,[datime(Y1,M1,D1,H1,Mn1,Sec1,Counter1),
+            datime(Y2,M2,D2,H2,Mn2,Sec2,Counter2)]):-
+    epoch(Y1,M1,D1,H1,Mn1,Sec1,T1),
+    epoch(Y2,M2,D2,H2,Mn2,Sec2,T2),
+    event_trigger(event(E,[datime(T1,Counter1),datime(T2,Counter2)])).
+
+event(E,[datime(T1,Counter1),datime(T2,Counter2)]):-
+	event_trigger(event(E,[datime(T1,Counter1),datime(T2,Counter2)])).
+
+event(E,[datime(Y,M,D,H,Mn,Sec),datime(Y,M,D,H,Mn,Sec)]):-
+    epoch(Y,M,D,H,Mn,Sec,T),
+    event(E,[datime(T),datime(T)]).
+
+event(E,[datime(T1),datime(T1)]):-
+	incCounter(timeCounter(datime(T1))),
+	counter(timeCounter(datime(T1)),Counter1),
+	Datime1 = datime(T1,Counter1),
+	event_trigger(event(E,[Datime1,Datime1])).
+
+event(E,[datime(Y1,M1,D1,H1,Mn1,Sec1),
+        datime(Y2,M2,D2,H2,Mn2,Sec2)]):-
+    epoch(Y1,M1,D1,H1,Mn1,Sec1,T1),
+    epoch(Y2,M2,D2,H2,Mn2,Sec2,T2),
+    event(E,[datime(T1),datime(T2)]).
+
+event(E,[datime(T1),datime(T2)]):-
+	incCounter(timeCounter(datime(T1))),
+	counter(timeCounter(datime(T1)),Counter1),
+	Datime1 = datime(T1,Counter1),
+	incCounter(timeCounter(datime(T2))),
+	counter(timeCounter(datime(T2)),Counter2),
+	Datime2 = datime(T2,Counter2),
+	event_trigger(event(E,[Datime1,Datime2])).
+
+event(E,[T1,T2]):-
+    number(T1),
+    number(T2),
+    current_datime(D1),
+    D1 = datime(Sec1),
+    current_datime(D2),
+    D2 = datime(Sec2),
+    Sec3 is Sec1 + T1,
+    Sec4 is Sec2 + T2,
+    Ts1 = datime(Sec3),
+    Ts2 = datime(Sec4),
+    event(E,[Ts1,Ts2]).
+
+event(E,T):-
+	number(T),
+	current_datime(T1),
+    T1 = datime(Secs),
+	event_trigger(event(E,[datime(Secs,T),datime(Secs,T)])).
+
+label_time_stamp(Datime):-
+	current_datime(DTdef),
+	DTdef=datime(Sec),
+	incCounter(timeCounter(datime(Sec))),
+	counter(timeCounter(datime(Sec)),Counter),
+	Datime = datime(Sec,Counter),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Loads a database into the program
+load_database(InputFile):-
+	open(InputFile,read,InputHandle),
+	repeat_read_database(InputHandle),
+	close(InputHandle),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Reads a file with terms and insert them
+repeat_read_database(InputHandle):-
+	read_term(InputHandle,Term,[]),
+	Term \= end_of_file,
+	assert(Term),
+	repeat_read_database(InputHandle).
+repeat_read_database(_InputHandle).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% execute_event_stream_file(+EventFile)
+%   Executes an event stream file
+execute_event_stream_file(EventFile):-
+	load_event_stream_file(EventFile,EventList),
+	repeat_fire_event_list(EventList),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% load_event_stream_file(+InputHandle,-Events)
+load_event_stream_file(EventFile,EventList):-
+	open(EventFile,read,InputHandle),
+	repeat_read_event(InputHandle,EventList),
+	close(InputHandle).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% repeat_read_event(+InputHandle,-Events)
+repeat_read_event(InputHandle,[Term|RestEvents]):-
+	read_term(InputHandle,Term,[]),
+	Term \= end_of_file,
+	repeat_read_event(InputHandle,RestEvents),
+	!.
+repeat_read_event(_InputHandle,[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+repeat_fire_event_list([H|T]):-
+	call(H),
+	repeat_fire_event_list(T).
+repeat_fire_event_list([]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%ins_event_rule/1
+%  the attribute can be a rule
+%  This predicate can be used to insert new rules into the system
+ins_event_rule(Term):-
+	tr_operators,
+	parse_event_rule(Term,EventRule),
+	binarization([EventRule],BinaryEventRules),
+	logging_binary_file('dynamic_rules',BinaryEventRules),
+	event2tr_transformation(BinaryEventRules,TRRules),
+	logging_TR_file('dynamic_rules',TRRules),
+	assert_trRules(TRRules),
+	!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% del_event_rule/1
+
+% that share that ID.
+del_event_rule(Label):-
+	Label \= '<-'(_H,_B),
+	Label \= 'rule:'(_L,_R),
+	retractall(trClause(Label,_Head,_Body)),
+	!.
+% a specific rules
+del_event_rule(Term):-
+	tr_operators,
+	parse_event_rule(Term,EventRule),
+	binarization([EventRule],BinaryEventRules),
+	event2tr_transformation(BinaryEventRules,TRRules),
+	retractall_internal(TRRules),
+	!.
+
+% retractall_stored_events/0
+retractall_stored_events :-
+    retractall(stored_event(_)),
+    retractall(fired_event(_,_)),
+	!.	
+
+% reset_etalis_state/0
+reset_etalis_state :-
+	retractall_stored_events,
+    retractall(etr_db(_,_,_,_,_)),
+    retractall(etr_db(_,_,_,_,_,_)),
+    retractall(etr_db(_)),
+    retractall(etr_db(_,_)),
+	!.
+
+% reset_etalis/0
+reset_etalis:-
+    retractall(trClause(_Label,_Head,_Body)),
+	reset_db,
+	% reset etalis state
+    retractall(fired_event(_,_)),
+	retractall(etr_db(_,_,_,_,_)),
+	retractall(etr_db(_,_,_,_,_,_)),
+	retractall(etr_db(_)),
+	retractall(logging(_)),
+	retractall(stored_event(_)),
+	retractall(logging_to_file(_)),
+	retractall(stored_event_java(_)),
+	retractall(logging(_)),
+	% reset Etalis static state and engine
+	retractall(event_rule_property(_,_,_)),
+	retractall(garbage_control(_)),
+	retractall(garbage_window(_)),
+	retractall(garbage_window_step(_)),
+	retractall(event_consumption_policy(_)),
+	retractall(external_trigger(_)),
+	retractall(print_trigger(_)),
+	retractall(out_of_order(_)),
+	retractall(revision_flag(_)),
+	retractall(justification_edge(_,_)),
+	retractall(rule_sharing(_)),
+	retractall(rule_sharing_debuging(_)),
+	retractall(event_clause_debuging(_)),
+    retractall(counter_internal(_,_)),
+	retractall(count(_,_)),
+	retractall(flag_internal(_,_)),
+	retractall(db(_)),
+	!.
+
+reset_etalis_static_state_and_engine :-
+	retractall(event_rule_property(_,_,_)),
+	retractall(garbage_control(_)),
+	retractall(garbage_window(_)),
+	retractall(garbage_window_step(_)),
+	retractall(event_consumption_policy(_)),
+	retractall(external_trigger(_)),
+	retractall(print_trigger(_)),
+	retractall(out_of_order(_)),
+	retractall(revision_flag(_)),
+	retractall(justification_edge(_,_)),
+	retractall(rule_sharing(_)),
+	retractall(rule_sharing_debuging(_)),
+	retractall(event_clause_debuging(_)),
+    retractall(counter_internal(_,_)),
+	retractall(count(_,_)),
+    retractall(flag_internal(_,_)),
+	retractall(db(_)),
+	retractall(trClause(_,_,_)),
+    !.
+
+
+% retractall_internal/1
+retractall_internal([]).
+retractall_internal([H|T]):-
+	rename_temp_events(H,H2),
+	retractall_trClause(H2),
+	retractall_internal(T).
+
+% rename_temp_events/2
+rename_temp_events(H,H):-
+	var(H),
+	!.
+rename_temp_events([H|T],[H2|T2]):-
+	rename_temp_events(H,H2),
+	rename_temp_events(T,T2),
+	!.
+rename_temp_events(H,H):-
+	number(H),
+	!.
+rename_temp_events(H,H2):-
+	atom(H),
+	non_temp_event(H,H2),
+	!.
+rename_temp_events(H,H2):-
+	H =.. L,
+	rename_temp_events(L,H2),
+	!.
+
+% retractall_trClause/1
+retractall_trClause(H2):-
+	trClause(Label,Head,Body),
+	rename_temp_events(trClause(Label,Head,Body),H3),
+	H2=H3,
+    retractall(trClause(Label,Head,Body)),
+	!.
+retractall_trClause(_H2).
+
+% non_temp_event/2
+non_temp_event(X,_X2):-
+	atom_codes(X,[116, 101, 109, 112, 95, 101, 95|_]),
+	!.
+non_temp_event(unlabeled,_). % unlabeled rules match all rules
+non_temp_event(X,X).
+
+% del_all_event_rules/1 delete all rules whose head is d (this doesn't delete
+% temporary  events of compiled rules, since we don't know what were the
+% original rules
+del_all_event_rules(Head):-
+	retractall(trClause(_Label,Head,_Body)),
+	!.

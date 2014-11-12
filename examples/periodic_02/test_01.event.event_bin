@@ -1,0 +1,6 @@
+eventClause(unlabeled,a(1),periodic(start,3,fini)).
+
+eventClause(unlabeled,b(1),periodic(start,3,fini)).
+
+eventClause(unlabeled,c(1),periodic(start,1,fini)).
+

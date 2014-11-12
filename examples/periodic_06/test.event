@@ -1,0 +1,5 @@
+tc(X,Y)<- r(X,Y).
+tc(X,Z)<- tc(X,Y) seq r(Y,Z).
+periodic(start,a,fini).
+%print_trigger(_/0).
+%print_trigger(tc/2).

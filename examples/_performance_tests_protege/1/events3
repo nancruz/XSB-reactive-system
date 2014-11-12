@@ -1,0 +1,7 @@
+event(ins_critical(c1)).
+
+event(ins_five(f1)).
+
+event(ins_app(a1)).
+
+event(rem_critical(c1)).

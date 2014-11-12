@@ -1,0 +1,19 @@
+on a --> if true ; then insertAxiom(declaration(class(test:boy))).
+on b --> if true ; then insertAxiom(subClassOf(test:man, test:human)).
+on c --> if true ; then insertAxiom(subClassOf(test:woman, test:human)).
+on d --> if true ; then (insertAxiom(classAssertion(test:man, test:peter)),
+						insertAxiom(classAssertion(test:woman,test:lois))).
+on e --> if true ; then (insertAxiom(classAssertion(test:man, test:chris))).
+on f --> if true ; then insertAxiom(equivalentClasses(test:girl, objectIntersectionOf(test:human,test:woman))).
+on g --> if true ; then insertAxiom(subClassOf(test:dog, test:animal)).
+on h --> if true ; then insertAxiom(classAssertion(test:dog, test:brian)).
+on i --> if true ; then insertAxiom(classAssertion(test:dog, test:snoopy)).
+on j --> if true ; then insertAxiom(classAssertion(test:dog, test:billy)).
+on k --> if true ; then insertRule((animal(X):-cat(X))).
+on l --> if true ; then insertRule((cat(mickey))).
+on m --> if true ; then insertAxiom(subClassOf(test:turtle, test:animal)).
+on n --> if true ; then insertAxiom(classAssertion(test:turtle, test:leonardo)).
+on o --> if true ; then removeAxiom(classAssertion(test:turtle, test:leonardo)).
+on p --> if true ; then removeAxiom(classAssertion(test:dog, test:billy)).
+on q --> if true ; then removeRule((animal(X):-cat(X))).
+on r --> if true ; then removeRule(bird(tweety)).

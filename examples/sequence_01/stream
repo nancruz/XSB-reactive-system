@@ -1,0 +1,4 @@
+event(a(2)).
+event(b(3)).
+event(a(1)).
+event(b(2)).

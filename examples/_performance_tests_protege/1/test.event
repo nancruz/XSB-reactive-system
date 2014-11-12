@@ -1,0 +1,17 @@
+%% ECA 
+on ins_critical(X) --> if query(not 'Critical'(X)) ; then insert(classAssertion('Critical',X)).
+on rem_critical(X) --> if query('VolitionalState'(X)) ; then remove(classAssertion('Critical',X)).
+on ins_five(X) --> if query(not five(X)) ; then insert(classAssertion(five,X)).
+on rem_five(X) --> if query(five(X)) ; then remove(classAssertion(five,X)).
+on ins_app(X) --> if query(not 'ApplicationInformation'(X)) ; then insert(classAssertion('ApplicationInformation',X)).
+on rem_app(X) --> if query('TopCategory'(X)) ; then remove(classAssertion('ApplicationInformation',X)).
+
+on anginaDetected(X) --> if query(not 'AnginaPectoris'(X)) ; 
+    then insert('AnginaPectoris'(X)).
+
+on checkHeartProblems(X) --> if query('CardiacPhenomenon'(X)) ;
+    then insert('Critical'(X)).
+
+on angioplastyTreatment(X) --> if query('CoronaryArteryDisease'(X)) ; 
+    then remove('AnginaPectoris'(X)).
+

@@ -1,0 +1,12 @@
+eventClause(unlabeled,a,seqf(a0,a1)).
+
+eventClause(unlabeled,temp_e_1(b0(_h295),b1(_h309)),andf(b0(_h295),b1(_h309))).
+
+eventClause(unlabeled,b(_h295,_h309),temp_e_1(b0(_h295),b1(_h309))).
+
+eventClause(unlabeled,temp_e_2(c0(_h441),c1(_h441)),orf(c0(_h441),c1(_h441))).
+
+eventClause(unlabeled,temp_e_3(temp_e_2(c0(_h441),c1(_h441)),c2(_h441)),orf(temp_e_2(c0(_h441),c1(_h441)),c2(_h441))).
+
+eventClause(unlabeled,c(_h441),temp_e_3(temp_e_2(c0(_h441),c1(_h441)),c2(_h441))).
+

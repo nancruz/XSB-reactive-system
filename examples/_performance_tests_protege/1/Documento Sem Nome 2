@@ -1,0 +1,190 @@
+7724 [Thread-5] INFO  event.Logger  - EVENT: anginaDetected(i1) @ [09/21/2014 19:39:42 , 09/21/2014 19:39:42]
+17964 [Thread-7] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i1)
+false
+18214 [Thread-7] INFO  translate.Logger  - XSB took:  250 milisec
+18214 [Thread-7] INFO  translate.Logger  - Insertion took:  250 milisec
+18298 [Thread-8] INFO  event.Logger  - EVENT: anginaDetected(i2) @ [09/21/2014 19:39:43 , 09/21/2014 19:39:43]
+18610 [Thread-10] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i2)
+true
+18734 [Thread-10] INFO  translate.Logger  - XSB took:  124 milisec
+18734 [Thread-10] INFO  translate.Logger  - Insertion took:  124 milisec
+18820 [Thread-11] INFO  event.Logger  - EVENT: anginaDetected(i3) @ [09/21/2014 19:39:43 , 09/21/2014 19:39:43]
+19062 [Thread-13] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i3)
+true
+19230 [Thread-13] INFO  translate.Logger  - XSB took:  168 milisec
+19230 [Thread-13] INFO  translate.Logger  - Insertion took:  168 milisec
+19313 [Thread-14] INFO  event.Logger  - EVENT: anginaDetected(i4) @ [09/21/2014 19:39:44 , 09/21/2014 19:39:44]
+19564 [Thread-16] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i4)
+true
+19730 [Thread-16] INFO  translate.Logger  - XSB took:  166 milisec
+19730 [Thread-16] INFO  translate.Logger  - Insertion took:  166 milisec
+19813 [Thread-17] INFO  event.Logger  - EVENT: anginaDetected(i5) @ [09/21/2014 19:39:44 , 09/21/2014 19:39:44]
+20054 [Thread-19] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i5)
+true
+20225 [Thread-19] INFO  translate.Logger  - XSB took:  170 milisec
+20226 [Thread-19] INFO  translate.Logger  - Insertion took:  171 milisec
+20311 [Thread-20] INFO  event.Logger  - EVENT: anginaDetected(i6) @ [09/21/2014 19:39:45 , 09/21/2014 19:39:45]
+20552 [Thread-22] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i6)
+true
+20722 [Thread-22] INFO  translate.Logger  - XSB took:  170 milisec
+20722 [Thread-22] INFO  translate.Logger  - Insertion took:  170 milisec
+20805 [Thread-23] INFO  event.Logger  - EVENT: anginaDetected(i7) @ [09/21/2014 19:39:45 , 09/21/2014 19:39:45]
+21048 [Thread-25] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i7)
+true
+21214 [Thread-25] INFO  translate.Logger  - XSB took:  166 milisec
+21214 [Thread-25] INFO  translate.Logger  - Insertion took:  166 milisec
+21295 [Thread-26] INFO  event.Logger  - EVENT: anginaDetected(i8) @ [09/21/2014 19:39:46 , 09/21/2014 19:39:46]
+21542 [Thread-28] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i8)
+true
+21706 [Thread-28] INFO  translate.Logger  - XSB took:  163 milisec
+21706 [Thread-28] INFO  translate.Logger  - Insertion took:  164 milisec
+21790 [Thread-29] INFO  event.Logger  - EVENT: anginaDetected(i9) @ [09/21/2014 19:39:46 , 09/21/2014 19:39:46]
+22039 [Thread-31] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i9)
+true
+22198 [Thread-31] INFO  translate.Logger  - XSB took:  158 milisec
+22199 [Thread-31] INFO  translate.Logger  - Insertion took:  159 milisec
+22281 [Thread-32] INFO  event.Logger  - EVENT: anginaDetected(i10) @ [09/21/2014 19:39:47 , 09/21/2014 19:39:47]
+22531 [Thread-34] INFO  event.Logger  - ACTION: inserting AnginaPectoris(i10)
+true
+22694 [Thread-34] INFO  translate.Logger  - XSB took:  162 milisec
+22694 [Thread-34] INFO  translate.Logger  - Insertion took:  162 milisec
+22803 [Thread-35] INFO  event.Logger  - EVENT: checkHeartProblems(i1) @ [09/21/2014 19:39:47 , 09/21/2014 19:39:47]
+23007 [Thread-36] INFO  app.Logger  - QUERY: CardiacPhenomenon(i1)? true
+23008 [Thread-36] INFO  translate.Logger  - Query took:  125 milisec
+23051 [Thread-37] INFO  event.Logger  - ACTION: inserting Critical(i1)
+false
+23290 [Thread-37] INFO  translate.Logger  - XSB took:  238 milisec
+23290 [Thread-37] INFO  translate.Logger  - Insertion took:  238 milisec
+23373 [Thread-38] INFO  event.Logger  - EVENT: checkHeartProblems(i2) @ [09/21/2014 19:39:48 , 09/21/2014 19:39:48]
+23574 [Thread-39] INFO  app.Logger  - QUERY: CardiacPhenomenon(i2)? true
+23574 [Thread-39] INFO  translate.Logger  - Query took:  120 milisec
+23615 [Thread-40] INFO  event.Logger  - ACTION: inserting Critical(i2)
+true
+23781 [Thread-40] INFO  translate.Logger  - XSB took:  165 milisec
+23781 [Thread-40] INFO  translate.Logger  - Insertion took:  165 milisec
+23865 [Thread-41] INFO  event.Logger  - EVENT: checkHeartProblems(i3) @ [09/21/2014 19:39:48 , 09/21/2014 19:39:48]
+24070 [Thread-42] INFO  app.Logger  - QUERY: CardiacPhenomenon(i3)? true
+24070 [Thread-42] INFO  translate.Logger  - Query took:  122 milisec
+24112 [Thread-43] INFO  event.Logger  - ACTION: inserting Critical(i3)
+true
+24278 [Thread-43] INFO  translate.Logger  - XSB took:  165 milisec
+24278 [Thread-43] INFO  translate.Logger  - Insertion took:  166 milisec
+24359 [Thread-44] INFO  event.Logger  - EVENT: checkHeartProblems(i4) @ [09/21/2014 19:39:49 , 09/21/2014 19:39:49]
+24574 [Thread-45] INFO  app.Logger  - QUERY: CardiacPhenomenon(i4)? true
+24574 [Thread-45] INFO  translate.Logger  - Query took:  136 milisec
+24615 [Thread-46] INFO  event.Logger  - ACTION: inserting Critical(i4)
+true
+24778 [Thread-46] INFO  translate.Logger  - XSB took:  162 milisec
+24778 [Thread-46] INFO  translate.Logger  - Insertion took:  162 milisec
+24861 [Thread-47] INFO  event.Logger  - EVENT: checkHeartProblems(i5) @ [09/21/2014 19:39:49 , 09/21/2014 19:39:49]
+25098 [Thread-48] INFO  app.Logger  - QUERY: CardiacPhenomenon(i5)? true
+25098 [Thread-48] INFO  translate.Logger  - Query took:  152 milisec
+25138 [Thread-49] INFO  event.Logger  - ACTION: inserting Critical(i5)
+true
+25302 [Thread-49] INFO  translate.Logger  - XSB took:  164 milisec
+25303 [Thread-49] INFO  translate.Logger  - Insertion took:  165 milisec
+25386 [Thread-50] INFO  event.Logger  - EVENT: checkHeartProblems(i6) @ [09/21/2014 19:39:50 , 09/21/2014 19:39:50]
+25623 [Thread-51] INFO  app.Logger  - QUERY: CardiacPhenomenon(i6)? true
+25623 [Thread-51] INFO  translate.Logger  - Query took:  154 milisec
+25668 [Thread-52] INFO  event.Logger  - ACTION: inserting Critical(i6)
+true
+25834 [Thread-52] INFO  translate.Logger  - XSB took:  165 milisec
+25834 [Thread-52] INFO  translate.Logger  - Insertion took:  165 milisec
+25915 [Thread-53] INFO  event.Logger  - EVENT: checkHeartProblems(i7) @ [09/21/2014 19:39:50 , 09/21/2014 19:39:50]
+26122 [Thread-54] INFO  app.Logger  - QUERY: CardiacPhenomenon(i7)? true
+26122 [Thread-54] INFO  translate.Logger  - Query took:  126 milisec
+26164 [Thread-55] INFO  event.Logger  - ACTION: inserting Critical(i7)
+true
+26322 [Thread-55] INFO  translate.Logger  - XSB took:  158 milisec
+26322 [Thread-55] INFO  translate.Logger  - Insertion took:  158 milisec
+26409 [Thread-56] INFO  event.Logger  - EVENT: checkHeartProblems(i8) @ [09/21/2014 19:39:51 , 09/21/2014 19:39:51]
+26619 [Thread-57] INFO  app.Logger  - QUERY: CardiacPhenomenon(i8)? true
+26619 [Thread-57] INFO  translate.Logger  - Query took:  127 milisec
+26663 [Thread-58] INFO  event.Logger  - ACTION: inserting Critical(i8)
+true
+26830 [Thread-58] INFO  translate.Logger  - XSB took:  166 milisec
+26830 [Thread-58] INFO  translate.Logger  - Insertion took:  166 milisec
+26911 [Thread-59] INFO  event.Logger  - EVENT: checkHeartProblems(i9) @ [09/21/2014 19:39:51 , 09/21/2014 19:39:51]
+27118 [Thread-60] INFO  app.Logger  - QUERY: CardiacPhenomenon(i9)? true
+27118 [Thread-60] INFO  translate.Logger  - Query took:  126 milisec
+27159 [Thread-61] INFO  event.Logger  - ACTION: inserting Critical(i9)
+true
+27330 [Thread-61] INFO  translate.Logger  - XSB took:  170 milisec
+27330 [Thread-61] INFO  translate.Logger  - Insertion took:  170 milisec
+27413 [Thread-62] INFO  event.Logger  - EVENT: checkHeartProblems(i10) @ [09/21/2014 19:39:52 , 09/21/2014 19:39:52]
+27618 [Thread-63] INFO  app.Logger  - QUERY: CardiacPhenomenon(i10)? true
+27618 [Thread-63] INFO  translate.Logger  - Query took:  122 milisec
+27658 [Thread-64] INFO  event.Logger  - ACTION: inserting Critical(i10)
+true
+27821 [Thread-64] INFO  translate.Logger  - XSB took:  162 milisec
+27822 [Thread-64] INFO  translate.Logger  - Insertion took:  164 milisec
+27902 [Thread-65] INFO  event.Logger  - EVENT: angioplastyTreatment(i1) @ [09/21/2014 19:39:52 , 09/21/2014 19:39:52]
+28070 [Thread-66] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i1)? true
+28070 [Thread-66] INFO  translate.Logger  - Query took:  82 milisec
+28150 [Thread-67] INFO  event.Logger  - ACTION: removing AnginaPectoris(i1)
+true
+28317 [Thread-67] INFO  translate.Logger  - XSB took:  167 milisec
+28318 [Thread-67] INFO  translate.Logger  - Removal took:  168 milisec
+28399 [Thread-68] INFO  event.Logger  - EVENT: angioplastyTreatment(i2) @ [09/21/2014 19:39:53 , 09/21/2014 19:39:53]
+28562 [Thread-69] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i2)? true
+28562 [Thread-69] INFO  translate.Logger  - Query took:  83 milisec
+28671 [Thread-70] INFO  event.Logger  - ACTION: removing AnginaPectoris(i2)
+true
+28830 [Thread-70] INFO  translate.Logger  - XSB took:  159 milisec
+28830 [Thread-70] INFO  translate.Logger  - Removal took:  159 milisec
+28911 [Thread-71] INFO  event.Logger  - EVENT: angioplastyTreatment(i3) @ [09/21/2014 19:39:53 , 09/21/2014 19:39:53]
+29086 [Thread-72] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i3)? true
+29086 [Thread-72] INFO  translate.Logger  - Query took:  82 milisec
+29167 [Thread-73] INFO  event.Logger  - ACTION: removing AnginaPectoris(i3)
+true
+29326 [Thread-73] INFO  translate.Logger  - XSB took:  159 milisec
+29326 [Thread-73] INFO  translate.Logger  - Removal took:  159 milisec
+29408 [Thread-74] INFO  event.Logger  - EVENT: angioplastyTreatment(i4) @ [09/21/2014 19:39:54 , 09/21/2014 19:39:54]
+29567 [Thread-75] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i4)? true
+29567 [Thread-75] INFO  translate.Logger  - Query took:  80 milisec
+29651 [Thread-76] INFO  event.Logger  - ACTION: removing AnginaPectoris(i4)
+true
+29810 [Thread-76] INFO  translate.Logger  - XSB took:  158 milisec
+29810 [Thread-76] INFO  translate.Logger  - Removal took:  159 milisec
+29890 [Thread-77] INFO  event.Logger  - EVENT: angioplastyTreatment(i5) @ [09/21/2014 19:39:54 , 09/21/2014 19:39:54]
+30050 [Thread-78] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i5)? true
+30050 [Thread-78] INFO  translate.Logger  - Query took:  80 milisec
+30130 [Thread-79] INFO  event.Logger  - ACTION: removing AnginaPectoris(i5)
+true
+30289 [Thread-79] INFO  translate.Logger  - XSB took:  159 milisec
+30290 [Thread-79] INFO  translate.Logger  - Removal took:  160 milisec
+30374 [Thread-80] INFO  event.Logger  - EVENT: angioplastyTreatment(i6) @ [09/21/2014 19:39:55 , 09/21/2014 19:39:55]
+30534 [Thread-81] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i6)? true
+30534 [Thread-81] INFO  translate.Logger  - Query took:  80 milisec
+30614 [Thread-82] INFO  event.Logger  - ACTION: removing AnginaPectoris(i6)
+true
+30774 [Thread-82] INFO  translate.Logger  - XSB took:  160 milisec
+30774 [Thread-82] INFO  translate.Logger  - Removal took:  160 milisec
+30856 [Thread-83] INFO  event.Logger  - EVENT: angioplastyTreatment(i7) @ [09/21/2014 19:39:55 , 09/21/2014 19:39:55]
+31026 [Thread-84] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i7)? true
+31026 [Thread-84] INFO  translate.Logger  - Query took:  85 milisec
+31110 [Thread-85] INFO  event.Logger  - ACTION: removing AnginaPectoris(i7)
+true
+31277 [Thread-85] INFO  translate.Logger  - XSB took:  167 milisec
+31278 [Thread-85] INFO  translate.Logger  - Removal took:  168 milisec
+31363 [Thread-86] INFO  event.Logger  - EVENT: angioplastyTreatment(i8) @ [09/21/2014 19:39:56 , 09/21/2014 19:39:56]
+31526 [Thread-87] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i8)? true
+31527 [Thread-87] INFO  translate.Logger  - Query took:  80 milisec
+31607 [Thread-88] INFO  event.Logger  - ACTION: removing AnginaPectoris(i8)
+true
+31770 [Thread-88] INFO  translate.Logger  - XSB took:  163 milisec
+31770 [Thread-88] INFO  translate.Logger  - Removal took:  163 milisec
+31852 [Thread-89] INFO  event.Logger  - EVENT: angioplastyTreatment(i9) @ [09/21/2014 19:39:56 , 09/21/2014 19:39:56]
+32019 [Thread-90] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i9)? true
+32019 [Thread-90] INFO  translate.Logger  - Query took:  85 milisec
+32099 [Thread-91] INFO  event.Logger  - ACTION: removing AnginaPectoris(i9)
+true
+32266 [Thread-91] INFO  translate.Logger  - XSB took:  166 milisec
+32266 [Thread-91] INFO  translate.Logger  - Removal took:  167 milisec
+32348 [Thread-92] INFO  event.Logger  - EVENT: angioplastyTreatment(i10) @ [09/21/2014 19:39:57 , 09/21/2014 19:39:57]
+32506 [Thread-93] INFO  app.Logger  - QUERY: CoronaryArteryDisease(i10)? true
+32506 [Thread-93] INFO  translate.Logger  - Query took:  79 milisec
+32586 [Thread-94] INFO  event.Logger  - ACTION: removing AnginaPectoris(i10)
+true
+32749 [Thread-94] INFO  translate.Logger  - XSB took:  163 milisec
+32750 [Thread-94] INFO  translate.Logger  - Removal took:  164 milisec

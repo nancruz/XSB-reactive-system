@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This module was created  to implement the periodic operator.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dynamic predicates
+:- dynamic periodic_cancel/1.
+:- index(periodic_cancel/1,trie).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports
+:- import thread_create/1,thread_join/2,thread_sleep/1 from thread.
+:- import current_datime/1, datime_plus_sec/3 from date_utils.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+start_periodics:-
+    mutex_create(_Id,[alias(pq_mutex)]),
+    set_etalis_flag(periodic_events,on),
+    with_mutex(pq_mutex,create_pq),
+    message_queue_create(_Queue,[alias(events), max_terms(0)]),
+    thread_create(start_event_thread,_,[alias(event_th)]),
+    thread_create(start_periodic_thread,_,[alias(periodic_th)]).
+finish_periodics:-
+    periodic_events(on),
+    thread_signal(periodic_th,exit_th),
+    thread_signal(event_th,exit_th).
+finish_periodics.
+
+exit_th:-
+    thread_exit(true).
+
+reg_periodic(event(Event,T)):-
+    with_mutex(pq_mutex,push_pq(event(Event,datime(T,0),T))).
+reg_periodic(event(Event,T,I)):-
+    current_datime(D),
+    D = datime(Current_t),
+    Next_t is Current_t + I,
+    datime_plus_sec(T,I,Ts),
+    with_mutex(pq_mutex,push_pq(event(Event,Ts,Next_t))).
+
+unreg_periodic(event(Event)):-
+    %thread_send_message(events,cancel(Event)).
+    with_mutex(pq_mutex,rem_elem_pq(event(Event))),
+    remove_periodic_msg_queue(event(Event)).
+
+remove_periodic_msg_queue(event(Event)):-
+    thread_peek_message(events,event(Event,_)),
+    thread_get_message(events,event(Event,_)),!,
+    remove_periodic_msg_queue(event(Event)).
+remove_periodic_msg_queue(_).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Periodic Thread
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+start_periodic_thread:-
+    wait_for_events.
+
+wait_for_events:-
+    with_mutex(pq_mutex,get_head_pq([])),
+    %write('No events. Sleeping\n'),
+    thread_sleep(1000),
+    wait_for_events.
+wait_for_events:-
+    with_mutex(pq_mutex,get_head_pq(event(Head,Ts,Next_ts))),
+    waiting_time(Next_ts,MSecs),
+    MSecs > 0,
+    %write('Events, but it is not time yet\n'),
+    thread_sleep(1000),
+    wait_for_events.
+wait_for_events:-
+    with_mutex(pq_mutex,get_head_pq(event(Head,Ts,Next_ts))),
+    waiting_time(Next_ts,MSecs),
+    MSecs == 0,
+    %write('Processing event: '),write(Head),nl,
+    with_mutex(pq_mutex,pop_pq(event(Head,Ts,Next_ts))),
+    Ts=datime(T,Count),
+    %thread_sleep(50),
+    incCounter(timeCounter(datime(T))),
+    counter(timeCounter(datime(T)),C),
+    thread_send_message(events,event(Head,[datime(T,C),datime(T,C)])),
+    wait_for_events.
+wait_for_events:-
+    wait_for_events.
+
+waiting_time(Ts,MSecs):-
+    current_datime(D),
+    D = datime(Now),
+    Secs is Ts - Now,
+    MSecs is Secs * 1000. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Event Thread
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+start_event_thread:-
+    thread_get_message(events,event(Event,TS)),
+    process_event(event(Event,TS)).
+
+%process_event(event(Event,[T1_F,T2_F])):-
+%    etr_dbf(_,periodicf(_Start,Periodic,Event)),
+%    T2_F=datime(Epoch,C1),
+%    thread_sleep(50),
+%    thread_peek_message(events,event(Periodic,[T1_P,T2_P])),
+%    T1_P=datime(Epoch,C2),
+%    thread_get_message(events,event(Periodic,[T1_P,T2_P])),
+%    %event_trigger_periodic(event(Periodic,[T1_P,T2_P])),
+%    process_event(event(Event,[T1_F,T2_F])),
+%    start_event_thread.
+process_event(event(Event,_)):-
+    etr_dbf(_,periodicf(_Start,Event,Fini)),
+    T2_P = datime(Epoch,C1),
+    %thread_sleep(50),
+    thread_peek_message(events,event(Fini,[T1_F,T2_F])),
+    T1_F = datime(Epoch,C2),
+    thread_get_message(events,event(Fini,[T1_F,T2_F])),
+    event_trigger_periodic(event(Fini,[T1_F,T2_F])),
+    start_event_thread.
+%process_event(event(Event,_)):-
+%    thread_peek_message(events,cancel(Event)),
+%    write('\t\tEvent cancelled: '),write(Event),nl,
+%    thread_get_message(events,cancel(Event)),
+%    start_event_thread.
+
+process_event(Event):-
+    event_trigger_periodic(Event),
+    start_event_thread.
+
+event_trigger_periodic(event(Event,[T1,T2])):-
+	% no event rule matches the current event
+	\+(trClause(_Label,event(Event,[T1,T2]),_Body)),
+    \+(trClauseECA(_Label,event(Event,[T3,T4]),_Body)),
+	logging_event(event(Event,[T1,T2])).
+
+event_trigger_periodic(event(Event,[T1,T2])):-
+    findall(trClauseECA(Label,event(Event,[T1,T2]),Body),
+            trClauseECA(Label,event(Event,[T1,T2]),Body),
+            List1),
+    findall(trClause(Label,event(Event,[T1,T2]),Body),
+            trClause(Label,event(Event,[T1,T2]),Body),
+            List2),
+	logging_event(event(Event,[T1,T2])),
+    fireAllECARules(List1),
+	fireAllTRFormulas(List2).
+event_trigger_periodic(event(_Event,[_T1,_T2])):-
+    write('Failed\n').
+

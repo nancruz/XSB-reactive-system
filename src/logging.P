@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $Rev: 887 $:     Revision of last commit
+% $Author: fodor.paul $:  Author of last commit
+% $Date: 2011-08-19 12:52:58 +0100 (Sex, 19 Ago 2011) $:    Date of last commit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports
+:- import current_datime/1, epoch2date/7 from date_utils.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dynamic predicates
+:- dynamic(logging/1).
+:- dynamic(logging_to_file/1).
+:- dynamic(java_notification/1).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% log/1
+% This predicate is useful for debuging. It shows the trace of execution and also the
+% state of the db
+log(L):-
+    logging_to_file(on),
+    !,
+    see_db,
+    (
+		(
+			write_file('  Log:   '),
+			write_file(L)
+		);(
+			write_file('  Failed:  '),
+			write_file(L),
+			fail
+		)
+    ).
+
+log(L):-
+	logging(on),
+	!,
+	see_db,
+	(
+		(
+			write('  Log:   '),
+			write(L),
+			nl
+		);(
+			write('  Failed:  '),
+			write(L),
+			nl,
+			fail
+		)
+	).
+log(L):-!.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% logging_event/1
+%   This predicate writes to the output all the triggered events
+logging_event(event(Event,[T1,T2])):-
+    java_notification(on),
+    notify_java_listener_event(Event,T1,T2).
+logging_event(event(Event,[T1,T2])):-
+	java_notification(off),
+	external_trigger_check(Event),
+	!,
+    T1 = datime(Secs1,Count1),
+    T2 = datime(Secs2,Count2),
+    epoch2date(Y1,M1,D1,H1,Min1,S1,Secs1),
+    epoch2date(Y2,M2,D2,H2,Min2,S2,Secs2),
+    write('*Event: '), write(Event), write(' @ '),
+	write([datime(Y1,M1,D1,H1,Min1,S1,Count1),
+        datime(Y2,M2,D2,H2,Min2,S2,Count2)]), nl ,
+    current_datime(datime(Now)),
+    epoch2date(Y3,M3,D3,H3,Min3,S3,Now),
+    write('\t\t'),write(datime(Y3,M3,D3,H3,Min3,S3)),nl,
+	log(event(Event,[T1,T2])),
+    store_fired_event(event(Event,[T1,T2])).
+
+logging_event(event(Event,[T1,T2])):-
+	!,
+	log(event(Event,[T1,T2])).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% logging_binary_file(+InputFile,+BinaryEventRules)
+%   Write the rules on a log file after the binarization 
+%   process.
+logging_binary_file(InputFile,BinaryEventRules):-
+	output_temporary_files(on),
+	!,
+	atom_concat(InputFile,'.event_bin',BinaryFile),
+	open(BinaryFile,write,BinaryFileHandle),
+	writeBinaryFile(BinaryFileHandle,BinaryEventRules),
+	close(BinaryFileHandle).
+logging_binary_file(_InputFile,_BinaryEventRules).
+
+% writeBinaryFile(+BinaryFileHandle,+BinaryEventRules)
+writeBinaryFile(BinaryFileHandle,[H|T]):-
+	!,
+	write(BinaryFileHandle,H),write(BinaryFileHandle,'.\n\n'),
+	writeBinaryFile(BinaryFileHandle,T).
+writeBinaryFile(_BinaryFileHandle,[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% logging_TR_file(+InputFile,+TRRules)
+%   Log the transformed rules into a file.
+logging_TR_file(InputFile,TRRules):-
+	output_temporary_files(on),
+	!,
+	atom_concat(InputFile,'.ctr',TRFile),
+	open(TRFile,write,TRFileHandle),
+	write_TR_file(TRFileHandle,TRRules),
+	close(TRFileHandle).
+logging_TR_file(_InputFile,_TRRules).
+
+% write_TR_file(+TRFileHandle,+TRRules)
+write_TR_file(TRFileHandle,[H|T]):-
+	write(TRFileHandle,H),write(TRFileHandle,'.\n\n'),
+	write_TR_file(TRFileHandle,T),
+	!.
+write_TR_file(_TRFileHandle,[]).
+
